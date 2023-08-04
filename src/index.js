@@ -573,323 +573,373 @@ function component() {
     */
 
     element.innerHTML = `
-        <div class="navigation__wrapper">
-            
-            <header class="navigation__header">
-                <div class="container-custom">
-                    <div class="navigation__header-inner">
-                        <div>
-                            <div class="navigation__desktop-menu-wrapper">
-                                <!--<div class="navigation__desktop-menu-inner-wrapper">
-                                    <div>-->
-                                        <ul class="navigation__layer-1">
-                                            <li x-data="{ open: false }"  x-on:keydown.escape.prevent.stop="close($refs.button)" class="relative">
-                                                <!-- Button -->
-                                                <button
-                                                    x-ref="button"
-                                                    @click="open = !open"
-                                                    :aria-expanded="open ? 'true' : 'false'"
-                                                    :aria-controls="$id('dropdown-button')"
-                                                    type="button"
-                                                    class="navigation__primary-btn"
-                                                    :class="open && ' open'"
-                                                >
-                                                    Prizes
+        <div class="navigation">
+            <div class="navigation__wrapper">
+                
+                <header class="navigation__header">
+                    <div class="container-custom">
+                        <div class="navigation__header-inner">
+                            <div>
+                                <div class="navigation__desktop-menu-wrapper">
+                                    <!--<div class="navigation__desktop-menu-inner-wrapper">
+                                        <div>-->
+                                            <ul class="navigation__layer-1">
+                                                <li x-data="{ open: false }"  x-on:keydown.escape.prevent.stop="close($refs.button)" class="relative">
+                                                    <!-- Button -->
+                                                    <button
+                                                        x-ref="button"
+                                                        @click="open = !open"
+                                                        :aria-expanded="open ? 'true' : 'false'"
+                                                        :aria-controls="$id('dropdown-button')"
+                                                        type="button"
+                                                        class="navigation__primary-btn navigation__active"
+                                                        :class="open && ' open'"
+                                                    >
+                                                        Prizes
 
-                                                    <!-- Heroicon: chevron-down -->
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-                                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                                    </svg>
-                                                </button>
+                                                        <!-- Heroicon: chevron-down -->
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                                        </svg>
+                                                    </button>
 
-                                                <!-- Panel -->
-                                                <div
-                                                    x-show="open"
-                                                    @click.away="open = false"
-                                                    :id="$id('dropdown-button')"
-                                                    style="display: none;"
-                                                    class="absolute origin-top bg-white shadow-md navigation__desktop-menu-dropdown"
-                                                    x-transition:enter="transition ease-out duration-300"
-                                                    x-transition:enter-start="opacity-0 transform scale-y-0"
-                                                    x-transition:enter-end="opacity-100 transform scale-y-100"
-                                                    x-transition:leave="transition ease-in duration-300"
-                                                    x-transition:leave-end="opacity-0 transform scale-y-0"
-                                                >
-                                                    <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                        Explore prizes
-                                                    </a>
+                                                    <!-- Panel -->
+                                                    <div
+                                                        x-show="open"
+                                                        @click.away="open = false"
+                                                        :id="$id('dropdown-button')"
+                                                        style="display: none;"
+                                                        class="absolute origin-top bg-white shadow-md navigation__desktop-menu-dropdown"
+                                                        x-transition:enter="transition ease-out duration-300"
+                                                        x-transition:enter-start="opacity-0 transform scale-y-0"
+                                                        x-transition:enter-end="opacity-100 transform scale-y-100"
+                                                        x-transition:leave="transition ease-in duration-300"
+                                                        x-transition:leave-end="opacity-0 transform scale-y-0"
+                                                    >
+                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                            Explore prizes
+                                                        </a>
 
-                                                    <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                        2023 Lineup
-                                                    </a>
+                                                        <a href="#" class="navigation__active flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                            2023 Lineup
+                                                        </a>
 
-                                                    <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                        <span class="text-red-600">Delete Task 0</span>
-                                                    </a>
-                                                    <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                        New Task 0
-                                                    </a>
+                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                            <span class="text-red-600">Delete Task 0</span>
+                                                        </a>
+                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                            New Task 0
+                                                        </a>
 
-                                                    <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                        Edit Task 0
-                                                    </a>
+                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                            Edit Task 0
+                                                        </a>
 
-                                                    <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                        <span class="text-red-600">Delete Task 0</span>
-                                                    </a>
-                                                    <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                        New Task 0
-                                                    </a>
+                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                            <span class="text-red-600">Delete Task 0</span>
+                                                        </a>
+                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                            New Task 0
+                                                        </a>
 
-                                                    <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                        Edit Task 0
-                                                    </a>
+                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                            Edit Task 0
+                                                        </a>
 
-                                                    <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                        <span class="text-red-600">Delete Task 0</span>
-                                                    </a>
-                                                </div>                            
-                                            </li>
+                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                            <span class="text-red-600">Delete Task 0</span>
+                                                        </a>
+                                                    </div>                            
+                                                </li>
 
-                                            <li  x-data="{ open: false }" class="relative">
-                                                <!-- Button -->
-                                                <button
-                                                    @click="open = !open"
-                                                    :aria-expanded="open ? 'true' : 'false'"
-                                                    :aria-controls="$id('dropdown-button')"
-                                                    type="button"
-                                                    class="navigation__primary-btn"
-                                                    :class="open && ' open'"
-                                                >
-                                                    VIP Club
+                                                <li  x-data="{ open: false }" class="relative">
+                                                    <!-- Button -->
+                                                    <button
+                                                        @click="open = !open"
+                                                        :aria-expanded="open ? 'true' : 'false'"
+                                                        :aria-controls="$id('dropdown-button')"
+                                                        type="button"
+                                                        class="navigation__primary-btn"
+                                                        :class="open && ' open'"
+                                                    >
+                                                        VIP Club
 
-                                                    <!-- Heroicon: chevron-down -->
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-                                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                                    </svg>
-                                                </button>
+                                                        <!-- Heroicon: chevron-down -->
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                                        </svg>
+                                                    </button>
 
-                                                <!-- Panel -->
-                                                <div
-                                                    x-show="open"
-                                                    @click.away="open = false"
-                                                    :id="$id('dropdown-button')"
-                                                    style="display: none;"
-                                                    class="absolute origin-top bg-white shadow-md navigation__desktop-menu-dropdown"
-                                                    x-transition:enter="transition ease-out duration-300"
-                                                    x-transition:enter-start="opacity-0 transform scale-y-0"
-                                                    x-transition:enter-end="opacity-100 transform scale-y-100"
-                                                    x-transition:leave="transition ease-in duration-300"
-                                                    x-transition:leave-end="opacity-0 transform scale-y-0"
-                                                >
-                                                    <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                        New Task 1
-                                                    </a>
+                                                    <!-- Panel -->
+                                                    <div
+                                                        x-show="open"
+                                                        @click.away="open = false"
+                                                        :id="$id('dropdown-button')"
+                                                        style="display: none;"
+                                                        class="absolute origin-top bg-white shadow-md navigation__desktop-menu-dropdown"
+                                                        x-transition:enter="transition ease-out duration-300"
+                                                        x-transition:enter-start="opacity-0 transform scale-y-0"
+                                                        x-transition:enter-end="opacity-100 transform scale-y-100"
+                                                        x-transition:leave="transition ease-in duration-300"
+                                                        x-transition:leave-end="opacity-0 transform scale-y-0"
+                                                    >
+                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                            New Task 1
+                                                        </a>
 
-                                                    <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                        Edit Task 1
-                                                    </a>
+                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                            Edit Task 1
+                                                        </a>
 
-                                                    <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                        <span class="text-red-600">Delete Task 1</span>
-                                                    </a>
-                                                </div>
-                                            </li>
+                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                            <span class="text-red-600">Delete Task 1</span>
+                                                        </a>
+                                                    </div>
+                                                </li>
 
-                                            <li  x-data="{ open: false }" class="relative">
-                                                <!-- Button -->
-                                                <button
-                                                    @click="open = !open"
-                                                    :aria-expanded="open ? 'true' : 'false'"
-                                                    :aria-controls="$id('dropdown-button')"
-                                                    type="button"
-                                                    class="navigation__primary-btn"
-                                                    :class="open && ' open'"
-                                                >
-                                                    Winners
+                                                <li  x-data="{ open: false }" class="relative">
+                                                    <!-- Button -->
+                                                    <button
+                                                        @click="open = !open"
+                                                        :aria-expanded="open ? 'true' : 'false'"
+                                                        :aria-controls="$id('dropdown-button')"
+                                                        type="button"
+                                                        class="navigation__primary-btn"
+                                                        :class="open && ' open'"
+                                                    >
+                                                        Winners
 
-                                                    <!-- Heroicon: chevron-down -->
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-                                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                                    </svg>
-                                                </button>
+                                                        <!-- Heroicon: chevron-down -->
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                                        </svg>
+                                                    </button>
 
-                                                <!-- Panel -->
-                                                <div
-                                                    x-show="open"
-                                                    @click.away="open = false"
-                                                    :id="$id('dropdown-button')"
-                                                    style="display: none;"
-                                                    class="absolute origin-top bg-white shadow-md navigation__desktop-menu-dropdown"
-                                                    x-transition:enter="transition ease-out duration-300"
-                                                    x-transition:enter-start="opacity-0 transform scale-y-0"
-                                                    x-transition:enter-end="opacity-100 transform scale-y-100"
-                                                    x-transition:leave="transition ease-in duration-300"
-                                                    x-transition:leave-end="opacity-0 transform scale-y-0"
-                                                >
-                                                    <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                        New Task 1
-                                                    </a>
+                                                    <!-- Panel -->
+                                                    <div
+                                                        x-show="open"
+                                                        @click.away="open = false"
+                                                        :id="$id('dropdown-button')"
+                                                        style="display: none;"
+                                                        class="absolute origin-top bg-white shadow-md navigation__desktop-menu-dropdown"
+                                                        x-transition:enter="transition ease-out duration-300"
+                                                        x-transition:enter-start="opacity-0 transform scale-y-0"
+                                                        x-transition:enter-end="opacity-100 transform scale-y-100"
+                                                        x-transition:leave="transition ease-in duration-300"
+                                                        x-transition:leave-end="opacity-0 transform scale-y-0"
+                                                    >
+                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                            New Task 1
+                                                        </a>
 
-                                                    <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                        Edit Task 1
-                                                    </a>
+                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                            Edit Task 1
+                                                        </a>
 
-                                                    <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                        <span class="text-red-600">Delete Task 1</span>
-                                                    </a>
-                                                </div>
-                                            </li>
+                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                            <span class="text-red-600">Delete Task 1</span>
+                                                        </a>
+                                                    </div>
+                                                </li>
 
-                                            <li  x-data="{ open: false }" class="relative">
-                                                <!-- Button -->
-                                                <button
-                                                    @click="open = !open"
-                                                    :aria-expanded="open ? 'true' : 'false'"
-                                                    :aria-controls="$id('dropdown-button')"
-                                                    type="button"
-                                                    class="navigation__primary-btn"
-                                                    :class="open && ' open'"
-                                                >
-                                                    About us
+                                                <li  x-data="{ open: false }" class="relative">
+                                                    <!-- Button -->
+                                                    <button
+                                                        @click="open = !open"
+                                                        :aria-expanded="open ? 'true' : 'false'"
+                                                        :aria-controls="$id('dropdown-button')"
+                                                        type="button"
+                                                        class="navigation__primary-btn"
+                                                        :class="open && ' open'"
+                                                    >
+                                                        About us
 
-                                                    <!-- Heroicon: chevron-down -->
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-                                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                                    </svg>
-                                                </button>
+                                                        <!-- Heroicon: chevron-down -->
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                                        </svg>
+                                                    </button>
 
-                                                <!-- Panel -->
-                                                <div
-                                                    x-show="open"
-                                                    @click.away="open = false"
-                                                    :id="$id('dropdown-button')"
-                                                    style="display: none;"
-                                                    class="absolute origin-top bg-white shadow-md navigation__desktop-menu-dropdown"
-                                                    x-transition:enter="transition ease-out duration-300"
-                                                    x-transition:enter-start="opacity-0 transform scale-y-0"
-                                                    x-transition:enter-end="opacity-100 transform scale-y-100"
-                                                    x-transition:leave="transition ease-in duration-300"
-                                                    x-transition:leave-end="opacity-0 transform scale-y-0"
-                                                >
-                                                    <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                        New Task 1
-                                                    </a>
+                                                    <!-- Panel -->
+                                                    <div
+                                                        x-show="open"
+                                                        @click.away="open = false"
+                                                        :id="$id('dropdown-button')"
+                                                        style="display: none;"
+                                                        class="absolute origin-top bg-white shadow-md navigation__desktop-menu-dropdown"
+                                                        x-transition:enter="transition ease-out duration-300"
+                                                        x-transition:enter-start="opacity-0 transform scale-y-0"
+                                                        x-transition:enter-end="opacity-100 transform scale-y-100"
+                                                        x-transition:leave="transition ease-in duration-300"
+                                                        x-transition:leave-end="opacity-0 transform scale-y-0"
+                                                    >
+                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                            New Task 1
+                                                        </a>
 
-                                                    <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                        Edit Task 1
-                                                    </a>
+                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                            Edit Task 1
+                                                        </a>
 
-                                                    <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                        <span class="text-red-600">Delete Task 1</span>
-                                                    </a>
-                                                </div>
-                                            </li>
-                                        </ul>
+                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                            <span class="text-red-600">Delete Task 1</span>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                            </ul>
 
+                                                
+                                            <ul class="navigation__login-cart-wrapper">
+                                                <li  x-data="{ open: false }" class="navigation__login relative">
+                                                    <!-- Button -->
+                                                    <button
+                                                        @click="$dispatch('open-menu', { open: false }), open = !open"
+                                                        :aria-expanded="open ? 'true' : 'false'"
+                                                        :aria-controls="$id('dropdown-button')"
+                                                        type="button"
+                                                        class="navigation__primary-btn"
+                                                        :class="open && ' open'"
+                                                    >
+                                                        <div>
+                                                            <img src="./assets/images/navigation-login-avatar-circle.svg" alt="RSL Union Login Avatar" />
+                                                            Login
+                                                        </div>
+                                                    </button>
+
+                                                    <!-- Panel -->
+                                                    <div
+                                                        x-show="open"
+                                                        @click.away="open = false"
+                                                        :id="$id('dropdown-button')"
+                                                        style="display: none;"
+                                                        class="absolute origin-top-right bg-white shadow-md navigation__desktop-menu-dropdown"
+                                                        x-transition:enter="transition ease-out duration-300"
+                                                        x-transition:enter-start="opacity-0 transform scale-y-0"
+                                                        x-transition:enter-end="opacity-100 transform scale-y-100"
+                                                        x-transition:leave="transition ease-in duration-300"
+                                                        x-transition:leave-end="opacity-0 transform scale-y-0"
+                                                    >
+                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                            New Task 1
+                                                        </a>
+
+                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                            Edit Task 1
+                                                        </a>
+
+                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                            <span class="text-red-600">Delete Task 1</span>
+                                                        </a>
+                                                    </div>
+                                                </li>
+
+                                                <li  x-data="{ open: false }" class="navigation__login status--logged-in relative">
+                                                    <!-- Button -->
+                                                    <button
+                                                        @click="$dispatch('open-menu', { open: false }), open = !open"
+                                                        :aria-expanded="open ? 'true' : 'false'"
+                                                        :aria-controls="$id('dropdown-button')"
+                                                        type="button"
+                                                        class="navigation__primary-btn"
+                                                        :class="open && ' open'"
+                                                    >
+                                                        <div>
+                                                            <img src="./assets/images/navigation-login-avatar-circle.svg" alt="RSL Union Login Avatar" />
+                                                            Frank Drebbin
+                                                        </div>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                                        </svg>
+                                                    </button>
+
+                                                    <!-- Panel -->
+                                                    <div
+                                                        x-show="open"
+                                                        @click.away="open = false"
+                                                        :id="$id('dropdown-button')"
+                                                        style="display: none;"
+                                                        class="absolute origin-top-right bg-white shadow-md navigation__desktop-menu-dropdown"
+                                                        x-transition:enter="transition ease-out duration-300"
+                                                        x-transition:enter-start="opacity-0 transform scale-y-0"
+                                                        x-transition:enter-end="opacity-100 transform scale-y-100"
+                                                        x-transition:leave="transition ease-in duration-300"
+                                                        x-transition:leave-end="opacity-0 transform scale-y-0"
+                                                    >
+                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                            New Task 1
+                                                        </a>
+
+                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                            Edit Task 1
+                                                        </a>
+
+                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                            <span class="text-red-600">Delete Task 1</span>
+                                                        </a>
+                                                    </div>
+                                                </li>
                                             
-                                        <ul class="navigation__login-cart-wrapper">
-                                            <li  x-data="{ open: false }" class="navigation__login relative">
-                                                <!-- Button -->
-                                                <button
-                                                    @click="$dispatch('open-menu', { open: false }), open = !open"
-                                                    :aria-expanded="open ? 'true' : 'false'"
-                                                    :aria-controls="$id('dropdown-button')"
-                                                    type="button"
-                                                    class="navigation__primary-btn"
-                                                    :class="open && ' open'"
-                                                >
-                                                    <img src="./assets/images/navigation-login-avatar-circle.svg" alt="RSL Union Login Avatar" />
-                                                    Login
-                                                </button>
+                                                <li  x-data="{ open: false }" class="navigation__cart relative">
+                                                    <!-- Button -->
+                                                    <button
+                                                        @click="$dispatch('open-menu', { open: true }), open = !open"
+                                                        :aria-expanded="open ? 'true' : 'false'"
+                                                        :aria-controls="$id('dropdown-button')"
+                                                        type="button"
+                                                        class="navigation__primary-btn"
+                                                        :class="open && ' open'"
+                                                    >
+                                                        <img src="./assets/images/navigation-shopping-cart.svg" alt="RSL Union Login Avatar" />
+                                                    </button>
 
-                                                <!-- Panel -->
-                                                <div
-                                                    x-show="open"
-                                                    @click.away="open = false"
-                                                    :id="$id('dropdown-button')"
-                                                    style="display: none;"
-                                                    class="absolute origin-top-right bg-white shadow-md navigation__desktop-menu-dropdown"
-                                                    x-transition:enter="transition ease-out duration-300"
-                                                    x-transition:enter-start="opacity-0 transform scale-y-0"
-                                                    x-transition:enter-end="opacity-100 transform scale-y-100"
-                                                    x-transition:leave="transition ease-in duration-300"
-                                                    x-transition:leave-end="opacity-0 transform scale-y-0"
-                                                >
-                                                    <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                        New Task 1
-                                                    </a>
+                                                    <!-- Panel -->
+                                                    <div
+                                                        x-show="open"
+                                                        @click.away="open = false"
+                                                        :id="$id('dropdown-button')"
+                                                        style="display: none;"
+                                                        class="absolute origin-top-right bg-white shadow-md navigation__desktop-menu-dropdown"
+                                                        x-transition:enter="transition ease-out duration-300"
+                                                        x-transition:enter-start="opacity-0 transform scale-y-0"
+                                                        x-transition:enter-end="opacity-100 transform scale-y-100"
+                                                        x-transition:leave="transition ease-in duration-300"
+                                                        x-transition:leave-end="opacity-0 transform scale-y-0"
+                                                    >
+                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                            New Task 1
+                                                        </a>
 
-                                                    <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                        Edit Task 1
-                                                    </a>
+                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                            Edit Task 1
+                                                        </a>
 
-                                                    <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                        <span class="text-red-600">Delete Task 1</span>
-                                                    </a>
-                                                </div>
-                                            </li>
-                                        
-                                            <li  x-data="{ open: false }" class="navigation__cart relative">
-                                                <!-- Button -->
-                                                <button
-                                                    @click="$dispatch('open-menu', { open: true }), open = !open"
-                                                    :aria-expanded="open ? 'true' : 'false'"
-                                                    :aria-controls="$id('dropdown-button')"
-                                                    type="button"
-                                                    class="navigation__primary-btn"
-                                                    :class="open && ' open'"
-                                                >
-                                                    <img src="./assets/images/navigation-shopping-cart.svg" alt="RSL Union Login Avatar" />
-                                                </button>
-
-                                                <!-- Panel -->
-                                                <div
-                                                    x-show="open"
-                                                    @click.away="open = false"
-                                                    :id="$id('dropdown-button')"
-                                                    style="display: none;"
-                                                    class="absolute origin-top-right bg-white shadow-md navigation__desktop-menu-dropdown"
-                                                    x-transition:enter="transition ease-out duration-300"
-                                                    x-transition:enter-start="opacity-0 transform scale-y-0"
-                                                    x-transition:enter-end="opacity-100 transform scale-y-100"
-                                                    x-transition:leave="transition ease-in duration-300"
-                                                    x-transition:leave-end="opacity-0 transform scale-y-0"
-                                                >
-                                                    <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                        New Task 1
-                                                    </a>
-
-                                                    <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                        Edit Task 1
-                                                    </a>
-
-                                                    <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                        <span class="text-red-600">Delete Task 1</span>
-                                                    </a>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    <!--</div>
-                                </div>-->
-                                <button
-                                x-data="{usedKeyboard: false}"
-                                @keydown.window.tab="usedKeyboard = true"
-                                @click="$dispatch('open-menu', { open: true })"
-                                :class="{'focus:outline-none': !usedKeyboard}"
-                                class="navigation__hamburger"
-                                >
-                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu stroke-current"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-                                </button>
+                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                            <span class="text-red-600">Delete Task 1</span>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        <!--</div>
+                                    </div>-->
+                                    <button
+                                    x-data="{usedKeyboard: false}"
+                                    @keydown.window.tab="usedKeyboard = true"
+                                    @click="$dispatch('open-menu', { open: true })"
+                                    :class="{'focus:outline-none': !usedKeyboard}"
+                                    class="navigation__hamburger"
+                                    >
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu stroke-current"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                                    </button>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="navigation__logo">
-                            <img src="./assets/images/rsl-art-union-logo.svg" alt="RSL Art Uninion Winners">
-                        </div>                        
+                            <div class="navigation__logo">
+                                <img src="./assets/images/rsl-art-union-logo.svg" alt="RSL Art Uninion Winners">
+                            </div>                        
+                        </div>
                     </div>
-                </div>
-            </header>
+                </header>
+            </div>
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 p-16">
