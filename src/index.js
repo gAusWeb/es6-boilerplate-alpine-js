@@ -792,7 +792,7 @@ function component() {
                                             <li  x-data="{ open: false }" class="navigation__login relative">
                                                 <!-- Button -->
                                                 <button
-                                                    @click="open = !open"
+                                                    @click="$dispatch('open-menu', { open: false }), open = !open"
                                                     :aria-expanded="open ? 'true' : 'false'"
                                                     :aria-controls="$id('dropdown-button')"
                                                     type="button"
@@ -833,7 +833,7 @@ function component() {
                                             <li  x-data="{ open: false }" class="navigation__cart relative">
                                                 <!-- Button -->
                                                 <button
-                                                    @click="open = !open"
+                                                    @click="$dispatch('open-menu', { open: true }), open = !open"
                                                     :aria-expanded="open ? 'true' : 'false'"
                                                     :aria-controls="$id('dropdown-button')"
                                                     type="button"
