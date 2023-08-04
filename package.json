@@ -1,0 +1,28 @@
+{
+    "name": "webpack-es6-scss-boilerplate",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "private": true,
+    "devDependencies": {
+        "copy-webpack-plugin": "^11.0.0",
+        "css-loader": "^6.8.1",
+        "html-webpack-plugin": "^5.5.3",
+        "sass": "^1.63.6",
+        "sass-loader": "^13.3.2",
+        "style-loader": "^3.3.3",
+        "webpack": "^5.88.1",
+        "webpack-cli": "^5.1.4"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "webpack --config webpack.config.js",
+        "watch": "webpack --watch"
+    },
+    "dependencies": {
+        "@alpinejs/collapse": "^3.12.3",
+        "alpinejs": "^3.12.3",
+        "jquery": "^3.7.0",
+        "lodash": "^4.17.21"
+    }
+}
