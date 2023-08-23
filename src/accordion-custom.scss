@@ -1,0 +1,431 @@
+$col_base: #606060;
+$col_black: #000;
+$col_grey_30: #edebe9;
+$col_faded_grey: #a19f9d;
+$col_prim_hover: #bc2130;
+$col_prim_navy: #002b60;
+$col_prim_red: #ca2535;
+$col_prim_yellow: #fdb924;
+$col_prim_blue: #006fba;
+$col_prim_teal: #009dca;
+$col_prim_green: #6b7b4a;
+$col_prim_purple: #4b3166;
+$col_prim_orange: #ff7e2f;
+$col_accent_teal: #009fb8;
+$col_accent_purple: #4b3166;
+$col_accent_orange: #ff7e2f;
+$col_accent_green: #0b703d;
+$col_accent_grey: #696969;
+$col_yellow: #faaf30;
+$col_yellow_vis_vis: #ffeea4;
+$col_yellow_milk_punch: #fff7d2;
+$col_yellow_my_sin: #ffb31c;
+$col_winwin_blue: #114168;
+$col_secondary_grey: #605e5c;
+$col_light_grey: #d2d0ce;
+$col_paragraph: #3b3a39;
+$col_modal_grey: #414042;
+$col_white: #fff;
+$col_grey: #eee;
+$col_dark_grey: #959595;
+$col_darker_grey: #9ea9b6;
+$col_grey_90: #605e5c;
+$col_grey_background: #f4f4f4;
+$col_grey_border: #d3d3d3;
+$col_footer_text: #fff;
+$col_footer_hover: #99aabf;
+$col_light_yellow: #fff2df;
+$col_prim_red_hover: #e52535;
+$light_lilac_background: #ddd4e3;
+$col_teal_overlay: rgba(25, 178, 202, 0.8);
+$col_red_overlay: rgba(202, 37, 53, 0.8);
+$col_grey_text: rgba(0, 0, 0, 0.85);
+$col_lite_grey_text: rgba(0, 0, 0, 0.6);
+$col_blue: #034e71;
+$col_grey_granite: #575757;
+$col_RSL_primary: #0c2748;
+$col_base_purple: #552873;
+$col_spanish_green: #179447;
+$col_gold: #d5a664;
+$col_lite_red: #ffebed;
+$col_alice_blue: #edf5ff;
+$col_orange: #f4881f;
+$col_lighter_rajah: #f5c173;
+$col_silver: #c4c4c4;
+$col_cloud: #c8c6c4;
+$col_whiskey_yellow: #d5a563;
+$col_dixie_yellow: #e99516;
+$col_affair_purple: #77538f;
+$col_willow_brook_green: #dbe8d9;
+$palm_leaf_green: #13390d;
+$col_Botticelli: #dae4ef;
+$col_dell_green: #256a19;
+$col_black_squeeze: #eaeff7;
+$col_pampas_grey: #faf9f8;
+$col_anakiwa_blue: #85ceff;
+$col_dodger_blue: #0c9dff;
+$fuchsia_blue: #8a3dbd;
+$catskill_white: #f2f7f9;
+$rajah_yellow: #ffd51c;
+$col_botticelli_secondary_blue: #c6d8e2;
+$col_botticelli_blue: #d0d7e5;
+$col_mercury: #e3e3e3;
+$col_my_sin: #ffb31c;
+$col_milk_punch: #fff7d2;
+
+// Form variables
+$border-col: #ddd;
+$bg-col: #fafafa;
+$label-col: #666;
+$placeholder-col: #767676; //lightest possible grey that passes accessibility
+$input-bg-col: #fff;
+$input-text-col: $col_prim_navy;
+$text-col: #212121;
+$col-anchor: #2162ae;
+$col-border-grey: #e1dfdd;
+$password_strength_green: #2b811d;
+$password_strength_red: #d50000;
+$password_strength_line_green: #64dd17;
+$password_strength_line_yellow: #ffc400;
+$password_strength_line_grey: #e0e0e0;
+$password_strength_line_red: #ff1744;
+$blue_rajah: #005b8d;
+$rock_blue: #9caac5;
+$rock_blue_variation: #95b9cd;
+$col_chestnut_rose: #cf5449;
+$col_vanilla_ice: #f3d4d2;
+$lynch_blue: #64708e;
+$col_deep_sea: #008666;
+$col_well_read: #ba2f3d;
+$col_red_ribbon: #f4273b;
+$yellow_rajah: #f0f3f8;
+$col_lochmara: #0081c8;
+$pacific_blue: #0098c8;
+$white-pointer: #fcf2ff;
+$col_light_wisteria: #c38bd7;
+$col_french_lilac: #e0beeb;
+$col_astral: #327ba3;
+$hippie_blue: #639ab8;
+$col_amethyst: #a757c2;
+$milk_punch: #fff7d2;
+$my_sin: #ffb31c;
+$aero_blue: #d2ffe4;
+
+// 2023 RSL Lottery
+$purple_seance: #8a23ae;
+$trans_white: #fff9;
+
+// Box shadows
+$red_box_shadow: 0 4px 8px rgba(202, 37, 53, 0.25);
+$dark_blue_box_shadow: 0 4px 8px rgba(0, 91, 141, 0.25);
+$purple_dark_box-shadow: 0 4px 8px rgba(138, 35, 174, 0.25);
+$yellow_box_shadow: 0 4px 8px rgba(255, 213, 28, 0.25);
+$green_box_shadow: 0 4px 8px rgba(0, 134, 102, 0.25);
+$mono_dark_box_shadow: 0 4px 8px rgba(65, 64, 66, 0.25);
+
+// Linear gradients
+$red_gradient: linear-gradient(45deg, $col_well_read 0%, $col_red_ribbon 100%);
+$blue_dark_gradient: linear-gradient(
+    49deg,
+    #005b8d 20.83%,
+    #0081c8 79.69%,
+    #0098c8 100%
+);
+$purple_dark_gradient: linear-gradient(
+    47deg,
+    #552873 19.79%,
+    $fuchsia_blue 100%
+);
+$yellow_gradient: linear-gradient(47deg, #ffd51c 19.79%, #ffb31c 100%);
+$green_gradient: linear-gradient(47deg, #008666 19.79%, #0ea781 100%);
+// My membership
+$card_border: #d0d7e5;
+
+body {
+    background-color: red;
+}
+
+.accordion-custom {
+    margin-bottom: 1rem;
+
+    &__item {
+        border: 1px solid $rock_blue_variation;
+        background-color: $col_white;
+        border-radius: 0;
+        overflow: hidden;
+        box-shadow: 0 4px 8px 0 rgba(50, 123, 163, 0.25);
+        border-top: none;
+
+        &:first-child {
+            border-radius: 8px 8px 0 0;
+            border-top: 1px solid $rock_blue_variation;
+        }
+
+        &:last-child {
+            border-radius: 0 0 8px 8px;
+        }
+
+        &:only-child {
+            border-radius: 8px !important;
+            border-top: 1px solid $rock_blue_variation;
+        }
+
+        &.accordion-item-active {
+            .accordion-custom {
+                &__head {
+                    border-bottom: none;
+
+                    &::after {
+                        width: calc(100% - 2rem);
+                        transition-duration: 0.25s;
+                        transition-delay: 0.5s;
+                    }
+                }
+            }
+        }
+    }
+
+    &__head {
+        padding: 1rem;
+    }
+
+    &__inner {
+        padding: 10px 15px;
+    }
+
+    &__head {
+        position: relative;
+        border-collapse: collapse;
+        box-sizing: border-box;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+
+        &::before {
+            transition: width 0.3s ease-in-out 0s;
+            width: 0;
+            content: " ";
+            display: inline-block;
+            left: 1rem;
+            height: 1px;
+            border-top: 1px solid $rock_blue_variation;
+            position: absolute;
+            bottom: 0;
+        }
+
+        &::after {
+            content: " ";
+            display: inline-block;
+            left: 1rem;
+            height: 1px;
+            // background-color: $rock_blue_variation;
+            border-top: 1px solid $rock_blue_variation;
+            position: absolute;
+            bottom: 0;
+            width: 0;
+        }
+
+        &.accordion-head-active {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            border-bottom: none;
+
+            &::before {
+                width: calc(100% - 32px);
+                transition-delay: 0.3s;
+            }
+
+            .accordion-custom {
+                &__icon {
+                    img {
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+        }
+    }
+
+    &__body {
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+
+    &__title-wrapper {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__title {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        font-size: 1rem;
+        line-height: 150%;
+
+        strong {
+            font-family: "Gotham bold";
+        }
+    }
+
+    &__title-icon {
+        margin-right: 0.5rem;
+
+        img {
+            width: 24px;
+            height: 24px;
+        }
+    }
+
+    &__icon {
+        margin-left: 1rem;
+
+        img {
+            max-width: 24px;
+            max-height: 24px;
+        }
+    }
+
+    &__body {
+        max-height: 0;
+        overflow: hidden;
+        transition: overflow 0s linear 0.1s,
+            max-height 0.5s cubic-bezier(0.65, -0.45, 0.32, 1.33);
+
+        ul,
+        ol {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            padding-left: 1rem;
+        }
+
+        ol {
+            padding-left: 1.3rem;
+        }
+
+        li {
+            margin-bottom: 1rem;
+        }
+
+        p,
+        li {
+            font-size: 1rem;
+            font-family: "Gotham book";
+            line-height: 150%;
+        }
+
+        a {
+            color: $col_lochmara;
+        }
+    }
+
+    &__inner {
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+
+        .video-wrapper {
+            border-radius: 8px;
+            overflow: hidden;
+
+            iframe,
+            video {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        > * {
+            &:last-child {
+                margin-top: 0;
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .accordion-custom__icon img {
+        transition: transform 0.25s cubic-bezier(0.65, -0.45, 0.32, 1.33);
+        transition-delay: 0.25s;
+    }
+
+    &.theme {
+        &--blue {
+            .accordion-custom {
+                &__item {
+                    background-color: $yellow_rajah;
+                }
+
+                &__head {
+                    &.accordion-head-active::before {
+                        border-top: 1px solid $rock_blue_variation;
+                    }
+                }
+
+                &__inner > .accordion-custom {
+                    .accordion-custom {
+                        &__item {
+                            background-color: $col_white;
+                            border: 1px solid $rock_blue_variation;
+                        }
+                    }
+                }
+
+                > .accordion-custom .accordion-custom__item:first-child {
+                    border-radius: 8px 8px 0 0;
+                }
+            }
+        }
+
+        &--purple {
+            .accordion-custom {
+                &__item {
+                    background-color: $white-pointer;
+                    border: 1px solid $col_french_lilac;
+                    box-shadow: 0 4px 8px 0 rgba(167, 87, 194, 0.25);
+                }
+
+                &__head {
+                    &::after {
+                        border-top: 1px solid $col_french_lilac;
+                    }
+
+                    &.accordion-head-active::before {
+                        border-top: 1px solid $col_french_lilac;
+                    }
+                }
+
+                &__inner > .accordion-custom {
+                    .accordion-custom {
+                        &__item {
+                            background-color: $col_white;
+                            border: 1px solid col_french_lilac;
+                            box-shadow: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.box-shadow-removed {
+        .accordion-custom__item {
+            box-shadow: none;
+        }
+    }
+}
+
+.accordion-active {
+    transition: overflow 0s linear 0.1s,
+        max-height 0.5s cubic-bezier(0.65, -0.45, 0.32, 1.33);
+}

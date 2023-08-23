@@ -1,0 +1,258 @@
+//LWP project styles for grid column layout
+
+/****** Maximum container width is 80rem (1280px) with padding of 2rem for desktop
+        and 1rem for mobile on both left and right sides ********/
+
+/******* We are using 12 column layout which are always be on any screen size except the width of
+        columns change based on screen size
+        With gutter width of 2rem for desktop and 1rem for mobile *****/
+
+.container {
+    max-width: 80rem;
+    padding: 0 1rem;
+    margin: 0 auto;
+
+    @include breakpoint(sm2) {
+        padding: 0 2rem;
+    }
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+    &.nested-row {
+        // @include breakpoint(xs) {
+        //   margin-right: -0.5rem;
+        //   margin-left: -0.5rem;
+        // }
+
+        @include breakpoint(sm2) {
+            margin-right: -1rem;
+            margin-left: -1rem;
+        }
+    }
+}
+
+.row {
+    &.reverse {
+        flex-direction: row-reverse;
+    }
+
+    &.reverse-md {
+        @include breakpoint(md) {
+            flex-direction: row-reverse;
+        }
+    }
+}
+
+.col.reverse {
+    flex-direction: column-reverse;
+}
+
+$breakpoints: xs 320px 100%, sm 375px 100%, sm2 480px 100%, md 768px 100%,
+    md2 1024px 100%, lg 1140px 100%, lg2 1280px 100%, xl 1600px 100%;
+
+$display-values: none, inline, inline-block, block, grid, inline-grid, table,
+    table-cell, table-row, flex, inline-flex;
+
+@mixin col-gutter {
+    box-sizing: border-box;
+    flex-grow: 0;
+    flex-shrink: 0;
+    padding-right: 0;
+    padding-left: 0;
+
+    @include breakpoint(sm2) {
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+}
+
+@each $breakpoint in $breakpoints {
+    $name: nth($breakpoint, 1);
+    $size: nth($breakpoint, 2);
+    $container: nth($breakpoint, 3);
+
+    @media only screen and (min-width: $size) {
+        .container {
+            width: $container;
+        }
+
+        .col-#{$name} {
+            @include col-gutter;
+
+            flex-grow: 1;
+            flex-basis: 0;
+            max-width: 100%;
+        }
+
+        @for $i from 1 through 12 {
+            .col-#{$name}-#{$i} {
+                @include col-gutter;
+
+                flex-basis: 100%/12 * $i;
+                max-width: 100%/12 * $i;
+                margin-bottom: 1rem;
+
+                @include breakpoint(md2) {
+                    margin-bottom: 2rem;
+                }
+
+                &.no-gutter {
+                    padding-right: 0;
+                }
+
+                &.m0-bottom {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        @for $i from 0 through 12 {
+            .col-#{$name}-offset-#{$i} {
+                @include col-gutter;
+
+                @if $i==0 {
+                    margin-left: 0;
+                } @else {
+                    margin-left: 100%/12 * $i;
+                }
+            }
+        }
+
+        .start-#{$name} {
+            justify-content: flex-start;
+            text-align: left;
+        }
+
+        .center-#{$name} {
+            justify-content: center;
+            text-align: center;
+        }
+
+        .end-#{$name} {
+            justify-content: flex-end;
+            text-align: right;
+        }
+
+        .top-#{$name} {
+            align-items: flex-start;
+        }
+
+        .middle-#{$name} {
+            align-items: center;
+        }
+
+        .bottom-#{$name} {
+            align-items: flex-end;
+        }
+
+        .around-#{$name} {
+            justify-content: space-around;
+        }
+
+        .between-#{$name} {
+            justify-content: space-between;
+        }
+
+        .first-#{$name} {
+            order: -1;
+        }
+
+        .last-#{$name} {
+            order: 1;
+        }
+
+        @each $display-value in $display-values {
+            .d-#{$name}-#{$display-value} {
+                display: $display-value;
+            }
+        }
+    }
+}
+
+// For 1 to 12 column layout styles default styles if there is no size has mentioned in the class name
+@for $i from 1 through 12 {
+    $value: $i * 1%;
+
+    .col-#{$i} {
+        max-width: (100/12) * $value;
+        flex: 0 0 (100/12) * $value;
+        padding-right: 1rem;
+
+        &.no-gutter {
+            padding-right: 0;
+        }
+
+        // For columns inside another column
+        @for $childColumn from 1 through $i {
+            $childColumnValue: $childColumn * 1%;
+
+            .col-#{$childColumn} {
+                max-width: (100 / $i) * $childColumnValue;
+                flex: 0 0 (100 / $i) * $childColumnValue;
+                padding-right: 1rem;
+
+                @include breakpoint(sm2) {
+                    padding-right: 2rem;
+                }
+            }
+        }
+
+        @include breakpoint(sm2) {
+            padding-right: 2rem;
+        }
+    }
+}
+
+.justify-center {
+    justify-content: center;
+
+    &-md2 {
+        @include breakpoint(md2) {
+            justify-content: center;
+        }
+    }
+}
+
+.justify-start {
+    justify-content: start;
+}
+
+.justify-end {
+    justify-content: flex-end;
+}
+
+.justify-around {
+    justify-content: space-around;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.center {
+    text-align: center;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+.align-start {
+    align-items: flex-start;
+}
+
+.align-end {
+    align-items: flex-end;
+}
+
+.align-center {
+    align-items: center;
+}

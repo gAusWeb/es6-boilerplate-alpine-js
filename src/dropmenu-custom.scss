@@ -1,0 +1,62 @@
+.dropmenu-custom {
+    position: relative;
+
+    &__head {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        font-size: 16px;
+        font-weight: 325;
+        line-height: 16px;
+        padding: 6px 0 0;
+
+        *:hover {
+            cursor: pointer;
+        }
+
+        > svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        &.active {
+            background-color: #ebebeb;
+        }
+    }
+
+    &__body {
+        position: absolute;
+        // transition-timing-function: cubic-bezier(0.17, 0.67, 0.27, 1);
+        // transition-duration: 30000ms;
+        // transition-property:
+        //     color,
+        //     background-color,
+        //     border-color,
+        //     text-decoration-color,
+        //     fill,
+        //     stroke,
+        //     opacity,
+        //     box-shadow,
+        //     height,
+        //     transform,
+        //     filter,
+        //     backdrop-filter,
+        //     -webkit-text-decoration-color,
+        //     -webkit-backdrop-filter
+        // ;
+        // left: -50%;
+        
+        // transform: scaleY(0);
+        // overflow: hidden;
+        // transition: transform 0.3s ease-in-out;
+        // z-index: 10001;
+        // transform-origin: top;
+        // background-color: #ebebeb;
+
+        // &.active {
+        //     transform: scaleY(1);
+            
+        // }
+    }
+}

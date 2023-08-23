@@ -1,5 +1,4 @@
 window.alertTest = function () {
-    console.log("hello??");
     return {
         open: false,
         usedKeyboard: false,

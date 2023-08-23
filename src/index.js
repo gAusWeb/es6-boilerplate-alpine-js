@@ -1,26 +1,46 @@
 import _ from "lodash";
 // import "https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css";
-import "./tailwind.js";
-import "./style.css";
+// import "./tailwind.js";
+// import "./style.css";
 import Icon from "./assets/images/icon-tick.png";
 import printMe from "./print";
-import "./style.scss";
+// import "./style.scss";
 import test from "./subscribe-now-panel";
 import test2 from "./table-duplication-reformat";
 import MyPromises from "./my-promises";
 import "./subscribe-now-panel.scss";
 import "./tables.scss";
-import "./navigation.scss";
-import Alpine from "alpinejs";
-import slideout from "./navigation-mobile";
-import { alertTest } from "./alert";
+// import "./navigation.scss";
+import "./accordion-custom";
+import "./navigation-custom";
+import "./dropmenu-custom";
+// import "./color-variables.scss";
+// import "./nav.scss";
 
+// import "./accordion-custom.scss";
+import "./main.scss";
+import { CustomCollapse } from "./custom-collapse";
+// import mobileMenu from "./mobile-menu";
+// import rsllott from "./navigation-mobile";
+// import { alertTest } from "./alert";
+
+import Alpine from "alpinejs";
 import collapse from "@alpinejs/collapse";
 
 function component() {
-    window.Alpine = Alpine;
-    Alpine.start();
-    Alpine.plugin(collapse);
+    // window.Alpine = Alpine;
+    // Alpine.start();
+    // Alpine.plugin(collapse);
+    // Alpine.store("nav", {
+    //     open: false,
+    //     toggle() {
+    //         this.open = !this.open;
+    //     },
+    //     subMenuActive: null,
+    //     isMobile: false,
+    // });
+
+    // rsllott();
 
     const element = document.createElement("div");
     const btn = document.createElement("button");
@@ -41,6 +61,8 @@ function component() {
     myIcon.classList.add("image");
 
     element.appendChild(myIcon);
+
+    
 
     // build and append to dom a CSS link tag with the href pointing at https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css
     // const link = document.createElement("link");
@@ -573,6 +595,7 @@ function component() {
     */
 
     element.innerHTML = `
+
         <div class="navigation">
             <div class="navigation__wrapper">
                 
@@ -581,11 +604,78 @@ function component() {
                         <div class="navigation__header-inner">
                             <div>
                                 <div class="navigation__desktop-menu-wrapper">
-                                    <!--<div class="navigation__desktop-menu-inner-wrapper">
-                                        <div>-->
-                                            <ul class="navigation__layer-1">
+
+                                            <ul class="navigation__ul desktop">
+                                              <li>
+                                              sdas
+                                              <div class="accordion-custom theme--blue box-shadow-removed" data-acc-cust="auto-toggle">
+                                              <div class="accordion-custom__item">
+                                                  <div class="accordion-custom__head" data-acc-cust-init-height="44">
+                                                      <div class="accordion-custom__title-wrapper">
+                                                          <div class="accordion-custom__title">
+                                                          <div class="accordion-custom__title-icon">
+                                                              test
+                                                          </div>
+                                                          How your support helps 1
+                                                          </div>
+                                                          <div class="accordion-custom__icon">
+                                                          <img src="https://cdn3.iconfinder.com/data/icons/user-interface-169/32/chevron-bottom-512.png" alt="accordion down
+                                                                  arrow">      </div>
+                                                      </div>
+                                                  </div>
+                                              
+                                                  <div class="accordion-custom__body">
+                                                      <div class="accordion-custom__inner">
+                                                          <p>Custom item text 1</p>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="accordion-custom__item">
+                                                  <div class="accordion-custom__head ">
+                                                  <div class="accordion-custom__title-wrapper">
+                                                      <div class="accordion-custom__title">
+                                                      <div class="accordion-custom__title-icon">
+                                                          
+                                                      </div>
+                                                      How your support helps 2
+                                                      </div>
+                                                      <div class="accordion-custom__icon">
+                                                      <img src="https://cdn3.iconfinder.com/data/icons/user-interface-169/32/chevron-bottom-512.png" alt="accordion down
+                                                              arrow">      </div>
+                                                  </div>
+                                                  </div>
+                                              
+                                                  <div class="accordion-custom__body">
+                                                  <div class="accordion-custom__inner">
+                                                      <p>Custom item text 2</p>
+                                                  </div>
+                                                  </div>
+                                              </div>
+                                              <div class="accordion-custom__item">
+                                                  <div class="accordion-custom__head">
+                                                  <div class="accordion-custom__title-wrapper">
+                                                      <div class="accordion-custom__title">
+                                                      <div class="accordion-custom__title-icon">
+                                                          
+                                                      </div>
+                                                      How your support helps 3
+                                                      </div>
+                                                      <div class="accordion-custom__icon">
+                                                      <img src="https://cdn3.iconfinder.com/data/icons/user-interface-169/32/chevron-bottom-512.png" alt="accordion down
+                                                              arrow">      </div>
+                                                  </div>
+                                                  </div>
+                                              
+                                                  <div class="accordion-custom__body">
+                                                  <div class="accordion-custom__inner">
+                                                      <p>Custom item text 3</p>
+                                                  </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                              </li>
                                                 <li x-data="{ open: false }"  x-on:keydown.escape.prevent.stop="close($refs.button)" class="relative">
-                                                    <!-- Button -->
+                                                    
                                                     <button
                                                         x-ref="button"
                                                         @click="open = !open"
@@ -597,13 +687,13 @@ function component() {
                                                     >
                                                         Prizes
 
-                                                        <!-- Heroicon: chevron-down -->
+                                                        
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
                                                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                                                         </svg>
                                                     </button>
 
-                                                    <!-- Panel -->
+                                                    
                                                     <div
                                                         x-show="open"
                                                         @click.away="open = false"
@@ -616,44 +706,58 @@ function component() {
                                                         x-transition:leave="transition ease-in duration-300"
                                                         x-transition:leave-end="opacity-0 transform scale-y-0"
                                                     >
-                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                            Explore prizes
-                                                        </a>
-
-                                                        <a href="#" class="navigation__active flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                            2023 Lineup
-                                                        </a>
-
-                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                            <span class="text-red-600">Delete Task 0</span>
-                                                        </a>
-                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                            New Task 0
-                                                        </a>
-
-                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                            Edit Task 0
-                                                        </a>
-
-                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                            <span class="text-red-600">Delete Task 0</span>
-                                                        </a>
-                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                            New Task 0
-                                                        </a>
-
-                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                            Edit Task 0
-                                                        </a>
-
-                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                            <span class="text-red-600">Delete Task 0</span>
-                                                        </a>
+                                                        <ul>
+                                                            <li>
+                                                                <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                                    Explore prizes
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="navigation__active flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                                    2023 Lineup
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                                    <span class="text-red-600">Delete Task 0</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                                    New Task 0
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                                    Edit Task 0
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                                    <span class="text-red-600">Delete Task 0</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                                    New Task 0
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                                    Edit Task 0
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                                    <span class="text-red-600">Delete Task 0</span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
                                                     </div>                            
                                                 </li>
 
                                                 <li  x-data="{ open: false }" class="relative">
-                                                    <!-- Button -->
+                                                    
                                                     <button
                                                         @click="open = !open"
                                                         :aria-expanded="open ? 'true' : 'false'"
@@ -664,13 +768,13 @@ function component() {
                                                     >
                                                         VIP Club
 
-                                                        <!-- Heroicon: chevron-down -->
+
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
                                                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                                                         </svg>
                                                     </button>
 
-                                                    <!-- Panel -->
+                                                    
                                                     <div
                                                         x-show="open"
                                                         @click.away="open = false"
@@ -683,22 +787,28 @@ function component() {
                                                         x-transition:leave="transition ease-in duration-300"
                                                         x-transition:leave-end="opacity-0 transform scale-y-0"
                                                     >
-                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                            New Task 1
-                                                        </a>
-
-                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                            Edit Task 1
-                                                        </a>
-
-                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                            <span class="text-red-600">Delete Task 1</span>
-                                                        </a>
+                                                        <ul>
+                                                            <li>
+                                                                <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                                    New Task 1
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                                    Edit Task 1
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                                    <span class="text-red-600">Delete Task 1</span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
                                                     </div>
                                                 </li>
 
                                                 <li  x-data="{ open: false }" class="relative">
-                                                    <!-- Button -->
+                                                    
                                                     <button
                                                         @click="open = !open"
                                                         :aria-expanded="open ? 'true' : 'false'"
@@ -709,13 +819,13 @@ function component() {
                                                     >
                                                         Winners
 
-                                                        <!-- Heroicon: chevron-down -->
+
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
                                                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                                                         </svg>
                                                     </button>
 
-                                                    <!-- Panel -->
+
                                                     <div
                                                         x-show="open"
                                                         @click.away="open = false"
@@ -728,22 +838,28 @@ function component() {
                                                         x-transition:leave="transition ease-in duration-300"
                                                         x-transition:leave-end="opacity-0 transform scale-y-0"
                                                     >
-                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                            New Task 1
-                                                        </a>
-
-                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                            Edit Task 1
-                                                        </a>
-
-                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                            <span class="text-red-600">Delete Task 1</span>
-                                                        </a>
+                                                        <ul>
+                                                            <li>
+                                                                <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                                    New Task 1
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                                    Edit Task 1
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                                    <span class="text-red-600">Delete Task 1</span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
                                                     </div>
                                                 </li>
 
                                                 <li  x-data="{ open: false }" class="relative">
-                                                    <!-- Button -->
+                                                    
                                                     <button
                                                         @click="open = !open"
                                                         :aria-expanded="open ? 'true' : 'false'"
@@ -754,13 +870,13 @@ function component() {
                                                     >
                                                         About us
 
-                                                        <!-- Heroicon: chevron-down -->
+                                                        
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
                                                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                                                         </svg>
                                                     </button>
 
-                                                    <!-- Panel -->
+                                                    
                                                     <div
                                                         x-show="open"
                                                         @click.away="open = false"
@@ -773,70 +889,35 @@ function component() {
                                                         x-transition:leave="transition ease-in duration-300"
                                                         x-transition:leave-end="opacity-0 transform scale-y-0"
                                                     >
-                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                            New Task 1
-                                                        </a>
-
-                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                            Edit Task 1
-                                                        </a>
-
-                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                            <span class="text-red-600">Delete Task 1</span>
-                                                        </a>
+                                                        <ul>
+                                                            <li>
+                                                                <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                                    New Task 1
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                                    Edit Task 1
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                                    <span class="text-red-600">Delete Task 1</span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
                                                     </div>
                                                 </li>
                                             </ul>
 
                                                 
-                                            <ul class="navigation__login-cart-wrapper">
-                                                <li  x-data="{ open: false }" class="navigation__login relative">
-                                                    <!-- Button -->
-                                                    <button
-                                                        @click="$dispatch('open-menu', { open: false }), open = !open"
-                                                        :aria-expanded="open ? 'true' : 'false'"
-                                                        :aria-controls="$id('dropdown-button')"
-                                                        type="button"
-                                                        class="navigation__primary-btn"
-                                                        :class="open && ' open'"
-                                                    >
-                                                        <div>
-                                                            <img src="./assets/images/navigation-login-avatar-circle.svg" alt="RSL Union Login Avatar" />
-                                                            Login
-                                                        </div>
-                                                    </button>
-
-                                                    <!-- Panel -->
-                                                    <div
-                                                        x-show="open"
-                                                        @click.away="open = false"
-                                                        :id="$id('dropdown-button')"
-                                                        style="display: none;"
-                                                        class="absolute origin-top-right bg-white shadow-md navigation__desktop-menu-dropdown"
-                                                        x-transition:enter="transition ease-out duration-300"
-                                                        x-transition:enter-start="opacity-0 transform scale-y-0"
-                                                        x-transition:enter-end="opacity-100 transform scale-y-100"
-                                                        x-transition:leave="transition ease-in duration-300"
-                                                        x-transition:leave-end="opacity-0 transform scale-y-0"
-                                                    >
-                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                            New Task 1
-                                                        </a>
-
-                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                            Edit Task 1
-                                                        </a>
-
-                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                            <span class="text-red-600">Delete Task 1</span>
-                                                        </a>
-                                                    </div>
-                                                </li>
+                                            <ul class="navigation__ul login-cart-wrapper">
+                                    
 
                                                 <li  x-data="{ open: false }" class="navigation__login status--logged-in relative">
-                                                    <!-- Button -->
+                                                    
                                                     <button
-                                                        @click="$dispatch('open-menu', { open: false }), open = !open"
+                                                        @click="$store.nav.open = false, open = !open"
                                                         :aria-expanded="open ? 'true' : 'false'"
                                                         :aria-controls="$id('dropdown-button')"
                                                         type="button"
@@ -844,7 +925,7 @@ function component() {
                                                         :class="open && ' open'"
                                                     >
                                                         <div>
-                                                            <img src="./assets/images/navigation-login-avatar-circle.svg" alt="RSL Union Login Avatar" />
+                                                            <img src="./assets/images/frank-drebbin-avatar.svg" alt="RSL Union Login Avatar" />
                                                             Frank Drebbin
                                                         </div>
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
@@ -852,7 +933,6 @@ function component() {
                                                         </svg>
                                                     </button>
 
-                                                    <!-- Panel -->
                                                     <div
                                                         x-show="open"
                                                         @click.away="open = false"
@@ -865,22 +945,27 @@ function component() {
                                                         x-transition:leave="transition ease-in duration-300"
                                                         x-transition:leave-end="opacity-0 transform scale-y-0"
                                                     >
-                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                            New Task 1
-                                                        </a>
-
-                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                            Edit Task 1
-                                                        </a>
-
-                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                            <span class="text-red-600">Delete Task 1</span>
-                                                        </a>
+                                                        <ul class="navigation__ul dropdown">
+                                                            <li>
+                                                                <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                                    New Task 1
+                                                                </a>
+                                                            </li>
+                                                            <li
+                                                                <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                                Edit Task 1
+                                                                </a>
+                                                            </li>
+                                                            <li
+                                                                <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                                <span class="text-red-600">Delete Task 1</span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
                                                     </div>
                                                 </li>
                                             
                                                 <li  x-data="{ open: false }" class="navigation__cart relative">
-                                                    <!-- Button -->
                                                     <button
                                                         @click="$dispatch('open-menu', { open: true }), open = !open"
                                                         :aria-expanded="open ? 'true' : 'false'"
@@ -892,49 +977,58 @@ function component() {
                                                         <img src="./assets/images/navigation-shopping-cart.svg" alt="RSL Union Login Avatar" />
                                                     </button>
 
-                                                    <!-- Panel -->
                                                     <div
                                                         x-show="open"
                                                         @click.away="open = false"
                                                         :id="$id('dropdown-button')"
                                                         style="display: none;"
-                                                        class="absolute origin-top-right bg-white shadow-md navigation__desktop-menu-dropdown"
+                                                        class="absolute origin-top bg-white shadow-md navigation__desktop-menu-dropdown"
                                                         x-transition:enter="transition ease-out duration-300"
                                                         x-transition:enter-start="opacity-0 transform scale-y-0"
                                                         x-transition:enter-end="opacity-100 transform scale-y-100"
                                                         x-transition:leave="transition ease-in duration-300"
                                                         x-transition:leave-end="opacity-0 transform scale-y-0"
                                                     >
-                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                            New Task 1
-                                                        </a>
-
-                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                            Edit Task 1
-                                                        </a>
-
-                                                        <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
-                                                            <span class="text-red-600">Delete Task 1</span>
-                                                        </a>
+                                                    <ul>
+                                                        <li>
+                                                                <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                                    New Task 1
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                                    Edit Task 1
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                                                    <span class="text-red-600">Delete Task 1</span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
                                                     </div>
                                                 </li>
                                             </ul>
-                                        <!--</div>
-                                    </div>-->
                                     <button
-                                    x-data="{usedKeyboard: false}"
-                                    @keydown.window.tab="usedKeyboard = true"
-                                    @click="$dispatch('open-menu', { open: true })"
-                                    :class="{'focus:outline-none': !usedKeyboard}"
-                                    class="navigation__hamburger"
+                                        x-data="{usedKeyboard: false, collapsed: true}"
+                                        @keydown.window.tab="usedKeyboard = true"
+                                        
+                                        @click="$store.nav.toggle(), $store.nav.subMenuActive = null"
+                                        
+                                        
+                                        :class="!$store.nav.open && ' collapsed'"
+                                        class="navigation__hamburgers"
+                                        
                                     >
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu stroke-current"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                                        <div class="nav-icon"><div></div></div>
                                     </button>
                                 </div>
                             </div>
 
                             <div class="navigation__logo">
-                                <img src="./assets/images/rsl-art-union-logo.svg" alt="RSL Art Uninion Winners">
+                                <a href="#">
+                                    <img src="./assets/images/rsl-art-union-logo.svg" alt="RSL Art Uninion Winners">
+                                </a>
                             </div>                        
                         </div>
                     </div>
@@ -942,62 +1036,35 @@ function component() {
             </div>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 p-16">
-            <button
-                x-data="{usedKeyboard: false}"
-                @keydown.window.tab="usedKeyboard = true"
-                role=button
-                @click="$dispatch('open-menu', { open: true })"
-                :class="{'focus:outline-none': !usedKeyboard}"
-                class="bg-indigo-500 hover:bg-indigo-400 h-64 text-white font-extrabold text-4xl flex items-center justify-center uppercase">
-                Open Menu
-            </button>
-        </div>
-    
-
         <section
-            x-data="slideout()"
-            @open-menu.window="open = $event.detail.open"
-            x-cloak
+            x-on:resize.window="$store.nav.isMobile = (window.innerWidth < 1024) ? true : false"
+            
             @keydown.window.tab="usedKeyboard = true"
             @keydown.escape="open = false"
-            x-init="init()"
+            class="navigation__mobile"
+            :class="$store.nav.isMobile && ' is-mobile'"   
+            x-init="$store.nav.isMobile = (window.innerWidth < 1024) ? true : false" 
         >
             <div
-                x-show.transition.opacity.duration.500="open"
-                @click="open = false"
+                x-show="$store.nav.open"    
+                @click="$store.nav.toggle(), $store.nav.subMenuActive = null"
                 class="navigation__mobile-underlay"
             >
             </div>
             
             <div
                 class="navigation__mobile-menu-wrapper"
-                :class="{'translate-x-full': !open}">
+                
+                :class="!$store.nav.open && ' translate-x-full'"
+            >
                 
                 <div class=" w-full absolute top-0 h-full overflow-y-auto">
                     
-                    <ul 
-                        x-data="navToggle()" 
-                        x-cloak
-                        @selected.window="selected = $event.detail.selected"
-                        x-init="init()"
-                        class="navigation__mobile-ul"
-                    >
-                        <li class="navigation__mobile-close-li">
-                            <button
-                                @click="open = false, $dispatch('selected', { selected: null })"
-                                x-ref="closeButton"
-                                :class="{'focus:outline-none': !usedKeyboard}"
-                                class="navigation__mobile-close-button">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                            </button>
-                        </li>
-
+                    <ul class="navigation__ul mobile">
                         <li>
-                            <!--<button @click="$dispatch('selected', { selected: 1 })">test</button>-->
-                            <button @click="selected !== 0 ? selected = 0 : selected = null">test  0</button>
+                            <button @click="$store.nav.subMenuActive !== 0 ? $store.nav.subMenuActive = 0 : $store.nav.subMenuActive = null">test  0</button>
 
-                            <div x-show="selected == 0" x-collapse>
+                            <div x-show="$store.nav.subMenuActive == 0" x-collapse>
                                 <ul>
                                     <li>
                                         <a href="#">
@@ -1019,9 +1086,9 @@ function component() {
                         </li>
 
                         <li>
-                            <button @click="selected !== 1 ? selected = 1 : selected = null">test 1</button>     
+                        <button @click="$store.nav.subMenuActive !== 1 ? $store.nav.subMenuActive = 1 : $store.nav.subMenuActive = null">test  0</button>
 
-                            <div x-show="selected == 1" x-collapse>
+                            <div x-show="$store.nav.subMenuActive == 1" x-collapse>
                                 <ul>
                                     <li>
                                         <a href="#">
@@ -1041,21 +1108,1460 @@ function component() {
                                 </ul>
                             </div>
                         </li>
-
-                        
                     </ul>
-
-
                 </div>
             </section>
+            
+            <!--
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 p-16">
+                <button
+                    x-data="{usedKeyboard: false}"
+                    @keydown.window.tab="usedKeyboard = true"
+                    role=button
+                    
+                    :class="{'focus:outline-none': !usedKeyboard}"
+                    class="bg-indigo-500 hover:bg-indigo-400 h-64 text-white font-extrabold text-4xl flex items-center justify-center uppercase">
+                    Open Menu
+                </button>
+            </div>
+            -->
         `;
 
+    // element.innerHTML = `
+    //         <div class="navigation__mobile">
+    //             <ul>
+    //                 <li>
+    //                     <button>nav item 1</button>
+    //                     <ul style="display:none;">
+    //                         <li>
+    //                             <a href="#">dropdown item 1-1</a>
+    //                         </li>
+    //                         <li>
+    //                             <a href="#">dropdown item 1-2</a>
+    //                         </li>
+    //                     </ul>
+    //                 </li>
+    //                 <li>
+    //                     <button>nav item 2</button>
+    //                     <ul style="display:none;">
+    //                         <li>
+    //                             <a href="#">dropdown item 2-1</a>
+    //                         </li>
+    //                         <li>
+    //                             <a href="#">dropdown item 2-2</a>
+    //                         </li>
+    //                     </ul>
+    //                 </li>
+    //             </ul>
+    //         </div>
+    //     `;
+
     // element.innerHTML = `<button onClick="window.alertTest()">alert me</button><br /><button onClick="slideout.slideout()">alert me</button>`;
+    element.innerHTML = `
+    <div class="navigation">
+
+    <div class="navigation__wrapper">
+      <header class="navigation__header" style="top:100px">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12">    
+              <div class="navigation__header-inner">
+                <div>
+                  <div class="navigation__desktop-menu-wrapper">
+  
+                    <ul class="navigation__ul desktop">
+                      <li>
+                      <div class="accordion-custom theme--blue box-shadow-removed" data-acc-cust="auto-toggle">
+            <div class="accordion-custom__item">
+                <button class="accordion-custom__head" data-acc-cust-init-height="44">
+                    <div class="accordion-custom__title-wrapper">
+                        <div class="accordion-custom__title">
+                        <div class="accordion-custom__title-icon">
+                            
+                        </div>
+                        How your support helps 1
+                        </div>
+                        <div class="accordion-custom__icon">
+                        <img src="https://cdn3.iconfinder.com/data/icons/user-interface-169/32/chevron-bottom-512.png" alt="accordion down
+                                arrow">      </div>
+                    </div>
+                </button>
+            
+                <div class="accordion-custom__body">
+                    <div class="accordion-custom__inner">
+                        <a href="#">Custom item text 1</a>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-custom__item">
+                <button class="accordion-custom__head ">
+                <div class="accordion-custom__title-wrapper">
+                    <div class="accordion-custom__title">
+                    <div class="accordion-custom__title-icon">
+                        
+                    </div>
+                    How your support helps 2
+                    </div>
+                    <div class="accordion-custom__icon">
+                    <img src="https://cdn3.iconfinder.com/data/icons/user-interface-169/32/chevron-bottom-512.png" alt="accordion down
+                            arrow">      </div>
+                </div>
+                </button>
+            
+                <div class="accordion-custom__body">
+                <div class="accordion-custom__inner">
+                <a href="#">Custom item text 2</a>
+                </div>
+                </div>
+            </div>
+            <div class="accordion-custom__item">
+                <button class="accordion-custom__head">
+                <div class="accordion-custom__title-wrapper">
+                    <div class="accordion-custom__title">
+                    <div class="accordion-custom__title-icon">
+                        
+                    </div>
+                    How your support helps 3
+                    </div>
+                    <div class="accordion-custom__icon">
+                    <img src="https://cdn3.iconfinder.com/data/icons/user-interface-169/32/chevron-bottom-512.png" alt="accordion down
+                            arrow">      </div>
+                </div>
+                </button>
+            
+                <div class="accordion-custom__body">
+                <div class="accordion-custom__inner">
+                  <a href="#">Custom item text 1</a>
+                </div>
+                </div>
+            </div>
+        </div>
+                      </li>
+                      <li>
+                            <div class="dropmenu-custom">
+                                <div class="dropmenu-custom__head">
+                                    <button 
+                                        type="button" 
+                                        class="navigation__primary-btn"
+                                        aria-expanded="open"
+                                        aria-controls="$id('dropdown-button')" 
+                                    >
+                                        Prizes
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20"
+                                            fill="currentColor">
+                                            <path fill-rule="evenodd"
+                                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                            clip-rule="evenodd" />
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <div class="dropmenu-custom__body" style="display: none;">
+                                    <ul>
+                                        <li><a href="https://google.com">1</a></li>
+                                        <li><a href="#">2</a></li>
+                                        <li><a href="#">3</a></li>
+                                        <li><a href="#">4</a></li>
+                                        <li><a href="#">5</a></li>
+                                        <li><a href="#">6</a></li>
+                                        <li><a href="#">7</a></li>
+                                        <li><a href="#">8</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                      </li>
+
+                      <li>
+                        <div class="dropmenu-custom">
+                          <div class="dropmenu-custom__head">
+                            <button 
+                              type="button" 
+                              class="navigation__primary-btn"
+                              aria-expanded="open"
+                              aria-controls="$id('dropdown-button')" 
+                            >
+                              Prizes
+                              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                clip-rule="evenodd" />
+                              </svg>
+                            </button>
+                          </div>
+
+                          <div class="dropmenu-custom__body" style="display:none;">
+                            <ul>
+                              <li><a href="https://google.com">1</a></li>
+                              <li><a href="#">2</a></li>
+                              <li><a href="#">3</a></li>
+                              <li><a href="#">4</a></li>
+                              <li><a href="#">5</a></li>
+                              <li><a href="#">6</a></li>
+                              <li><a href="#">7</a></li>
+                              <li><a href="#">8</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </li>
+
+                      <li>
+                      <button type="button" class="navigation__primary-btn">
+                        Prizes
+
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path fill-rule="evenodd"
+                              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                              clip-rule="evenodd" />
+                          </svg>
+                        </button>
+  
+  
+                        <div x-show="open" @click.away="open = false" :id="$id('dropdown-button')" style="display: none;"
+                          class="absolute origin-top bg-white shadow-md navigation__desktop-menu-dropdown"
+                          x-transition:enter="transition ease-out duration-300"
+                          x-transition:enter-start="opacity-0 transform scale-y-0"
+                          x-transition:enter-end="opacity-100 transform scale-y-100"
+                          x-transition:leave="transition ease-in duration-300"
+                          x-transition:leave-end="opacity-0 transform scale-y-0">
+                          <ul class="navigation__ul dropdown">
+                            <li>
+                               {{> 
+                                navigation-sub-menu/navigation-sub-menu--simple
+                                menuHeading="Explore prizes"
+                              }}
+                            </li>
+                            <li>
+                              {{> 
+                                navigation-sub-menu/navigation-sub-menu--simple
+                                menuHeading="2023 lineup"
+                              }}
+                            </li>
+                            <li>
+                              {{> 
+                                navigation-sub-menu/navigation-sub-menu--prizes
+                                noticeInfo=true
+                                badgeLabel="Draw 406"
+                                badgeColor="color: #005B8D"
+                                alertType="notice-alert"
+                                noticeText="Final days"
+                                menuHeading="Live for free"
+                                menuImage="navigation-sub-menu-img-3.png"
+                              }}
+                            </li>
+                            <li>
+                              {{> navigation-sub-menu/navigation-sub-menu--prizes menuHeading="Sunshine Coast sanctuary"}}
+                            </li>
+                            <li>
+                              {{> 
+                                navigation-sub-menu/navigation-sub-menu--prizes
+                                noticeInfo=true
+                                noticeText="pre-order"
+                                badgeLabel="Draw 408"
+                                badgeColor="color: #005B8D"
+                                menuImage="navigation-sub-menu-img.png"
+                                menuHeading="Sydney Beachfront lifestyle or gold"
+                              }}
+                            </li>
+                            <li>
+                              {{> 
+                                navigation-sub-menu/navigation-sub-menu--prizes
+                                noticeInfo=true
+                                noticeText="pre-order"
+                                badgeLabel="Draw 409"
+                                badgeColor="color: #005B8D"
+                                menuImage="navigation-sub-menu-img.png"
+                                menuHeading="Gold Coast beach house"
+                              }}
+                            </li>
+                          </ul>
+                        </div>
+                      </li>
+  
+                      <li 
+                        x-data="{
+                          open: false,
+                          toggle() {
+                              if (this.open) {
+                                  return this.close()
+                              }
+              
+                              this.$refs.button.focus()
+              
+                              this.open = true
+                          },
+                          close(focusAfter) {
+                              if (! this.open) return
+              
+                              this.open = false
+              
+                              focusAfter && focusAfter.focus()
+                          }
+                        }"
+                        x-on:keydown.escape.prevent.stop="close($refs.button)"
+                        x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
+                        x-id="['dropdown-button']"
+                      >
+  
+                        <button x-ref="button" @click="toggle()" :aria-expanded="open"
+                          :aria-controls="$id('dropdown-button')" type="button" class="navigation__primary-btn"
+                          :class="open && ' open'">
+                          VIP Club
+  
+  
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path fill-rule="evenodd"
+                              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                              clip-rule="evenodd" />
+                          </svg>
+                        </button>
+  
+  
+                        <div x-show="open" @click.away="open = false" :id="$id('dropdown-button')" style="display: none;"
+                          class="absolute origin-top bg-white shadow-md navigation__desktop-menu-dropdown"
+                          x-transition:enter="transition ease-out duration-300"
+                          x-transition:enter-start="opacity-0 transform scale-y-0"
+                          x-transition:enter-end="opacity-100 transform scale-y-100"
+                          x-transition:leave="transition ease-in duration-300"
+                          x-transition:leave-end="opacity-0 transform scale-y-0">
+                          <ul class="navigation__dropdown">
+                            <li>
+                              {{> 
+                                navigation-sub-menu/navigation-sub-menu--simple
+                                menuHeading="2023 lineup"
+                              }}
+                            </li>
+                            <li>
+                              {{> 
+                                navigation-sub-menu/navigation-sub-menu--simple
+                                headingIcon="crown-solid-vip.svg"
+                                menuHeading="Join the VIP Club"
+                              }}
+                            </li>
+                          </ul>
+                        </div>
+                      </li>
+  
+                      <li 
+                        x-data="{
+                          open: false,
+                          toggle() {
+                              if (this.open) {
+                                  return this.close()
+                              }
+              
+                              this.$refs.button.focus()
+              
+                              this.open = true
+                          },
+                          close(focusAfter) {
+                              if (! this.open) return
+              
+                              this.open = false
+              
+                              focusAfter && focusAfter.focus()
+                          }
+                        }"
+                        x-on:keydown.escape.prevent.stop="close($refs.button)"
+                        x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
+                        x-id="['dropdown-button']"
+                      >
+  
+                        <button x-ref="button" @click="toggle()" :aria-expanded="open"
+                          :aria-controls="$id('dropdown-button')" type="button" class="navigation__primary-btn"
+                          :class="open && ' open'">
+                          Winners
+  
+  
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path fill-rule="evenodd"
+                              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                              clip-rule="evenodd" />
+                          </svg>
+                        </button>
+  
+  
+                        <div x-show="open" @click.away="open = false" :id="$id('dropdown-button')" style="display: none;"
+                          class="absolute origin-top bg-white shadow-md navigation__desktop-menu-dropdown"
+                          x-transition:enter="transition ease-out duration-300"
+                          x-transition:enter-start="opacity-0 transform scale-y-0"
+                          x-transition:enter-end="opacity-100 transform scale-y-100"
+                          x-transition:leave="transition ease-in duration-300"
+                          x-transition:leave-end="opacity-0 transform scale-y-0">
+                          <ul class="navigation__dropdown">
+                            <li>
+                              {{> 
+                                navigation-sub-menu/navigation-sub-menu--simple
+                                menuHeading="Art Union winners"
+                              }}
+                            </li>
+                            <li>
+                              {{> 
+                                navigation-sub-menu/navigation-sub-menu--simple
+                                headingIcon="5k-draw.svg"
+                                menuHeading="5k Pay Day"
+                              }}
+                            </li>
+                            <li>
+                              {{> 
+                                navigation-sub-menu/navigation-sub-menu--simple
+                                headingIcon="100k-draw.svg"
+                                menuHeading="VIP Quarterly Cash Draw"
+                              }}
+                            </li>
+                          </ul>
+                        </div>
+                      </li>
+  
+                      <li 
+                        x-data="{
+                          open: false,
+                          toggle() {
+                              if (this.open) {
+                                  return this.close()
+                              }
+              
+                              this.$refs.button.focus()
+              
+                              this.open = true
+                          },
+                          close(focusAfter) {
+                              if (! this.open) return
+              
+                              this.open = false
+              
+                              focusAfter && focusAfter.focus()
+                          }
+                        }"
+                        x-on:keydown.escape.prevent.stop="close($refs.button)"
+                        x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
+                        x-id="['dropdown-button']"
+                        class="relative"
+                      >
+  
+                        <button x-ref="button" @click="toggle()" :aria-expanded="open"
+                          :aria-controls="$id('dropdown-button')" type="button" class="navigation__primary-btn"
+                          :class="open && ' open'">
+                          About us
+  
+  
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path fill-rule="evenodd"
+                              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                              clip-rule="evenodd" />
+                          </svg>
+                        </button>
+  
+  
+                        <div x-show="open" @click.away="open = false" :id="$id('dropdown-button')" style="display: none;"
+                          class="absolute origin-top bg-white shadow-md navigation__desktop-menu-dropdown"
+                          x-transition:enter="transition ease-out duration-300"
+                          x-transition:enter-start="opacity-0 transform scale-y-0"
+                          x-transition:enter-end="opacity-100 transform scale-y-100"
+                          x-transition:leave="transition ease-in duration-300"
+                          x-transition:leave-end="opacity-0 transform scale-y-0">
+                          <ul class="navigation__dropdown">
+                            <li>
+                              {{> 
+                                navigation-sub-menu/navigation-sub-menu--simple
+                                menuHeading="Find out about us"
+                              }}
+                            </li>
+                            <li>
+                              {{> 
+                                navigation-sub-menu/navigation-sub-menu--simple
+                                menuHeading="Contact us"
+                              }}
+                            </li>
+                            <li>
+                              {{> 
+                                navigation-sub-menu/navigation-sub-menu--simple
+                                menuHeading="Our heroes"
+                              }}
+                            </li>
+                            <li>
+                              {{
+                                navigation-sub-menu/navigation-sub-menu--simple
+                                menuHeading="FAQ"
+                              }}
+                            </li>
+                          </ul>
+                        </div>
+                      </li>
+                    </ul>
+  
+                    <ul class="navigation__ul login-cart-wrapper">
+                      <li 
+                        x-data="{
+                          open: false,
+                          toggle() {
+                              if (this.open) {
+                                  return this.close()
+                              }
+              
+                              this.$refs.button.focus()
+              
+                              this.open = true
+                          },
+                          close(focusAfter) {
+                              if (! this.open) return
+              
+                              this.open = false
+              
+                              focusAfter && focusAfter.focus()
+                          }
+                        }"
+                        x-on:keydown.escape.prevent.stop="close($refs.button)"
+                        x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
+                        x-id="['dropdown-button']"
+                        class="navigation__login status--logged-in"
+                      >
+                        <button 
+                          x-ref="button" 
+                          @click="window.innerWidth < 1024 ? ($store.nav.toggleLoginMenu(), $store.nav.subMenuActive = null) : toggle()" 
+                          :aria-expanded="open"
+                          :aria-controls="$id('dropdown-button')" type="button" class="navigation-icon account logged-in"
+                          :class="open && ' open'"
+                        >
+                          <div class="navigation-icon__wrapper">
+                            <div>
+                              <img src="./assets/images/frank-drebbin-avatar.svg" alt="RSL Union Login Avatar" />
+                              <div class="navigation-icon__background"></div>
+                            </div>
+                            <span class="navigation-icon__text" style="display: none">FrankDrebbin</span>
+                          </div>
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path fill-rule="evenodd"
+                              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                              clip-rule="evenodd" />
+                          </svg>
+                        </button>
+  
+                        <!--  <button class="navigation-icon account logged-in">
+                          <div class="navigation-icon__wrapper">
+                            <img src="./assets/images/icons/account_circle.svg" alt="account icon">
+                            <div class="navigation-icon__background"></div>
+                          </div>
+                          <span class="navigation-icon__text" style="display: none">Hi Frankothan</span>
+                        </button>  -->
+  
+                        <div x-show="open" @click.away="open = false" :id="$id('dropdown-button')" style="display: none;"
+                          class="absolute origin-top-right bg-white shadow-md navigation__desktop-menu-dropdown"
+                          x-transition:enter="transition ease-out duration-300"
+                          x-transition:enter-start="opacity-0 transform scale-y-0"
+                          x-transition:enter-end="opacity-100 transform scale-y-100"
+                          x-transition:leave="transition ease-in duration-300"
+                          x-transition:leave-end="opacity-0 transform scale-y-0">
+                          <ul class="navigation__ul dropdown">
+                            <li>
+                              {{> 
+                                navigation-sub-menu/navigation-sub-menu--simple
+                                menuHeading="My details"
+                              }}
+                            </li>
+                            <li>
+                              {{> 
+                                navigation-sub-menu/navigation-sub-menu--simple
+                                menuHeading="My orders"
+                              }}
+                            </li>
+                            <li>
+                              {{> 
+                                navigation-sub-menu/navigation-sub-menu--simple
+                                menuHeading="Buy tickets"
+                              }}
+                            </li>
+                            <li>
+                              {{> 
+                                navigation-sub-menu/navigation-sub-menu--simple
+                                menuHeading="Logout"
+                                headingIcon="logout.svg"
+                              }}
+                            </li>
+                          </ul>
+                        </div>
+                      </li>
+  
+                      <li class="navigation__cart">
+                        <button class="navigation-icon shopping-cart">
+                          <div class="navigation-icon__wrapper">
+                            <img src="./assets/images/shopping_cart.svg" alt="shopping cart icon">
+                            <div class="navigation-icon__counter solid">
+                              <span>1</span>
+                            </div>
+                          </div>
+                        </button>
+                      </li>
+                    </ul>
+  
+                    <button 
+                      
+                      class="navigation__hamburger"
+                    >
+                      <div class="nav-icon">
+                        <div></div>
+                      </div>
+                    </button>
+  
+                  </div>
+                </div>
+  
+                <div class="navigation__logo">
+                  <a href="#">
+                    <img src="./assets/images/rsl-art-union-logo.svg" alt="RSL Art Uninion Winners">
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+  </div>
+  
+  <section x-on:resize.window="$store.nav.isMobile = (window.innerWidth < 1024) ? true : false"
+    @keydown.window.tab="usedKeyboard = true" @keydown.escape="open = false" class="navigation__mobile"
+    :class="$store.nav.isMobile && ' is-mobile'" x-cloak x-init="$store.nav.isMobile = (window.innerWidth < 1024) ? true : false">
+    <!--  <div x-show="$store.nav.open" @click="$store.nav.toggle(), $store.nav.subMenuActive = null"
+      class="navigation__mobile-underlay">
+    </div>  -->
+  
+    <div class="navigation__mobile-menu-wrapper" :class="!$store.nav.open && ' translate-x-full'">
+  
+      <div class=" w-full absolute top-0 h-full overflow-y-auto">
+  
+        <ul class="navigation__ul mobile">
+          <li>
+          <div class="accordion-custom theme--blue box-shadow-removed" data-acc-cust="auto-toggle">
+          <div class="accordion-custom__item">
+              <button class="accordion-custom__head" data-acc-cust-init-height="44">
+                  <div class="accordion-custom__title-wrapper">
+                      <div class="accordion-custom__title">
+                      <div class="accordion-custom__title-icon">
+                          
+                      </div>
+                      How your support helps 1
+                      </div>
+                      <div class="accordion-custom__icon">
+                      <img src="https://cdn3.iconfinder.com/data/icons/user-interface-169/32/chevron-bottom-512.png" alt="accordion down
+                              arrow">      </div>
+                  </div>
+              </button>
+          
+              <div class="accordion-custom__body">
+                  <div class="accordion-custom__inner">
+                      <a href="#">Custom item text 1</a>
+                  </div>
+              </div>
+          </div>
+          <div class="accordion-custom__item">
+              <button class="accordion-custom__head ">
+              <div class="accordion-custom__title-wrapper">
+                  <div class="accordion-custom__title">
+                  <div class="accordion-custom__title-icon">
+                      
+                  </div>
+                  How your support helps 2
+                  </div>
+                  <div class="accordion-custom__icon">
+                  <img src="https://cdn3.iconfinder.com/data/icons/user-interface-169/32/chevron-bottom-512.png" alt="accordion down
+                          arrow">      </div>
+              </div>
+              </button>
+          
+              <div class="accordion-custom__body">
+              <div class="accordion-custom__inner">
+              <a href="#">Custom item text 2</a>
+              </div>
+              </div>
+          </div>
+          <div class="accordion-custom__item">
+              <button class="accordion-custom__head">
+              <div class="accordion-custom__title-wrapper">
+                  <div class="accordion-custom__title">
+                  <div class="accordion-custom__title-icon">
+                      
+                  </div>
+                  How your support helps 3
+                  </div>
+                  <div class="accordion-custom__icon">
+                  <img src="https://cdn3.iconfinder.com/data/icons/user-interface-169/32/chevron-bottom-512.png" alt="accordion down
+                          arrow">      </div>
+              </div>
+              </button>
+          
+              <div class="accordion-custom__body">
+              <div class="accordion-custom__inner">
+                <a href="#">Custom item text 1</a>
+              </div>
+              </div>
+          </div>
+      </div>
+          </li>
+
+          <li>
+            <button 
+              @click="$store.nav.subMenuActive !== 0 ? $store.nav.subMenuActive = 0 : $store.nav.subMenuActive = null" 
+              class="navigation-sub-menu"
+              :class="$store.nav.subMenuActive == 0 && ' open'"
+            >
+              <div class="navigation-sub-menu__details">
+                <div class="navigation-sub-menu__heading">
+                  <p>Prizes</p>
+                  <img src="./assets/images/icons/chevron-down.svg" alt="custom alt for heading icon">
+                </div>
+              </div>
+            </button>
+  
+            <div x-show="$store.nav.subMenuActive == 0" x-collapse>
+              <ul 
+                class="navigation__ul dropdown" 
+                :class="$store.nav.subMenuActive == 0 && ' active'"
+              >
+                <li>
+                  {{> 
+                    navigation-sub-menu/navigation-sub-menu--simple
+                    menuHeading="Explore prizes"
+                  }}
+                </li>
+                <li>
+                  {{> 
+                    navigation-sub-menu/navigation-sub-menu--simple
+                    menuHeading="2023 lineup"
+                  }}
+                </li>
+                <li>
+                  {{> 
+                    navigation-sub-menu/navigation-sub-menu--prizes
+                    noticeInfo=true
+                    badgeLabel="Draw 406"
+                    badgeColor="color: #005B8D"
+                    alertType="notice-alert"
+                    noticeText="Final days"
+                    menuHeading="Live for free"
+                    menuImage="navigation-sub-menu-img-3.png"
+                  }}
+                </li>
+                <li>
+                  {{> navigation-sub-menu/navigation-sub-menu--prizes menuHeading="Sunshine Coast sanctuary"}}
+                </li>
+                <li>
+                  {{> 
+                    navigation-sub-menu/navigation-sub-menu--prizes
+                    noticeInfo=true
+                    noticeText="pre-order"
+                    badgeLabel="Draw 408"
+                    badgeColor="color: #005B8D"
+                    menuImage="navigation-sub-menu-img.png"
+                    menuHeading="Sydney Beachfront lifestyle or gold"
+                  }}
+                </li>
+                <li>
+                  {{> 
+                    navigation-sub-menu/navigation-sub-menu--prizes
+                    noticeInfo=true
+                    noticeText="pre-order"
+                    badgeLabel="Draw 409"
+                    badgeColor="color: #005B8D"
+                    menuImage="navigation-sub-menu-img.png"
+                    menuHeading="Gold Coast beach house"
+                  }}
+                </li>
+              </ul>
+            </div>
+          </li>
+  
+          <li>
+            <button 
+              @click="$store.nav.subMenuActive !== 1 ? $store.nav.subMenuActive = 1 : $store.nav.subMenuActive = null"
+              class="navigation-sub-menu"
+              :class="$store.nav.subMenuActive == 1 && ' open'"
+            >
+              <div class="navigation-sub-menu__details">
+                <div class="navigation-sub-menu__heading">
+                  <p>VIP Club</p>
+                  <img src="./assets/images/icons/chevron-down.svg" alt="custom alt for heading icon">
+                </div>
+              </div>
+            </button>
+  
+            <div x-show="$store.nav.subMenuActive == 1" x-collapse>
+              <ul 
+                class="navigation__ul dropdown" 
+                :class="$store.nav.subMenuActive == 1 && ' active'"
+              >
+                <li>
+                  {{> 
+                    navigation-sub-menu/navigation-sub-menu--simple
+                    menuHeading="2023 lineup"
+                  }}
+                </li>
+                <li>
+                  {{> 
+                    navigation-sub-menu/navigation-sub-menu--simple
+                    headingIcon="crown-solid-vip.svg"
+                    menuHeading="Join the VIP Club"
+                  }}
+                </li>
+              </ul>
+            </div>
+          </li>
+  
+          <li>
+            <button 
+              @click="$store.nav.subMenuActive !== 1 ? $store.nav.subMenuActive = 1 : $store.nav.subMenuActive = null"
+              class="navigation-sub-menu"
+              :class="$store.nav.subMenuActive == 1 && ' open'"
+            >
+              <div class="navigation-sub-menu__details">
+                <div class="navigation-sub-menu__heading">
+                  <p>Winners</p>
+                  <img src="./assets/images/icons/chevron-down.svg" alt="custom alt for heading icon">
+                </div>
+              </div>
+            </button>
+  
+            <div x-show="$store.nav.subMenuActive == 1" x-collapse>
+              <ul 
+                class="navigation__ul dropdown" 
+                :class="$store.nav.subMenuActive == 1 && ' active'"
+              >
+                <li>
+                  {{> 
+                    navigation-sub-menu/navigation-sub-menu--simple
+                    menuHeading="Art Union winners"
+                  }}
+                </li>
+                <li>
+                  {{> 
+                    navigation-sub-menu/navigation-sub-menu--simple
+                    headingIcon="5k-draw.svg"
+                    menuHeading="5k Pay Day"
+                  }}
+                </li>
+                <li>
+                  {{> 
+                    navigation-sub-menu/navigation-sub-menu--simple
+                    headingIcon="100k-draw.svg"
+                    menuHeading="VIP Quarterly Cash Draw"
+                  }}
+                </li>
+              </ul>
+            </div>
+          </li>
+  
+          <li>
+            <button 
+              @click="$store.nav.subMenuActive !== 2 ? $store.nav.subMenuActive = 2 : $store.nav.subMenuActive = null"
+              class="navigation-sub-menu"
+              :class="$store.nav.subMenuActive == 2 && ' open'"
+            >
+              <div class="navigation-sub-menu__details">
+                <div class="navigation-sub-menu__heading">
+                  <p>About Us</p>
+                  <img src="./assets/images/icons/chevron-down.svg" alt="custom alt for heading icon">
+                </div>
+              </div>
+            </button>
+  
+            <div x-show="$store.nav.subMenuActive == 2" x-collapse>
+              <ul 
+                class="navigation__ul dropdown" 
+                :class="$store.nav.subMenuActive == 2 && ' active'"
+              >
+               <li>
+                  {{> 
+                    navigation-sub-menu/navigation-sub-menu--simple
+                    menuHeading="Find out about us"
+                  }}
+                </li>
+                <li>
+                  {{> 
+                    navigation-sub-menu/navigation-sub-menu--simple
+                    menuHeading="Contact us"
+                  }}
+                </li>
+                <li>
+                  {{> 
+                    navigation-sub-menu/navigation-sub-menu--simple
+                    menuHeading="Our heroes"
+                  }}
+                </li>
+                <li>
+                  {{
+                    navigation-sub-menu/navigation-sub-menu--simple
+                    menuHeading="FAQ"
+                  }}
+                </li>
+              </ul>
+            </div>
+          </li>
+  
+          <li>
+            <button 
+              @click="$store.nav.subMenuActive !== 3 ? $store.nav.subMenuActive = 3 : $store.nav.subMenuActive = null"
+              class="navigation-sub-menu"
+              :class="$store.nav.subMenuActive == 3 && ' open'"
+            >
+              <div class="navigation-sub-menu__details">
+                <div class="navigation-sub-menu__heading">
+                  <p>VIP Club</p>
+                  <img src="./assets/images/icons/chevron-down.svg" alt="custom alt for heading icon">
+                </div>
+              </div>
+            </button>
+  
+            <div x-show="$store.nav.subMenuActive == 3" x-collapse>
+              <ul 
+                class="navigation__ul dropdown" 
+                :class="$store.nav.subMenuActive == 3 && ' active'"
+              >
+               <li>
+                  {{> navigation-sub-menu/navigation-sub-menu--simple menuHeading="Explore prizes"}}
+                </li>
+                <li>
+                  {{> navigation-sub-menu/navigation-sub-menu--simple menuHeading="2023 lineup"}}
+                </li>
+                <li>
+                  {{> navigation-sub-menu/navigation-sub-menu--prizes menuHeading="Live for free"}}
+                </li>
+                <li>
+                  {{> navigation-sub-menu/navigation-sub-menu--prizes menuHeading="Sunshine Coast sanctuary"}}
+                </li>
+                <li>
+                  {{> navigation-sub-menu/navigation-sub-menu--prizes menuHeading="Sydney Beachfront lifestyle or gold"}}
+                </li>
+                <li>
+                  {{> navigation-sub-menu/navigation-sub-menu--prizes menuHeading="Gold Coast beach house"}}
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  
+  <section x-on:resize.window="$store.nav.isMobile = (window.innerWidth < 1024) ? true : false"
+    @keydown.window.tab="usedKeyboard = true" @keydown.escape="open = false" class="navigation__mobile"
+    :class="$store.nav.isMobile && ' is-mobile'" x-cloak x-init="$store.nav.isMobile = (window.innerWidth < 1024) ? true : false">
+    <!--  <div x-show="$store.nav.open" @click="$store.nav.toggle(), $store.nav.subMenuActive = null"
+      class="navigation__mobile-underlay">
+    </div>  -->
+  
+    <div class="navigation__mobile-menu-wrapper" :class="!$store.nav.loginMenuOpen && ' translate-x-full'">
+  
+      <div class=" w-full absolute top-0 h-full overflow-y-auto">
+  
+        <ul class="navigation__ul mobile">
+           <li>
+            {{> 
+              navigation-sub-menu/navigation-sub-menu--simple
+              menuHeading="My details"
+            }}
+          </li>
+          <li>
+            {{> 
+              navigation-sub-menu/navigation-sub-menu--simple
+              menuHeading="My orders"
+            }}
+          </li>
+          <li>
+            {{> 
+              navigation-sub-menu/navigation-sub-menu--simple
+              menuHeading="Buy tickets"
+            }}
+          </li>
+          <li>
+            {{> 
+              navigation-sub-menu/navigation-sub-menu--simple
+              menuHeading="Logout"
+              headingIcon="logout.svg"
+            }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
+            
+<section>
+    <div class="navigation__sidebar-nav-wrapper navigation__mobile-wrapper translate-x-full">
+      <ul>
+        <li>
+
+          <div class="my-collapse-wrapper">
+            <div class="collapse-wrapper">
+              <div class="item ">
+                <button class="head">
+                  number 1 head
+                </button>
+        
+                <div class="body collapsed">
+                  <div>
+                    <a href="#">sub-menu item 1</a>
+                    <a href="#">sub-menu item 1</a>
+                    <a href="#">sub-menu item 1</a>
+                    <a href="#">sub-menu item 1</a>
+                    <a href="#">sub-menu item 1</a>
+                  </div>
+                </div>
+              </div>
+        
+              <div class="item ">
+                <button class="head">
+                  number 2 head
+                </button>
+        
+                <div class="body collapsed">
+                  <div>
+                    <a href="#">sub-menu item 1</a>
+                    <a href="#">sub-menu item 1</a>
+                    <a href="#">sub-menu item 1</a>
+                    <a href="#">sub-menu item 1</a>
+                    <a href="#">sub-menu item 1</a>
+                  </div>
+                </div>
+              </div>
+        
+              <div class="item ">
+                <button class="head">
+                  number 3 head
+                </button>
+        
+                <div class="body collapsed">
+                  <div>
+                    <a href="#">sub-menu item 1</a>
+                    <a href="#">sub-menu item 1</a>
+                    <a href="#">sub-menu item 1</a>
+                    <a href="#">sub-menu item 1</a>
+                    <a href="#">sub-menu item 1</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <!--
+        <div class="unique-wrapper">
+          <div class="collapse-wrapper">
+          <div class="item ">
+            <button class="head">
+              number 1 head
+            </button>
+        
+            <div class="body" style="max-height: 106px;">
+              <div>
+                <a href="#">sub-menu item 1</a>
+                <a href="#">sub-menu item 1</a>
+                <a href="#">sub-menu item 1</a>
+                <a href="#">sub-menu item 1</a>
+                <a href="#">sub-menu item 1</a>
+              </div>
+            </div>
+          </div>
+        
+          <div class="item ">
+            <button class="head">
+              number 1 head
+            </button>
+        
+            <div class="body collapsed">
+              <div>
+                <a href="#">sub-menu item 1</a>
+                <a href="#">sub-menu item 1</a>
+                <a href="#">sub-menu item 1</a>
+                <a href="#">sub-menu item 1</a>
+                <a href="#">sub-menu item 1</a>
+              </div>
+            </div>
+          </div>
+        
+          <div class="item ">
+            <button class="head">
+              number 1 head
+            </button>
+        
+            <div class="body collapsed">
+              <div>
+                <a href="#">sub-menu item 1</a>
+                <a href="#">sub-menu item 1</a>
+                <a href="#">sub-menu item 1</a>
+                <a href="#">sub-menu item 1</a>
+                <a href="#">sub-menu item 1</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div> 
+        -->
+      </li>
+      <!--
+        <li>
+          <button class="mobile-sub-menu-collapse-trigger navigation-sub-menu">
+            <div class="navigation-sub-menu__details">
+              <div class="navigation-sub-menu__heading">
+                <p>Prizes</p>
+                <img src="/assets/Frontend RSLLOTT/images/icons/chevron-down.svg" alt="custom alt for heading icon">
+              </div>
+            </div>
+          </button>
+
+          <ul class="navigation__dropdown mobile" style="display: none;">
+            <li>
+            <div class="accordion-custom theme--blue box-shadow-removed" data-acc-cust="auto-toggle">
+            <div class="accordion-custom__item">
+                <button class="accordion-custom__head" data-acc-cust-init-height="44">
+                    <div class="accordion-custom__title-wrapper">
+                        <div class="accordion-custom__title">
+                        <div class="accordion-custom__title-icon">
+                            
+                        </div>
+                        How your support helps 1
+                        </div>
+                        <div class="accordion-custom__icon">
+                        <img src="https://cdn3.iconfinder.com/data/icons/user-interface-169/32/chevron-bottom-512.png" alt="accordion down
+                                arrow">      </div>
+                    </div>
+                </button>
+            
+                <div class="accordion-custom__body">
+                    <div class="accordion-custom__inner">
+                        <a href="#">Custom item text 1</a>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-custom__item">
+                <button class="accordion-custom__head ">
+                <div class="accordion-custom__title-wrapper">
+                    <div class="accordion-custom__title">
+                    <div class="accordion-custom__title-icon">
+                        
+                    </div>
+                    How your support helps 2
+                    </div>
+                    <div class="accordion-custom__icon">
+                    <img src="https://cdn3.iconfinder.com/data/icons/user-interface-169/32/chevron-bottom-512.png" alt="accordion down
+                            arrow">      </div>
+                </div>
+                </button>
+            
+                <div class="accordion-custom__body">
+                <div class="accordion-custom__inner">
+                <a href="#">Custom item text 2</a>
+                </div>
+                </div>
+            </div>
+            <div class="accordion-custom__item">
+                <button class="accordion-custom__head">
+                <div class="accordion-custom__title-wrapper">
+                    <div class="accordion-custom__title">
+                    <div class="accordion-custom__title-icon">
+                        
+                    </div>
+                    How your support helps 3
+                    </div>
+                    <div class="accordion-custom__icon">
+                    <img src="https://cdn3.iconfinder.com/data/icons/user-interface-169/32/chevron-bottom-512.png" alt="accordion down
+                            arrow">      </div>
+                </div>
+                </button>
+            
+                <div class="accordion-custom__body">
+                <div class="accordion-custom__inner">
+                  <a href="#">Custom item text 1</a>
+                </div>
+                </div>
+            </div>
+        </div>
+            </li>
+
+            <li>
+              <a class="navigation-sub-menu " href="#">
+                <div class="navigation-sub-menu__details">
+                  <div class="navigation-sub-menu__draw-info">
+                    <div class="badge-container draw-badge high-priority badge-default">
+                      <span class="label-text col-default" style="color: #005B8D">Draw 000</span>
+                    </div>
+                    <div class="navigation-sub-menu__notice notice-win ">
+                      <img src="/assets/Frontend RSLLOTT/images/icons/error_outline.svg" alt="Custom notice icon alt tag">
+                      <span>Lorem Ipsum</span>
+                    </div>
+                  </div>
+                  <div class="navigation-sub-menu__heading">
+                    <p>Lorem Ipsum Dolar At Simut</p>
+                    <img src="/assets/Frontend RSLLOTT/images/icons/favorite_heart.svg" alt="custom alt for heading icon">
+                  </div>
+                </div>
+                <div class="navigation-sub-menu__media-wrapper">
+                  <div class="navigation-sub-menu__image-wrapper">
+                    <img src="/assets/Frontend RSLLOTT/images/placeholder/navigation-sub-menu-img.png" alt="">
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+        <button class="mobile-sub-menu-collapse-trigger navigation-sub-menu">
+            <div class="navigation-sub-menu__details">
+              <div class="navigation-sub-menu__heading">
+                <p>Prizes</p>
+                <img src="/assets/Frontend RSLLOTT/images/icons/chevron-down.svg" alt="custom alt for heading icon">
+              </div>
+            </div>
+          </button>
+
+          <ul class="navigation__dropdown mobile" style="display: none;">
+            <li>
+              <a class="navigation-sub-menu " href="#">
+                <div class="navigation-sub-menu__details">
+                  <div class="navigation-sub-menu__draw-info">
+                    <div class="badge-container draw-badge high-priority badge-default">
+                      <span class="label-text col-default" style="color: #005B8D">Draw 000</span>
+                    </div>
+                    <div class="navigation-sub-menu__notice notice-win ">
+                      <img src="/assets/Frontend RSLLOTT/images/icons/error_outline.svg" alt="Custom notice icon alt tag">
+                      <span>Lorem Ipsum</span>
+                    </div>
+                  </div>
+                  <div class="navigation-sub-menu__heading">
+                    <p>Lorem Ipsum Dolar At Simut</p>
+                    <img src="/assets/Frontend RSLLOTT/images/icons/favorite_heart.svg" alt="custom alt for heading icon">
+                  </div>
+                </div>
+                <div class="navigation-sub-menu__media-wrapper">
+                  <div class="navigation-sub-menu__image-wrapper">
+                    <img src="/assets/Frontend RSLLOTT/images/placeholder/navigation-sub-menu-img.png" alt="">
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </li>
+-->
+      </ul>
+<!--
+        <div class="accordion-custom theme--blue box-shadow-removed" data-acc-cust="auto-toggle">
+            <div class="accordion-custom__item">
+                <div class="accordion-custom__head" data-acc-cust-init-height="44">
+                    <div class="accordion-custom__title-wrapper">
+                        <div class="accordion-custom__title">
+                        <div class="accordion-custom__title-icon">
+                            
+                        </div>
+                        How your support helps 1
+                        </div>
+                        <div class="accordion-custom__icon">
+                        <img src="https://cdn3.iconfinder.com/data/icons/user-interface-169/32/chevron-bottom-512.png" alt="accordion down
+                                arrow">      </div>
+                    </div>
+                </div>
+            
+                <div class="accordion-custom__body">
+                    <div class="accordion-custom__inner">
+                        <p>Custom item text 1</p>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-custom__item">
+                <div class="accordion-custom__head ">
+                <div class="accordion-custom__title-wrapper">
+                    <div class="accordion-custom__title">
+                    <div class="accordion-custom__title-icon">
+                        
+                    </div>
+                    How your support helps 2
+                    </div>
+                    <div class="accordion-custom__icon">
+                    <img src="https://cdn3.iconfinder.com/data/icons/user-interface-169/32/chevron-bottom-512.png" alt="accordion down
+                            arrow">      </div>
+                </div>
+                </div>
+            
+                <div class="accordion-custom__body">
+                <div class="accordion-custom__inner">
+                    <p>Custom item text 2</p>
+                </div>
+                </div>
+            </div>
+            <div class="accordion-custom__item">
+                <div class="accordion-custom__head">
+                <div class="accordion-custom__title-wrapper">
+                    <div class="accordion-custom__title">
+                    <div class="accordion-custom__title-icon">
+                        
+                    </div>
+                    How your support helps 3
+                    </div>
+                    <div class="accordion-custom__icon">
+                    <img src="https://cdn3.iconfinder.com/data/icons/user-interface-169/32/chevron-bottom-512.png" alt="accordion down
+                            arrow">      </div>
+                </div>
+                </div>
+            
+                <div class="accordion-custom__body">
+                <div class="accordion-custom__inner">
+                    <p>Custom item text 3</p>
+                </div>
+                </div>
+            </div>
+        </div>
+        -->
+    </div>
+
+</section>
+
+<section>
+  <div class="navigation__sidebar-nav-wrapper navigation__mobile-login-wrapper translate-x-full">
+    <div>
+      test 123
+    </div>
+  </div>
+</section>
+
+<a href="#" style="font-size: 3rem">test</a>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<div class="my-collapse-wrapper-2">
+<div class="collapse-wrapper dropdown">
+  <div class="item ">
+    <button class="head">
+      number 1 head
+    </button>
+
+    <div class="body collapsed">
+      <div>
+        <a href="#">sub-menu item 1</a>
+        <a href="#">sub-menu item 1</a>
+        <a href="#">sub-menu item 1</a>
+        <a href="#">sub-menu item 1</a>
+        <a href="#">sub-menu item 1</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="item ">
+    <button class="head">
+      number 1 head
+    </button>
+
+    <div class="body collapsed">
+      <div>
+        <a href="#">sub-menu item 1</a>
+        <a href="#">sub-menu item 1</a>
+        <a href="#">sub-menu item 1</a>
+        <a href="#">sub-menu item 1</a>
+        <a href="#">sub-menu item 1</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="item ">
+    <button class="head">
+      number 1 head
+    </button>
+
+    <div class="body collapsed">
+      <div>
+        <a href="#">sub-menu item 1</a>
+        <a href="#">sub-menu item 1</a>
+        <a href="#">sub-menu item 1</a>
+        <a href="#">sub-menu item 1</a>
+        <a href="#">sub-menu item 1</a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<p>
+  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere consequuntur necessitatibus minus voluptates illo. Sapiente obcaecati recusandae ipsa, illum corporis alias delectus nam iste ipsum magnam quasi accusamus dolor maiores reprehenderit nesciunt consequatur asperiores vero provident error mollitia sit dignissimos dolore! Et aut voluptate pariatur necessitatibus quibusdam fugit blanditiis, maxime eligendi fuga consequatur modi iste deleniti debitis dolorum facilis veniam. Pariatur laborum rem maxime consequuntur reprehenderit minus deserunt, nobis esse officiis? Laudantium at perferendis et architecto. Ut non nesciunt ea quibusdam at est hic error nulla, iusto esse corrupti doloribus, explicabo nisi sit itaque quia accusamus reiciendis! Recusandae, tenetur explicabo.
+</p>
+
+
+  <div class="my-collapse-wrapper">
+    <div class="collapse-wrapper">
+      <div class="item ">
+        <button class="head">
+          number 1 head
+        </button>
+
+        <div class="body" style="max-height: 206px">
+          <div>
+            <a href="#">sub-menu item 1</a>
+            <a href="#">sub-menu item 1</a>
+            <a href="#">sub-menu item 1</a>
+            <a href="#">sub-menu item 1</a>
+            <a href="#">sub-menu item 1</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="item ">
+        <button class="head">
+          number 2 head
+        </button>
+
+        <div class="body collapsed">
+          <div>
+            <a href="#">sub-menu item 1</a>
+            <a href="#">sub-menu item 1</a>
+            <a href="#">sub-menu item 1</a>
+            <a href="#">sub-menu item 1</a>
+            <a href="#">sub-menu item 1</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="item ">
+        <button class="head">
+          number 3 head
+        </button>
+
+        <div class="body collapsed">
+          <div>
+            <a href="#">sub-menu item 1</a>
+            <a href="#">sub-menu item 1</a>
+            <a href="#">sub-menu item 1</a>
+            <a href="#">sub-menu item 1</a>
+            <a href="#">sub-menu item 1</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    `;
 
     // SubscribeNowPanel();
     // test();
     test2();
     // navMobile();
+
+    $(document).ready(function() {
+      $(".my-collapse-wrapper .collapse-wrapper").each(function() {
+        new CustomCollapse(this);
+      })
+      
+      $(".my-collapse-wrapper-2 .collapse-wrapper").each(function() {
+        new CustomCollapse(this);
+      })
+    });
 
     return element;
 }

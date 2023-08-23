@@ -1,74 +1,32 @@
-window.slideout = function () {
-    return {
+import Alpine from "alpinejs/dist/module.cjs";
+// import Alpine from "alpinejs";
+import collapse from "@alpinejs/collapse";
+
+export default function () {
+    window.Alpine = Alpine;
+    Alpine.store("nav", {
         open: false,
-        usedKeyboard: false,
-        init() {
-            this.$watch("open", (value) => {
-                value && this.$refs.closeButton.focus();
-                this.toggleOverlay();
-            });
-            this.toggleOverlay();
+        loginMenuOpen: false,
+        menusOpen() {
+            if (open || loginMenuOpen) {
+                return true;
+            } else if (!open || !loginMenuOpen) {
+                return false;
+            }
         },
-        toggleOverlay() {
-            document.body.classList[this.open ? "add" : "remove"](
-                "h-screen",
-                "overflow-hidden"
-            );
-        },
-    };
-};
-
-window.navToggle = function () {
-    console.log("test");
-    return {
-        selected: null,
-        usedKeyboard: false,
-        init() {
-            this.$watch("selected", (value) => {
-                console.log("selected", value);
-                // value && this.$refs.closeButton.focus();
-                // this.toggleOverlay();
-            });
-            // this.toggleOverlay();
-        },
-        // toggleOverlay() {
-        //     document.body.classList[this.open ? "add" : "remove"](
-        //         "h-screen",
-        //         "overflow-hidden"
-        //     );
-        // },
-    };
-};
-
-window.navToggleTest = function () {
-    console.log("navToggleTest");
-    return {
-        open: null,
-        usedKeyboard: false,
         toggle() {
-            this.$watch("open", (value) => {
-                console.log("open", value);
-                // value && this.$refs.closeButton.focus();
-                // this.toggleOverlay();
-                this.open = value;
-            });
-            console.log("desktop-toggle", this.open);
-            // if (this.open) {
-            //     return this.close();
-            // }
-
-            // this.$refs.button.focus();
-
-            // this.open = true;
+            this.loginMenuOpen = false;
+            this.open = !this.open;
         },
-        close(focusAfter) {
-            //     console.log("desktop-toggle: close", this.open);
-            //     console.log("focusAfter", focusAfter);
-            //     if (!this.open) return;
-
-            this.open = null;
-
-            //     focusAfter && focusAfter.focus();
+        toggleLoginMenu() {
+            this.open = false;
+            this.loginMenuOpen = !this.loginMenuOpen;
         },
-    };
-};
+        subMenuActive: null,
+        isMobile: false,
+        isLoaded: false,
+    });
+
+    Alpine.plugin(collapse);
+    Alpine.start();
+}
