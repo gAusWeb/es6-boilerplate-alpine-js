@@ -146,15 +146,28 @@ $(document).ready(function () {
 
             if ($(".navigation__login").hasClass("open")) {
                 $(".navigation__login").removeClass("open")
-            };
+            };  
 
-            if ($("body").removeClass("overflow-y-auto")) {
-                $("body").removeClass("overflow-y-auto")
-            };   
+            closeNavItems();
+
         } else {
-            $(".dropmenu-custom").each(function () {
-                $(this).find(".dropmenu-custom__head").siblings().slideUp();    
+
+            $(".navigation__desktop-menu-wrapper .collapse-wrapper").find('.item').each(function (currIndex) {
+                const currGrpBody = $(this).find('.body');
+
+                let largestTransitionDuration = 0;
+                const transitionAnimations = $(currGrpBody).css('transition-duration').split(",").map((el) => el.slice(0, -1));
+                transitionAnimations.map((el) => el > largestTransitionDuration ? largestTransitionDuration = el : null );
+
+                $(currGrpBody).css({
+                    "maxHeight": '0px'
+                });
+                $(currGrpBody).removeClass('t1 t2 t3');
+                setTimeout(() => {
+                    $(currGrpBody).addClass('collapsed');
+                }, largestTransitionDuration * 1000);
             });
+             
         }
     }
 

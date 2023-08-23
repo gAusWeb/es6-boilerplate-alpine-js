@@ -51,32 +51,85 @@ class CustomCollapse {
         this.customCollapse = this;
         console.log('imit', this);
 
+        this.isClicked = false;
+
         $(customCollapse).find('.item').each(function(itemIndex) {
             $(this).find(".head").on("click", function () {
-                
+                // console.log(this);
+                if(this.isClicked) return;
+                this.isClicked = true;
+
                 $(customCollapse).find('.item').each(function (currIndex) {
                     const currGrpBody = $(this).find('.body');
+
+                    let largestTransitionDuration = 0;
+                    const transitionAnimations = $(currGrpBody).css('transition-duration').split(",").map((el) => el.slice(0, -1));
+                    transitionAnimations.map((el) => el > largestTransitionDuration ? largestTransitionDuration = el : null );
+    
+
                     if (currIndex != itemIndex) {
-                        $(currGrpBody).css("maxHeight", '0px');
+                        $(currGrpBody).css({
+                            "maxHeight": '0px'
+                            // ,
+                            // "opacity": 0
+                        });
+
+                        
                         setTimeout(() => {
                             $(currGrpBody).addClass('collapsed');
-                        }, $(currGrpBody).css('transition-duration').slice(0, -1) * 1000);
+                            this.isClicked = false;
+                            // console.log(this.isClicked)
+                        }, largestTransitionDuration * 1000);
                     } else {
                     } 
                 });
 
                 const clickedBody = $(this).siblings();
+                // console.log($(clickedBody).css('transition-duration').slice(0, -1) * 1000);
+                // console.log($(clickedBody).css('transition-duration'));
+
+                let largestTransitionDuration = 0;
+                const transitionAnimations = $(clickedBody).css('transition-duration').split(",").map((el) => el.slice(0, -1));
+                transitionAnimations.map((el) => el > largestTransitionDuration ? largestTransitionDuration = el : null );
+
+                // console.log('transitionAnimations', transitionAnimations);
+                // console.log(Math.max($(clickedBody).css('transition-duration').split(",").map((el) => el.slice(0, -1))));
+                
+                // const longestDuration = transitionAnimations.map((currentLargestNumber > previousLargestNumber) ? currentLargestNumber : previousLargestNumber);
+                // console.log('longestDuration', previousLargestNumber)
 
                 if (!$(clickedBody).hasClass('collapsed')) {
-                    $(clickedBody).css("maxHeight", '0px');
+                    $(clickedBody).css({
+                        "maxHeight": '0px'
+                        // ,
+                        // "opacity": 0
+                        // ,
+                        // "transform": "scaleX(0)"
+                    });
+                    $(clickedBody).removeClass('t1 t2 t3');
                     setTimeout(() => {
+                        this.isClicked = false;
                         $(clickedBody).addClass('collapsed');
-                    }, $(clickedBody).css('transition-duration').slice(0, -1) * 1000);
+                    }, largestTransitionDuration * 1000);
                     return;
                 }
 
                 $(clickedBody).removeClass('collapsed');
-                $(clickedBody).css("maxHeight", $(this).siblings().children().outerHeight());
+
+                $(clickedBody).css({
+                    "maxHeight": $(this).siblings().children().outerHeight()
+                //     ,
+                //     "opacity": 1
+                //     ,
+                //     "transform": "scaleX(1)"
+                });
+
+                $(clickedBody).addClass('t1 t2 t3');
+
+                setTimeout(() => {
+                    this.isClicked = false;
+                }, largestTransitionDuration * 1000);
+                
                 
                 // const body = $(this).find('.body');
                 
@@ -92,6 +145,7 @@ class CustomCollapse {
                 // setTimeout(() => {
                 //     $(this).siblings().addClass('collapsed');
                 // }, $(this).siblings().css('transition-duration').slice(0, -1) * 1000);
+                
             })
         })
 
@@ -105,15 +159,35 @@ class CustomCollapse {
             if (!$(customCollapse).hasClass('dropdown')) return;
             if ($target.closest('.collapse-wrapper').length > 0) return;
 
+            
+            
             $(customCollapse).find('.item').each(function (currIndex) {
                 const currGrpBody = $(this).find('.body');
-                $(currGrpBody).css("maxHeight", '0px');
+
+                let largestTransitionDuration = 0;
+                const transitionAnimations = $(currGrpBody).css('transition-duration').split(",").map((el) => el.slice(0, -1));
+                transitionAnimations.map((el) => el > largestTransitionDuration ? largestTransitionDuration = el : null );
+
+                // console.log(largestTransitionDuration);
+
+                $(currGrpBody).css({
+                    "maxHeight": '0px'
+                    // ,
+                    // "opacity": 0
+                    // ,
+                    // "transform": "scaleX(0)"
+                });
+                $(currGrpBody).removeClass('t1 t2 t3');
                 setTimeout(() => {
                     $(currGrpBody).addClass('collapsed');
-                }, $(currGrpBody).css('transition-duration').slice(0, -1) * 1000);
+                }, largestTransitionDuration * 1000);
             });
+            
+            this.isClicked = false;
         });
     }
+
+    
 }
   
 export default function () {
@@ -125,3 +199,13 @@ export default function () {
   
 export { CustomCollapse };
   
+
+
+
+/*
+todo:
+- login desktop menu
+- burger > login desktop/mobile menu
+- pageResize, reset/close appropriate menus
+
+*/
