@@ -204,7 +204,7 @@ nav {
         margin-bottom: 0;
     }
 
-    &__desktop-menu-wrapper {
+    &__desktop-collapse {
         gap: 0.5rem;
     }
 
@@ -216,7 +216,7 @@ nav {
         > li,
         > li > button {
             position: relative;
-            display: block;
+            // display: block;
             background-color: transparent;
         }
 
@@ -379,7 +379,7 @@ nav {
         align-items: center;
     }
 
-    &__desktop-menu-wrapper {
+    &__desktop-collapse {
         display: flex;
         align-items: center;
         gap: 0.5rem;
@@ -479,7 +479,7 @@ nav {
             display: flex;
         }
 
-        &__desktop-menu-wrapper {
+        &__desktop-collapse {
             display: flex;
 
             .navigation__logo {
@@ -553,7 +553,7 @@ nav {
             }
         }
 
-        &__desktop-menu-wrapper {
+        &__desktop-collapse {
             > ul {
                 gap: 32px;
             }

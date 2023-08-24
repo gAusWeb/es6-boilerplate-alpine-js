@@ -2,11 +2,11 @@ class CustomCollapse {
     constructor(customCollapse) {
         this.customCollapse = this;
         this.isClicked = false;
-        const closeClickedCollapse = this.closeClickedCollapse.bind(this);
-        const openClickedCollapse = this.openClickedCollapse.bind(this);
+        const _closeClickedCollapse = this.closeClickedCollapse.bind(this);
+        const _openClickedCollapse = this.openClickedCollapse.bind(this);
         const _setClickOutsideClose = this.setClickOutsideClose.bind(this);
         
-        $(customCollapse).find('.item').each(function(itemIndex) {
+        $(customCollapse).find('.collapse-custom__item').each(function(itemIndex) {
             const _isClicked = this.isClicked;
             $(this).find('.collapse-custom__head').on("click", function () {
                 // prevent multiple clicks
@@ -14,19 +14,19 @@ class CustomCollapse {
                 this.isClicked = true;
 
                 // close all except clicked element
-                $(customCollapse).find('.item').each(function (currIndex) {
-                    currIndex != itemIndex && closeClickedCollapse($(this).find('.collapse-custom__head'));
+                $(customCollapse).find('.collapse-custom__item').each(function (currIndex) {
+                    currIndex != itemIndex && _closeClickedCollapse($(this).find('.collapse-custom__head'));
                 });
                 
                 // toggle collapsed elements
                 if ($(this).siblings().hasClass('collapsed')) {
-                    openClickedCollapse($(this));
+                    _openClickedCollapse($(this));
 
                     $(document).on('click', function (e) {
                         _setClickOutsideClose(customCollapse, e);
                     });
                 } else {
-                    closeClickedCollapse($(this));
+                    _closeClickedCollapse($(this));
 
                     $(document).off('click', function (e) {
                         _setClickOutsideClose(customCollapse, e);
@@ -47,7 +47,7 @@ class CustomCollapse {
     collapseAllActiveItems(customCollapse) {
         const _getTransitionDuration = this.getTransitionDuration.bind(this);
         let _isClicked = this.isClicked;
-        $(customCollapse).find('.item').each(function (currIndex) {
+        $(customCollapse).find('.collapse-custom__item').each(function (currIndex) {
             const clickedBody = $(this).find('.collapse-custom__body');
             $(this).find('.collapse-custom__head').attr('aria-expanded', 'false');
             $(clickedBody).css({"maxHeight": '0px'});

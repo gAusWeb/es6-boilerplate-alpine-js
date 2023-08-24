@@ -97,10 +97,10 @@ function component() {
                 </div>
 
                 <div>
-                  <div class="navigation__desktop-menu-wrapper">
+                  <div class="navigation__desktop-collapse">
   
                     <ul class="navigation__ul desktop collapse-custom dropdown">
-                      <li class="item">
+                      <li class="collapse-custom__item">
                       
                         <button 
                           type="button" 
@@ -142,7 +142,7 @@ function component() {
                         </div>
                       </li>
 
-                      <li class="item">
+                      <li class="collapse-custom__item">
                         <button 
                           type="button" 
                           class="navigation__primary-btn collapse-custom__head"
@@ -188,7 +188,7 @@ function component() {
                           </div>
                         </div>
                       </li>
-                      <li class="item">
+                      <li class="collapse-custom__item">
                         <button 
                           type="button" 
                           class="navigation__primary-btn collapse-custom__head"
@@ -228,7 +228,7 @@ function component() {
                         </div>
                       </li>
 
-                      <li class="item">
+                      <li class="collapse-custom__item">
                         <button 
                           type="button" 
                           class="navigation__primary-btn collapse-custom__head"
@@ -275,7 +275,7 @@ function component() {
                         </div>
                       </li>
                      
-                      <li class="item desktop-login">
+                      <li class="collapse-custom__item desktop-login">
                         <button 
                           aria-expanded="false" 
                           aria-label="Toggle navigation" 
@@ -324,42 +324,42 @@ function component() {
                       </li>
 
                     </ul>
-                    <div class="login-cart-wrapper-outer">
-                      <ul class="navigation__ul login-cart-wrapper collapse-custom dropdown">
-                        <li class="navigation__login status--logged-in item relative">                         
-                          <button
-                            aria-expanded="false" 
-                            aria-label="Toggle navigation"
-                            type="button"
-                            class="navigation__primary-btn collapse-custom__head" 
-                          >
-                              <div>
-                                  <img src="./assets/images/frank-drebbin-avatar.svg" alt="RSL Union Login Avatar" />
-                                  Frank Drebbin
-                              </div>
-                              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-                                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                              </svg>
-                          </button>
-                        </li>
-                        <li class="navigation__cart">
-                          <button class="navigation-icon shopping-cart">
-                            <div class="navigation-icon__wrapper">
-                              <img src="./assets/images/shopping_cart.svg" alt="shopping cart icon">
-                              <div class="navigation-icon__counter solid">
-                                <span>1</span>
-                              </div>
+                  
+                    <ul class="navigation__ul login-cart-wrapper">
+                      <li class="navigation__login status--logged-in relative">                       
+                        <button
+                          aria-expanded="false" 
+                          aria-label="Toggle login navigation"
+                          type="button"
+                          class="navigation__primary-btn" 
+                        >
+                            <div>
+                                <img src="./assets/images/frank-drebbin-avatar.svg" alt="RSL Union Login Avatar" />
+                                Frank Drebbin
                             </div>
-                          </button>
-                        </li>
-                      </ul>
-                    </div> 
-  
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                      </li>
+                      <li class="navigation__cart">
+                        <button class="navigation-icon shopping-cart">
+                          <div class="navigation-icon__wrapper">
+                            <img src="./assets/images/shopping_cart.svg" alt="shopping cart icon">
+                            <div class="navigation-icon__counter solid">
+                              <span>1</span>
+                            </div>
+                          </div>
+                        </button>
+                      </li>
+                    </ul>
+                  
+
                     <button 
                       type="button" 
                       class="navigation__hamburger" 
                       tabindex="0"
-                      aria-expanded="false" 
+                      aria-expanded="false"
                       aria-label="Toggle navigation"
                     >
                       <div class="nav-icon">
@@ -383,10 +383,21 @@ function component() {
     <div class="navigation__sidebar-nav-wrapper navigation__mobile-wrapper translate-x-full">
       <ul>
         <li>
+          <button 
+            class="navigation__mobile-close" 
+            tabindex="0"
+            aria-expanded="false" 
+            aria-label="Close mobile navigation"
+            style="padding: 20px;"
+          >
+            X
+          </button>
+        </li>
 
-          <div class="my-collapse-custom">
+        <li>
+          <div class="navigation__mobile-custom">
             <div class="collapse-custom">
-              <div class="item ">
+              <div class="collapse-custom__item">
                 <button 
                   class="collapse-custom__head" 
                   tabindex="0"
@@ -423,7 +434,7 @@ function component() {
                 </div>
               </div>
         
-              <div class="item">
+              <div class="collapse-custom__item">
                 <button 
                   class="collapse-custom__head" 
                   tabindex="0"
@@ -456,7 +467,7 @@ function component() {
                 </div>
               </div>
         
-              <div class="item">
+              <div class="collapse-custom__item">
                 <button 
                   class="collapse-custom__head" 
                   tabindex="0"
@@ -496,13 +507,40 @@ function component() {
 
 </section>
 
+
+
 <section>
   <div class="navigation__sidebar-nav-wrapper navigation__mobile-login-wrapper translate-x-full">
     <div>
-      test 123
+      <ul>
+        <li>
+          <button 
+            class="navigation__mobile-close" 
+            tabindex="0"
+            aria-expanded="false" 
+            aria-label="Close mobile navigation"
+            style="padding: 20px;"
+          >
+            X
+          </button>
+        </li>
+        <li>
+          <button class="mobile-sub-menu-collapse-trigger navigation-sub-menu" tabindex="0">
+            <div class="navigation-sub-menu__details">
+              <div class="navigation-sub-menu__heading">
+                <p>Prizes</p>
+                <img src="/assets/Frontend RSLLOTT/images/icons/chevron-down.svg" alt="custom alt for heading icon">
+              </div>
+            </div>
+          </button>
+        </li>
+      </ul>
+
     </div>
   </div>
 </section>
+
+<!--
 
 <a href="#" style="font-size: 3rem">test</a>
 
@@ -516,7 +554,7 @@ function component() {
 <br />
 <div class="my-collapse-custom-2">
 <div class="collapse-custom dropdown">
-  <div class="item ">
+  <div class="collapse-custom__item">
     <button class="collapse-custom__head">
       number 1 head
     </button>
@@ -532,7 +570,7 @@ function component() {
     </div>
   </div>
 
-  <div class="item ">
+  <div class="collapse-custom__item">
     <button class="collapse-custom__head">
       number 1 head
     </button>
@@ -548,7 +586,7 @@ function component() {
     </div>
   </div>
 
-  <div class="item ">
+  <div class="collapse-custom__item">
     <button class="collapse-custom__head">
       number 1 head
     </button>
@@ -573,7 +611,7 @@ function component() {
 
   <div class="my-collapse-custom">
     <div class="collapse-custom">
-      <div class="item ">
+      <div class="collapse-custom__item">
         <button class="collapse-custom__head">
           number 1 head
         </button>
@@ -589,7 +627,7 @@ function component() {
         </div>
       </div>
 
-      <div class="item ">
+      <div class="collapse-custom__item">
         <button class="collapse-custom__head">
           number 2 head
         </button>
@@ -605,7 +643,7 @@ function component() {
         </div>
       </div>
 
-      <div class="item ">
+      <div class="collapse-custom__item">
         <button class="collapse-custom__head">
           number 3 head
         </button>
@@ -622,7 +660,7 @@ function component() {
       </div>
     </div>
   </div>
-
+-->
     `;
 
     // SubscribeNowPanel();
@@ -631,21 +669,17 @@ function component() {
     // navMobile();
 
     $(document).ready(function() {
-      $(".navigation__desktop-menu-wrapper .collapse-custom").each(function() {
-        new CustomCollapse(this);
-      })
-
-      $(".login-cart-wrapper-outer .collapse-custom").each(function() {
+      $(".navigation__desktop-collapse .collapse-custom").each(function() {
         new CustomCollapse(this);
       })
       
-      $(".my-collapse-custom .collapse-custom").each(function() {
+      $(".navigation__mobile-custom .collapse-custom").each(function() {
         new CustomCollapse(this);
       })
       
-      $(".my-collapse-custom-2 .collapse-custom").each(function() {
-        new CustomCollapse(this);
-      })
+      // $(".my-collapse-custom-2 .collapse-custom").each(function() {
+      //   new CustomCollapse(this);
+      // })
     });
 
     return element;
