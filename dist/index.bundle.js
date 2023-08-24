@@ -39445,14 +39445,11 @@ class CustomCollapse {
         const closeClickedCollapse = this.closeClickedCollapse.bind(this);
         const openClickedCollapse = this.openClickedCollapse.bind(this);
         const _setClickOutsideClose = this.setClickOutsideClose.bind(this);
-        const _getTransitionDuration = this.getTransitionDuration.bind(this);
-
         
         $(customCollapse).find('.item').each(function(itemIndex) {
             const _isClicked = this.isClicked;
-            
             $(this).find('.collapse-custom__head').on("click", function () {
-
+                // prevent multiple clicks
                 if (_isClicked) return;
                 this.isClicked = true;
 
@@ -39460,7 +39457,7 @@ class CustomCollapse {
                 $(customCollapse).find('.item').each(function (currIndex) {
                     currIndex != itemIndex && closeClickedCollapse($(this).find('.collapse-custom__head'));
                 });
-
+                
                 // toggle collapsed elements
                 if ($(this).siblings().hasClass('collapsed')) {
                     openClickedCollapse($(this));

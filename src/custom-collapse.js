@@ -5,14 +5,11 @@ class CustomCollapse {
         const closeClickedCollapse = this.closeClickedCollapse.bind(this);
         const openClickedCollapse = this.openClickedCollapse.bind(this);
         const _setClickOutsideClose = this.setClickOutsideClose.bind(this);
-        const _getTransitionDuration = this.getTransitionDuration.bind(this);
-
         
         $(customCollapse).find('.item').each(function(itemIndex) {
             const _isClicked = this.isClicked;
-            
             $(this).find('.collapse-custom__head').on("click", function () {
-
+                // prevent multiple clicks
                 if (_isClicked) return;
                 this.isClicked = true;
 
@@ -20,7 +17,7 @@ class CustomCollapse {
                 $(customCollapse).find('.item').each(function (currIndex) {
                     currIndex != itemIndex && closeClickedCollapse($(this).find('.collapse-custom__head'));
                 });
-
+                
                 // toggle collapsed elements
                 if ($(this).siblings().hasClass('collapsed')) {
                     openClickedCollapse($(this));
@@ -46,16 +43,6 @@ class CustomCollapse {
         if ($target.closest('.collapse-custom').length > 0) return;
         _collapseAllActiveItems(customCollapse);        
     }
-
-    // setClickOutsideClose(customCollapse) {
-    //     const _collapseAllActiveItems = this.collapseAllActiveItems.bind(this);
-    //     $(document).on('click', function (e) {
-    //         if (!$(customCollapse).hasClass('dropdown')) return;
-    //         const $target = $(e.target);
-    //         if ($target.closest('.collapse-custom').length > 0) return;
-    //         _collapseAllActiveItems(customCollapse);        
-    //     });
-    // }
 
     collapseAllActiveItems(customCollapse) {
         const _getTransitionDuration = this.getTransitionDuration.bind(this);
