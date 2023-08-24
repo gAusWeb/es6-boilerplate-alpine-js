@@ -99,12 +99,12 @@ function component() {
                 <div>
                   <div class="navigation__desktop-menu-wrapper">
   
-                    <ul class="navigation__ul desktop collapse-wrapper dropdown">
+                    <ul class="navigation__ul desktop collapse-custom dropdown">
                       <li class="item">
                       
                         <button 
                           type="button" 
-                          class="navigation__primary-btn head"
+                          class="navigation__primary-btn collapse-custom__head"
                           aria-expanded="false" 
                           aria-label="Toggle navigation"
                         >
@@ -118,7 +118,7 @@ function component() {
                           </svg>
                         </button>
 
-                        <div class="body collapsed" aria-expanded="false" 
+                        <div class="collapse-custom__body collapsed" aria-expanded="false" 
                         aria-label="Toggle navigation">
                           <div>
                             <button class="mobile-sub-menu-collapse-trigger navigation-sub-menu">
@@ -145,7 +145,7 @@ function component() {
                       <li class="item">
                         <button 
                           type="button" 
-                          class="navigation__primary-btn head"
+                          class="navigation__primary-btn collapse-custom__head"
                           aria-expanded="false" 
                           aria-label="Toggle navigation"
                         >
@@ -158,7 +158,7 @@ function component() {
                           </svg>
                         </button>
 
-                        <div class="body collapsed">
+                        <div class="collapse-custom__body collapsed">
                           <div>
                             <button class="mobile-sub-menu-collapse-trigger navigation-sub-menu">
                               <div class="navigation-sub-menu__details">
@@ -191,7 +191,7 @@ function component() {
                       <li class="item">
                         <button 
                           type="button" 
-                          class="navigation__primary-btn head"
+                          class="navigation__primary-btn collapse-custom__head"
                           aria-expanded="false" 
                           aria-label="Toggle navigation"
                         >
@@ -205,7 +205,7 @@ function component() {
                           </svg>
                         </button>
 
-                        <div class="body collapsed">
+                        <div class="collapse-custom__body collapsed">
                           <div>
                             <button class="mobile-sub-menu-collapse-trigger navigation-sub-menu">
                               <div class="navigation-sub-menu__details">
@@ -231,7 +231,7 @@ function component() {
                       <li class="item">
                         <button 
                           type="button" 
-                          class="navigation__primary-btn head"
+                          class="navigation__primary-btn collapse-custom__head"
                           aria-expanded="false" 
                           aria-label="Toggle navigation"
                         >
@@ -244,7 +244,7 @@ function component() {
                           </svg>
                         </button>
 
-                        <div class="body collapsed">
+                        <div class="collapse-custom__body collapsed">
                           <div>
                             <button class="mobile-sub-menu-collapse-trigger navigation-sub-menu">
                               <div class="navigation-sub-menu__details">
@@ -280,7 +280,7 @@ function component() {
                           aria-expanded="false" 
                           aria-label="Toggle navigation" 
                           type="button" 
-                          class="navigation__primary-btn head"
+                          class="navigation__primary-btn collapse-custom__head"
                         >
                           <div>
                             <img src="./assets/images/frank-drebbin-avatar.svg" alt="RSL Union Login Avatar">
@@ -292,7 +292,7 @@ function component() {
                         </button>
                         
 
-                        <div class="body collapsed">
+                        <div class="collapse-custom__body collapsed">
                           <div>
                             <button class="mobile-sub-menu-collapse-trigger navigation-sub-menu">
                               <div class="navigation-sub-menu__details">
@@ -325,13 +325,13 @@ function component() {
 
                     </ul>
                     <div class="login-cart-wrapper-outer">
-                      <ul class="navigation__ul login-cart-wrapper collapse-wrapper dropdown">
+                      <ul class="navigation__ul login-cart-wrapper collapse-custom dropdown">
                         <li class="navigation__login status--logged-in item relative">                         
                           <button
                             aria-expanded="false" 
                             aria-label="Toggle navigation"
                             type="button"
-                            class="navigation__primary-btn head" 
+                            class="navigation__primary-btn collapse-custom__head" 
                           >
                               <div>
                                   <img src="./assets/images/frank-drebbin-avatar.svg" alt="RSL Union Login Avatar" />
@@ -384,11 +384,11 @@ function component() {
       <ul>
         <li>
 
-          <div class="my-collapse-wrapper">
-            <div class="collapse-wrapper">
+          <div class="my-collapse-custom">
+            <div class="collapse-custom">
               <div class="item ">
                 <button 
-                  class="head" 
+                  class="collapse-custom__head" 
                   tabindex="0"
                   aria-expanded="false" 
                   aria-label="Toggle mobile navigation"
@@ -396,7 +396,7 @@ function component() {
                   number 1 head
                 </button>
         
-                <div class="body collapsed">
+                <div class="collapse-custom__body collapsed">
                   <div>
                     <button 
                       class="mobile-sub-menu-collapse-trigger 
@@ -425,7 +425,7 @@ function component() {
         
               <div class="item">
                 <button 
-                  class="head" 
+                  class="collapse-custom__head" 
                   tabindex="0"
                   aria-expanded="false" 
                   aria-label="Toggle mobile navigation"
@@ -433,7 +433,7 @@ function component() {
                   number 2 head
                 </button>
         
-                <div class="body collapsed">
+                <div class="collapse-custom__body collapsed">
                   <div>
                     <button class="mobile-sub-menu-collapse-trigger navigation-sub-menu" tabindex="0">
                       <div class="navigation-sub-menu__details">
@@ -458,7 +458,7 @@ function component() {
         
               <div class="item">
                 <button 
-                  class="head" 
+                  class="collapse-custom__head" 
                   tabindex="0"
                   aria-expanded="false" 
                   aria-label="Toggle mobile navigation"
@@ -466,7 +466,7 @@ function component() {
                   number 3 head
                 </button>
         
-                <div class="body collapsed">
+                <div class="collapse-custom__body collapsed">
                   <div>
                     <button class="mobile-sub-menu-collapse-trigger navigation-sub-menu" tabindex="0">
                       <div class="navigation-sub-menu__details">
@@ -514,14 +514,14 @@ function component() {
 <br />
 <br />
 <br />
-<div class="my-collapse-wrapper-2">
-<div class="collapse-wrapper dropdown">
+<div class="my-collapse-custom-2">
+<div class="collapse-custom dropdown">
   <div class="item ">
-    <button class="head">
+    <button class="collapse-custom__head">
       number 1 head
     </button>
 
-    <div class="body collapsed">
+    <div class="collapse-custom__body collapsed">
       <div>
         <a href="#">sub-menu item 1</a>
         <a href="#">sub-menu item 1</a>
@@ -533,11 +533,11 @@ function component() {
   </div>
 
   <div class="item ">
-    <button class="head">
+    <button class="collapse-custom__head">
       number 1 head
     </button>
 
-    <div class="body collapsed">
+    <div class="collapse-custom__body collapsed">
       <div>
         <a href="#">sub-menu item 1</a>
         <a href="#">sub-menu item 1</a>
@@ -549,11 +549,11 @@ function component() {
   </div>
 
   <div class="item ">
-    <button class="head">
+    <button class="collapse-custom__head">
       number 1 head
     </button>
 
-    <div class="body collapsed">
+    <div class="collapse-custom__body collapsed">
       <div>
         <a href="#">sub-menu item 1</a>
         <a href="#">sub-menu item 1</a>
@@ -571,14 +571,14 @@ function component() {
 </p>
 
 
-  <div class="my-collapse-wrapper">
-    <div class="collapse-wrapper">
+  <div class="my-collapse-custom">
+    <div class="collapse-custom">
       <div class="item ">
-        <button class="head">
+        <button class="collapse-custom__head">
           number 1 head
         </button>
 
-        <div class="body" style="max-height: 206px">
+        <div class="collapse-custom__body" style="max-height: 206px">
           <div>
             <a href="#">sub-menu item 1</a>
             <a href="#">sub-menu item 1</a>
@@ -590,11 +590,11 @@ function component() {
       </div>
 
       <div class="item ">
-        <button class="head">
+        <button class="collapse-custom__head">
           number 2 head
         </button>
 
-        <div class="body collapsed">
+        <div class="collapse-custom__body collapsed">
           <div>
             <a href="#">sub-menu item 1</a>
             <a href="#">sub-menu item 1</a>
@@ -606,11 +606,11 @@ function component() {
       </div>
 
       <div class="item ">
-        <button class="head">
+        <button class="collapse-custom__head">
           number 3 head
         </button>
 
-        <div class="body collapsed">
+        <div class="collapse-custom__body collapsed">
           <div>
             <a href="#">sub-menu item 1</a>
             <a href="#">sub-menu item 1</a>
@@ -631,19 +631,19 @@ function component() {
     // navMobile();
 
     $(document).ready(function() {
-      $(".navigation__desktop-menu-wrapper .collapse-wrapper").each(function() {
+      $(".navigation__desktop-menu-wrapper .collapse-custom").each(function() {
         new CustomCollapse(this);
       })
 
-      $(".login-cart-wrapper-outer .collapse-wrapper").each(function() {
-        new CustomCollapse(this);
-      })
-
-      $(".my-collapse-wrapper .collapse-wrapper").each(function() {
+      $(".login-cart-wrapper-outer .collapse-custom").each(function() {
         new CustomCollapse(this);
       })
       
-      $(".my-collapse-wrapper-2 .collapse-wrapper").each(function() {
+      $(".my-collapse-custom .collapse-custom").each(function() {
+        new CustomCollapse(this);
+      })
+      
+      $(".my-collapse-custom-2 .collapse-custom").each(function() {
         new CustomCollapse(this);
       })
     });
