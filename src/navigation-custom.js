@@ -35,7 +35,6 @@ $(document).ready(function () {
     });
 
     $(".navigation__login > button:first-of-type").on("click", function () {
-        console.log(this);
         if (!$(".navigation__mobile-wrapper").hasClass('translate-x-full')) {
             $(".navigation__mobile-wrapper").addClass("translate-x-full");
             $(this).toggleClass("open").attr('aria-expanded', 'false');
