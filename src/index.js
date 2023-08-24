@@ -89,12 +89,25 @@ function component() {
           <div class="row">
             <div class="col-xs-12">    
               <div class="navigation__header-inner">
+                
+                <div class="navigation__logo">
+                  <a href="#" tabindex="0">
+                    <img src="./assets/images/rsl-art-union-logo.svg" alt="RSL Art Uninion Winners">
+                  </a>
+                </div>
+
                 <div>
                   <div class="navigation__desktop-menu-wrapper">
   
                     <ul class="navigation__ul desktop collapse-wrapper dropdown">
                       <li class="item">
-                        <button type="button" class="navigation__primary-btn head">
+                      
+                        <button 
+                          type="button" 
+                          class="navigation__primary-btn head"
+                          aria-expanded="false" 
+                          aria-label="Toggle navigation"
+                        >
                           Prizes
 
                           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20"
@@ -105,7 +118,8 @@ function component() {
                           </svg>
                         </button>
 
-                        <div class="body collapsed">
+                        <div class="body collapsed" aria-expanded="false" 
+                        aria-label="Toggle navigation">
                           <div>
                             <button class="mobile-sub-menu-collapse-trigger navigation-sub-menu">
                               <div class="navigation-sub-menu__details">
@@ -129,7 +143,12 @@ function component() {
                       </li>
 
                       <li class="item">
-                        <button type="button" class="navigation__primary-btn head">
+                        <button 
+                          type="button" 
+                          class="navigation__primary-btn head"
+                          aria-expanded="false" 
+                          aria-label="Toggle navigation"
+                        >
                           VIP Club
                           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20"
                             fill="currentColor">
@@ -170,7 +189,12 @@ function component() {
                         </div>
                       </li>
                       <li class="item">
-                        <button type="button" class="navigation__primary-btn head">
+                        <button 
+                          type="button" 
+                          class="navigation__primary-btn head"
+                          aria-expanded="false" 
+                          aria-label="Toggle navigation"
+                        >
                           Winners
 
                           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20"
@@ -205,7 +229,12 @@ function component() {
                       </li>
 
                       <li class="item">
-                        <button type="button" class="navigation__primary-btn head">
+                        <button 
+                          type="button" 
+                          class="navigation__primary-btn head"
+                          aria-expanded="false" 
+                          aria-label="Toggle navigation"
+                        >
                           About us
                           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20"
                             fill="currentColor">
@@ -247,15 +276,21 @@ function component() {
                       </li>
                      
                       <li class="item desktop-login">
-                        <button type="button" class="navigation__primary-btn head">
-                          Login
-                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20"
-                            fill="currentColor">
-                            <path fill-rule="evenodd"
-                              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                              clip-rule="evenodd" />
+                        <button 
+                          aria-expanded="false" 
+                          aria-label="Toggle navigation" 
+                          type="button" 
+                          class="navigation__primary-btn head"
+                        >
+                          <div>
+                            <img src="./assets/images/frank-drebbin-avatar.svg" alt="RSL Union Login Avatar">
+                            Frank Drebbin
+                          </div>
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                           </svg>
                         </button>
+                        
 
                         <div class="body collapsed">
                           <div>
@@ -291,58 +326,22 @@ function component() {
                     </ul>
                     <div class="login-cart-wrapper-outer">
                       <ul class="navigation__ul login-cart-wrapper collapse-wrapper dropdown">
-                        <li class="navigation__login status--logged-in item"> 
-                          <button 
-                            :aria-expanded="open"
-                            :aria-controls="$id('dropdown-button')" type="button" class="navigation-icon account logged-in"
-                            :class="open && ' open'"
+                        <li class="navigation__login status--logged-in item relative">                         
+                          <button
+                            aria-expanded="false" 
+                            aria-label="Toggle navigation"
+                            type="button"
+                            class="navigation__primary-btn head" 
                           >
-                            <div class="navigation-icon__wrapper">
                               <div>
-                                <img src="./assets/images/frank-drebbin-avatar.svg" alt="RSL Union Login Avatar" />
-                                <div class="navigation-icon__background"></div>
+                                  <img src="./assets/images/frank-drebbin-avatar.svg" alt="RSL Union Login Avatar" />
+                                  Frank Drebbin
                               </div>
-                              <span class="navigation-icon__text" style="display: none">FrankDrebbin</span>
-                            </div>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20"
-                              fill="currentColor">
-                              <path fill-rule="evenodd"
-                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                clip-rule="evenodd" />
-                            </svg>
+                              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                              </svg>
                           </button>
-    
-                          <div style="display: none;" class="navigation__desktop-menu-dropdown body">
-                            <ul class="navigation__ul dropdown">
-                              <li>
-                                {{> 
-                                  navigation-sub-menu/navigation-sub-menu--simple
-                                  menuHeading="My details"
-                                }}
-                              </li>
-                              <li>
-                                {{> 
-                                  navigation-sub-menu/navigation-sub-menu--simple
-                                  menuHeading="My orders"
-                                }}
-                              </li>
-                              <li>
-                                {{> 
-                                  navigation-sub-menu/navigation-sub-menu--simple
-                                  menuHeading="Buy tickets"
-                                }}
-                              </li>
-                              <li>
-                                {{> 
-                                  navigation-sub-menu/navigation-sub-menu--simple
-                                  menuHeading="Logout"
-                                  headingIcon="logout.svg"
-                                }}
-                              </li>
-                            </ul>
-                          </div>
                         </li>
-    
                         <li class="navigation__cart">
                           <button class="navigation-icon shopping-cart">
                             <div class="navigation-icon__wrapper">
@@ -356,19 +355,19 @@ function component() {
                       </ul>
                     </div> 
   
-                    <button class="navigation__hamburger">
+                    <button 
+                      type="button" 
+                      class="navigation__hamburger" 
+                      tabindex="0"
+                      aria-expanded="false" 
+                      aria-label="Toggle navigation"
+                    >
                       <div class="nav-icon">
                         <div></div>
                       </div>
                     </button>
   
                   </div>
-                </div>
-  
-                <div class="navigation__logo">
-                  <a href="#">
-                    <img src="./assets/images/rsl-art-union-logo.svg" alt="RSL Art Uninion Winners">
-                  </a>
                 </div>
               </div>
             </div>
@@ -388,13 +387,22 @@ function component() {
           <div class="my-collapse-wrapper">
             <div class="collapse-wrapper">
               <div class="item ">
-                <button class="head">
+                <button 
+                  class="head" 
+                  tabindex="0"
+                  aria-expanded="false" 
+                  aria-label="Toggle mobile navigation"
+                >
                   number 1 head
                 </button>
         
                 <div class="body collapsed">
                   <div>
-                    <button class="mobile-sub-menu-collapse-trigger navigation-sub-menu">
+                    <button 
+                      class="mobile-sub-menu-collapse-trigger 
+                      navigation-sub-menu" 
+                      tabindex="0"
+                    >
                       <div class="navigation-sub-menu__details">
                         <div class="navigation-sub-menu__heading">
                           <p>Prizes</p>
@@ -402,9 +410,9 @@ function component() {
                         </div>
                       </div>
                     </button>
-                    <button class="mobile-sub-menu-collapse-trigger navigation-sub-menu">
+                    <button class="mobile-sub-menu-collapse-trigger navigation-sub-menu" tabindex="0">
                       <div class="navigation-sub-menu__details">
-                        <div class="navigation-sub-menu__heading">
+                        <div class="navigation-sub-menu__heading" >
                           <p>Prizes</p>
                           <img src="/assets/Frontend RSLLOTT/images/icons/chevron-down.svg" alt="custom alt for heading icon">
                         </div>
@@ -415,14 +423,19 @@ function component() {
                 </div>
               </div>
         
-              <div class="item ">
-                <button class="head">
+              <div class="item">
+                <button 
+                  class="head" 
+                  tabindex="0"
+                  aria-expanded="false" 
+                  aria-label="Toggle mobile navigation"
+                >
                   number 2 head
                 </button>
         
                 <div class="body collapsed">
                   <div>
-                    <button class="mobile-sub-menu-collapse-trigger navigation-sub-menu">
+                    <button class="mobile-sub-menu-collapse-trigger navigation-sub-menu" tabindex="0">
                       <div class="navigation-sub-menu__details">
                         <div class="navigation-sub-menu__heading">
                           <p>Prizes</p>
@@ -430,7 +443,7 @@ function component() {
                         </div>
                       </div>
                     </button>
-                    <button class="mobile-sub-menu-collapse-trigger navigation-sub-menu">
+                    <button class="mobile-sub-menu-collapse-trigger navigation-sub-menu" tabindex="0">
                       <div class="navigation-sub-menu__details">
                         <div class="navigation-sub-menu__heading">
                           <p>Prizes</p>
@@ -443,14 +456,19 @@ function component() {
                 </div>
               </div>
         
-              <div class="item ">
-                <button class="head">
+              <div class="item">
+                <button 
+                  class="head" 
+                  tabindex="0"
+                  aria-expanded="false" 
+                  aria-label="Toggle mobile navigation"
+                >
                   number 3 head
                 </button>
         
                 <div class="body collapsed">
                   <div>
-                    <button class="mobile-sub-menu-collapse-trigger navigation-sub-menu">
+                    <button class="mobile-sub-menu-collapse-trigger navigation-sub-menu" tabindex="0">
                       <div class="navigation-sub-menu__details">
                         <div class="navigation-sub-menu__heading">
                           <p>Prizes</p>
@@ -458,7 +476,7 @@ function component() {
                         </div>
                       </div>
                     </button>
-                    <button class="mobile-sub-menu-collapse-trigger navigation-sub-menu">
+                    <button class="mobile-sub-menu-collapse-trigger navigation-sub-menu" tabindex="0">
                       <div class="navigation-sub-menu__details">
                         <div class="navigation-sub-menu__heading">
                           <p>Prizes</p>

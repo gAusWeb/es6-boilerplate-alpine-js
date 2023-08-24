@@ -104,6 +104,10 @@
   }
 }
 
+.navigation__login > button {
+  cursor:pointer;
+}
+
 
 .desktop-login {
   display: none;
@@ -127,9 +131,9 @@ ul.navigation__ul.desktop.collapse-wrapper.dropdown {
     display: flex;
   }
 
-  // .login-cart-wrapper-outer {
-  //   display: none;
-  // }
+  .navigation__login {
+    display: none;
+  }
   
   .desktop-login {
     display: block;

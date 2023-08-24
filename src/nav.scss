@@ -341,7 +341,7 @@ nav {
     &__header-inner {
         display: flex;
         align-items: center;
-        flex-direction: row-reverse;
+        
         justify-content: space-between;
         width: 100%;
         padding: 0;
@@ -492,6 +492,10 @@ nav {
         }
 
         display: block;
+
+        &__header-inner {
+            flex-direction: row;
+        }
 
         &__hamburger {
             display: none;
