@@ -375,170 +375,168 @@ function component() {
         </div>
       </header>
     </div>
+
+    <section>
+      <div class="navigation__sidebar-nav-wrapper navigation__mobile-wrapper translate-x-full">
+        <ul>
+          <li>
+            <button 
+              class="navigation__mobile-close" 
+              tabindex="0"
+              aria-expanded="false" 
+              aria-label="Close mobile navigation"
+              style="padding: 20px;"
+            >
+              X
+            </button>
+          </li>
+  
+          <li>
+            <div class="navigation__mobile-custom">
+              <div class="collapse-custom">
+                <div class="collapse-custom__item">
+                  <button 
+                    class="collapse-custom__head" 
+                    tabindex="0"
+                    aria-expanded="false" 
+                    aria-label="Toggle mobile navigation"
+                  >
+                    number 1 head
+                  </button>
+          
+                  <div class="collapse-custom__body collapsed">
+                    <div>
+                      <button 
+                        class="mobile-sub-menu-collapse-trigger 
+                        navigation-sub-menu" 
+                        tabindex="0"
+                      >
+                        <div class="navigation-sub-menu__details">
+                          <div class="navigation-sub-menu__heading">
+                            <p>Prizes</p>
+                            <img src="/assets/Frontend RSLLOTT/images/icons/chevron-down.svg" alt="custom alt for heading icon">
+                          </div>
+                        </div>
+                      </button>
+                      <button class="mobile-sub-menu-collapse-trigger navigation-sub-menu" tabindex="0">
+                        <div class="navigation-sub-menu__details">
+                          <div class="navigation-sub-menu__heading" >
+                            <p>Prizes</p>
+                            <img src="/assets/Frontend RSLLOTT/images/icons/chevron-down.svg" alt="custom alt for heading icon">
+                          </div>
+                        </div>
+                      </button>
+                    
+                    </div>
+                  </div>
+                </div>
+          
+                <div class="collapse-custom__item">
+                  <button 
+                    class="collapse-custom__head" 
+                    tabindex="0"
+                    aria-expanded="false" 
+                    aria-label="Toggle mobile navigation"
+                  >
+                    number 2 head
+                  </button>
+          
+                  <div class="collapse-custom__body collapsed">
+                    <div>
+                      <button class="mobile-sub-menu-collapse-trigger navigation-sub-menu" tabindex="0">
+                        <div class="navigation-sub-menu__details">
+                          <div class="navigation-sub-menu__heading">
+                            <p>Prizes</p>
+                            <img src="/assets/Frontend RSLLOTT/images/icons/chevron-down.svg" alt="custom alt for heading icon">
+                          </div>
+                        </div>
+                      </button>
+                      <button class="mobile-sub-menu-collapse-trigger navigation-sub-menu" tabindex="0">
+                        <div class="navigation-sub-menu__details">
+                          <div class="navigation-sub-menu__heading">
+                            <p>Prizes</p>
+                            <img src="/assets/Frontend RSLLOTT/images/icons/chevron-down.svg" alt="custom alt for heading icon">
+                          </div>
+                        </div>
+                      </button>
+              
+                    </div>
+                  </div>
+                </div>
+          
+                <div class="collapse-custom__item">
+                  <button 
+                    class="collapse-custom__head" 
+                    tabindex="0"
+                    aria-expanded="false" 
+                    aria-label="Toggle mobile navigation"
+                  >
+                    number 3 head
+                  </button>
+          
+                  <div class="collapse-custom__body collapsed">
+                    <div>
+                      <button class="mobile-sub-menu-collapse-trigger navigation-sub-menu" tabindex="0">
+                        <div class="navigation-sub-menu__details">
+                          <div class="navigation-sub-menu__heading">
+                            <p>Prizes</p>
+                            <img src="/assets/Frontend RSLLOTT/images/icons/chevron-down.svg" alt="custom alt for heading icon">
+                          </div>
+                        </div>
+                      </button>
+                      <button class="mobile-sub-menu-collapse-trigger navigation-sub-menu" tabindex="0">
+                        <div class="navigation-sub-menu__details">
+                          <div class="navigation-sub-menu__heading">
+                            <p>Prizes</p>
+                            <img src="/assets/Frontend RSLLOTT/images/icons/chevron-down.svg" alt="custom alt for heading icon">
+                          </div>
+                        </div>
+                      </button>
+          
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+  </section>
+  
+  
+  
+  <section>
+    <div class="navigation__sidebar-nav-wrapper navigation__mobile-login-wrapper translate-x-full">
+      <div>
+        <ul>
+          <li>
+            <button 
+              class="navigation__mobile-close" 
+              tabindex="0"
+              aria-expanded="false" 
+              aria-label="Close mobile navigation"
+              style="padding: 20px;"
+            >
+              X
+            </button>
+          </li>
+          <li>
+            <button class="mobile-sub-menu-collapse-trigger navigation-sub-menu" tabindex="0">
+              <div class="navigation-sub-menu__details">
+                <div class="navigation-sub-menu__heading">
+                  <p>Prizes</p>
+                  <img src="/assets/Frontend RSLLOTT/images/icons/chevron-down.svg" alt="custom alt for heading icon">
+                </div>
+              </div>
+            </button>
+          </li>
+        </ul>
+  
+      </div>
+    </div>
+  </section>
   </div>
   
  
             
-  <section>
-    <div class="navigation__sidebar-nav-wrapper navigation__mobile-wrapper translate-x-full">
-      <ul>
-        <li>
-          <button 
-            class="navigation__mobile-close" 
-            tabindex="0"
-            aria-expanded="false" 
-            aria-label="Close mobile navigation"
-            style="padding: 20px;"
-          >
-            X
-          </button>
-        </li>
-
-        <li>
-          <div class="navigation__mobile-custom">
-            <div class="collapse-custom">
-              <div class="collapse-custom__item">
-                <button 
-                  class="collapse-custom__head" 
-                  tabindex="0"
-                  aria-expanded="false" 
-                  aria-label="Toggle mobile navigation"
-                >
-                  number 1 head
-                </button>
-        
-                <div class="collapse-custom__body collapsed">
-                  <div>
-                    <button 
-                      class="mobile-sub-menu-collapse-trigger 
-                      navigation-sub-menu" 
-                      tabindex="0"
-                    >
-                      <div class="navigation-sub-menu__details">
-                        <div class="navigation-sub-menu__heading">
-                          <p>Prizes</p>
-                          <img src="/assets/Frontend RSLLOTT/images/icons/chevron-down.svg" alt="custom alt for heading icon">
-                        </div>
-                      </div>
-                    </button>
-                    <button class="mobile-sub-menu-collapse-trigger navigation-sub-menu" tabindex="0">
-                      <div class="navigation-sub-menu__details">
-                        <div class="navigation-sub-menu__heading" >
-                          <p>Prizes</p>
-                          <img src="/assets/Frontend RSLLOTT/images/icons/chevron-down.svg" alt="custom alt for heading icon">
-                        </div>
-                      </div>
-                    </button>
-                  
-                  </div>
-                </div>
-              </div>
-        
-              <div class="collapse-custom__item">
-                <button 
-                  class="collapse-custom__head" 
-                  tabindex="0"
-                  aria-expanded="false" 
-                  aria-label="Toggle mobile navigation"
-                >
-                  number 2 head
-                </button>
-        
-                <div class="collapse-custom__body collapsed">
-                  <div>
-                    <button class="mobile-sub-menu-collapse-trigger navigation-sub-menu" tabindex="0">
-                      <div class="navigation-sub-menu__details">
-                        <div class="navigation-sub-menu__heading">
-                          <p>Prizes</p>
-                          <img src="/assets/Frontend RSLLOTT/images/icons/chevron-down.svg" alt="custom alt for heading icon">
-                        </div>
-                      </div>
-                    </button>
-                    <button class="mobile-sub-menu-collapse-trigger navigation-sub-menu" tabindex="0">
-                      <div class="navigation-sub-menu__details">
-                        <div class="navigation-sub-menu__heading">
-                          <p>Prizes</p>
-                          <img src="/assets/Frontend RSLLOTT/images/icons/chevron-down.svg" alt="custom alt for heading icon">
-                        </div>
-                      </div>
-                    </button>
-            
-                  </div>
-                </div>
-              </div>
-        
-              <div class="collapse-custom__item">
-                <button 
-                  class="collapse-custom__head" 
-                  tabindex="0"
-                  aria-expanded="false" 
-                  aria-label="Toggle mobile navigation"
-                >
-                  number 3 head
-                </button>
-        
-                <div class="collapse-custom__body collapsed">
-                  <div>
-                    <button class="mobile-sub-menu-collapse-trigger navigation-sub-menu" tabindex="0">
-                      <div class="navigation-sub-menu__details">
-                        <div class="navigation-sub-menu__heading">
-                          <p>Prizes</p>
-                          <img src="/assets/Frontend RSLLOTT/images/icons/chevron-down.svg" alt="custom alt for heading icon">
-                        </div>
-                      </div>
-                    </button>
-                    <button class="mobile-sub-menu-collapse-trigger navigation-sub-menu" tabindex="0">
-                      <div class="navigation-sub-menu__details">
-                        <div class="navigation-sub-menu__heading">
-                          <p>Prizes</p>
-                          <img src="/assets/Frontend RSLLOTT/images/icons/chevron-down.svg" alt="custom alt for heading icon">
-                        </div>
-                      </div>
-                    </button>
-        
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-       
-    </div>
-
-</section>
-
-
-
-<section>
-  <div class="navigation__sidebar-nav-wrapper navigation__mobile-login-wrapper translate-x-full">
-    <div>
-      <ul>
-        <li>
-          <button 
-            class="navigation__mobile-close" 
-            tabindex="0"
-            aria-expanded="false" 
-            aria-label="Close mobile navigation"
-            style="padding: 20px;"
-          >
-            X
-          </button>
-        </li>
-        <li>
-          <button class="mobile-sub-menu-collapse-trigger navigation-sub-menu" tabindex="0">
-            <div class="navigation-sub-menu__details">
-              <div class="navigation-sub-menu__heading">
-                <p>Prizes</p>
-                <img src="/assets/Frontend RSLLOTT/images/icons/chevron-down.svg" alt="custom alt for heading icon">
-              </div>
-            </div>
-          </button>
-        </li>
-      </ul>
-
-    </div>
-  </div>
-</section>
 
 <!--
 
@@ -554,7 +552,7 @@ function component() {
 <br />
 <div class="my-collapse-custom-2">
 <div class="collapse-custom dropdown">
-  <div class="collapse-custom__item">
+  <div class="collapse-custom__item collapsed-item">
     <button class="collapse-custom__head">
       number 1 head
     </button>
@@ -570,7 +568,7 @@ function component() {
     </div>
   </div>
 
-  <div class="collapse-custom__item">
+  <div class="collapse-custom__item collapsed-item">
     <button class="collapse-custom__head">
       number 1 head
     </button>
@@ -586,7 +584,7 @@ function component() {
     </div>
   </div>
 
-  <div class="collapse-custom__item">
+  <div class="collapse-custom__item collapsed-item">
     <button class="collapse-custom__head">
       number 1 head
     </button>
@@ -611,7 +609,7 @@ function component() {
 
   <div class="my-collapse-custom">
     <div class="collapse-custom">
-      <div class="collapse-custom__item">
+      <div class="collapse-custom__item collapsed-item">
         <button class="collapse-custom__head">
           number 1 head
         </button>
@@ -627,7 +625,7 @@ function component() {
         </div>
       </div>
 
-      <div class="collapse-custom__item">
+      <div class="collapse-custom__item collapsed-item">
         <button class="collapse-custom__head">
           number 2 head
         </button>
@@ -643,7 +641,7 @@ function component() {
         </div>
       </div>
 
-      <div class="collapse-custom__item">
+      <div class="collapse-custom__item collapsed-item">
         <button class="collapse-custom__head">
           number 3 head
         </button>

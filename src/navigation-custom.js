@@ -53,7 +53,7 @@ $(document).ready(function () {
             $(".navigation__mobile-wrapper").addClass("translate-x-full");
             $(".navigation__mobile-login-wrapper").addClass("translate-x-full");
             $(".navigation__hamburger").removeClass("open").attr('aria-expanded', 'false');
-            $(".navigation__login > button:first-of-type").removeClass("open").attr('aria-expanded', 'false');
+            // $(".navigation__login > button:first-of-type").removeClass("open").attr('aria-expanded', 'false');
             closeNavItems();
         });
     });

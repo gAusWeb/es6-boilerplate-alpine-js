@@ -199,6 +199,10 @@ nav {
 }
 
 .navigation {
+    .container {
+        width: calc(100% - 2rem);
+    }
+    
     .col-xs-12 {
         width: 100%;
         margin-bottom: 0;
@@ -360,18 +364,13 @@ nav {
         box-shadow: 0 4px 8px 0 rgba(50, 123, 163, 0.25);
 
         &.translate-x-full {
-            --tw-translate-x: 100%;
-            transform: translate(var(--tw-translate-x), var(--tw-translate-y))
-                rotate(var(--tw-rotate)) skewX(var(--tw-skew-x))
-                skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
-                scaleY(var(--tw-scale-y));
-            
+            transform: translate(100%);
         }
     }
 
     &__mobile-login-wrapper,
     &__mobile-wrapper {
-        top: 172px;
+        overflow-y: auto;
     }
 
     .navigation__logo a {
@@ -457,12 +456,16 @@ nav {
     }
 
     @include breakpoint(md2) {
+        display: block;
+        
+        .container {
+            max-width: calc(100% - 4rem);
+        }
+        
         &__mobile {
             display: none;
         }
-
-        display: block;
-
+        
         &__header-inner {
             flex-direction: row;
         }
