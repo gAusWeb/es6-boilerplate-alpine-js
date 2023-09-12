@@ -23,9 +23,11 @@ import { CustomCollapse } from "./custom-collapse";
 // import mobileMenu from "./mobile-menu";
 // import rsllott from "./navigation-mobile";
 // import { alertTest } from "./alert";
+import "./navigation-icon";
 
-import Alpine from "alpinejs";
-import collapse from "@alpinejs/collapse";
+import "./dayjsCustom";
+
+
 
 function component() {
     // window.Alpine = Alpine;
@@ -276,11 +278,24 @@ function component() {
                       </li>
                      
                       <li class="collapse-custom__item desktop-login">
+                        <button aria-expanded="false" aria-label="Toggle navigation" type="button" class="collapse-custom__head navigation__primary-btn navigation-icon account logged-in">
+                          <div class="navigation-icon__wrapper">
+                            <div class="navigation-icon__image-wrapper">
+                              <img src="./assets/images/frank-drebbin-avatar.svg" alt="RSL Union Login Avatar">
+                              <div class="navigation-icon__background"></div>
+                            </div>
+                            <div class="navigation-icon__text-wrapper">
+                              <span class="navigation-icon__text">Frank Drebbin</span>
+                              <img class="navigation__button-image" width="20px" height="20px src="https://cdn3.iconfinder.com/data/icons/user-interface-169/32/chevron-bottom-512.png">
+                            </div>
+                          </div>
+                        </button>
+                        <!--
                         <button 
                           aria-expanded="false" 
                           aria-label="Toggle navigation" 
                           type="button" 
-                          class="navigation__primary-btn collapse-custom__head"
+                          class="collapse-custom__head navigation__primary-btn navigation-icon account logged-in"
                         >
                           <div>
                             <img src="./assets/images/frank-drebbin-avatar.svg" alt="RSL Union Login Avatar">
@@ -290,7 +305,7 @@ function component() {
                               <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                           </svg>
                         </button>
-                        
+                        -->
 
                         <div class="collapse-custom__body collapsed">
                           <div>
@@ -327,19 +342,22 @@ function component() {
                   
                     <ul class="navigation__ul login-cart-wrapper">
                       <li class="navigation__login status--logged-in relative">                       
-                        <button
+                        <button 
                           aria-expanded="false" 
-                          aria-label="Toggle login navigation"
+                          aria-label="Toggle navigation" 
                           type="button"
-                          class="navigation__primary-btn" 
+                          class="collapse-custom__head navigation__primary-btn navigation-icon account logged-in"
                         >
-                            <div>
-                                <img src="./assets/images/frank-drebbin-avatar.svg" alt="RSL Union Login Avatar" />
-                                Frank Drebbin
+                          <div class="navigation-icon__wrapper">
+                            <div class="navigation-icon__image-wrapper">
+                              <img src="./assets/images/frank-drebbin-avatar.svg" alt="RSL Union Login Avatar">
+                              <div class="navigation-icon__background"></div>
                             </div>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                            </svg>
+                            <div class="navigation-icon__text-wrapper">
+                              <span class="navigation-icon__text" style="display: none">FrankDrebbin</span>
+                              <img class="navigation__button-image" width="20px" height="20px" src="https://cdn3.iconfinder.com/data/icons/user-interface-169/32/chevron-bottom-512.png" alt="custom alt for chevron">
+                            </div>
+                          </div>
                         </button>
                       </li>
                       <li class="navigation__cart">
@@ -666,21 +684,68 @@ function component() {
     test2();
     // navMobile();
 
-    $(document).ready(function() {
-      $(".navigation__desktop-collapse .collapse-custom").each(function() {
-        new CustomCollapse(this);
-      })
+    // $(document).ready(function() {
+    //   $(".navigation__desktop-collapse .collapse-custom").each(function() {
+    //     new CustomCollapse(this);
+    //   })
       
-      $(".navigation__mobile-custom .collapse-custom").each(function() {
-        new CustomCollapse(this);
-      })
+    //   $(".navigation__mobile-custom .collapse-custom").each(function() {
+    //     new CustomCollapse(this);
+    //   })
       
-      // $(".my-collapse-custom-2 .collapse-custom").each(function() {
-      //   new CustomCollapse(this);
-      // })
-    });
+    //   // $(".my-collapse-custom-2 .collapse-custom").each(function() {
+    //   //   new CustomCollapse(this);
+    //   // })
+    // });
+
+    element.innerHTML = `
+      <div id="calendar-wrapper">
+        <div class="calendar-month">
+          <section class="calendar-month-header">
+            <div
+              id="selected-month"
+              class="calendar-month-header-selected-month"
+            ></div>
+            <section class="calendar-month-header-selectors">
+              <span id="previous-month-selector"><</span>
+              <span id="present-month-selector">Today</span>
+              <span id="next-month-selector">></span>
+            </section>
+          </section>
+        
+          <ol
+            id="days-of-week"
+            class="day-of-week"
+          /></ol>
+        
+          <ol
+            id="calendar-days"
+            class="days-grid"
+          >
+          </ol>
+        </div>
+      </div>
+      <div id="calendar-wrapper-custom">
+      </div>`;
 
     return element;
 }
 
 document.body.appendChild(component());
+
+
+/*
+
+calendarMonthEl.classList.add('calendar-month');
+calendarMonthHeaderEl.classList.add('calendar-month-header');
+selectedMonthEl.classList.add('calendar-month-header-selected-month');
+selectedMonthEl.setAttribute('id', 'selected-month');
+selectedMonthHeaderSelectorsEl.classList.add('calendar-month-header-selectors');
+prevMonthSelectorEl.setAttribute('id', 'previous-month-selector');
+nextMonthSelectorEl.setAttribute('id', 'next-month-selector');
+daysOfWeekEl.classList.add('day-of-week');
+daysOfWeekEl.setAttribute('id', 'days-of-week');
+calendarDaysEl.classList.add('days-grid');
+calendarDaysEl.setAttribute('id', 'calendar-days');
+
+*/
