@@ -306,12 +306,15 @@ $(document).ready(function () {
             const days = [...previousMonthDays, ...currentMonthDays, ...nextMonthDays];
             // const days = [...currentMonthDays];
 
-            // console.log('days', days);
 
 
-            //   console.log(INITIAL_MONTH);
+            // console.log('days', i + 1);
+
+
+            // console.log('selectedMonth.add(i).format("M")', dayjs(selectedMonth).add(i, "month").format("M"));
+            // console.log('selectedMonth.add(i).format("M")', selectedMonth.add(i + 1).format("M"));
             let monthlyDraws;
-            const currentMonthDraws = localDrawData.filter((element) => element.month == month && element.events);
+            const currentMonthDraws = localDrawData.filter((element) => element.month == dayjs(selectedMonth).add(i, "month").format("M") && element.events);
 
             if (currentMonthDraws.length > 0) {
                 const currentMonthDrawsEvents = currentMonthDraws.map((element) => element.events);
