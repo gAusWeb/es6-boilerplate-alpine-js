@@ -25,8 +25,9 @@ import { CustomCollapse } from "./custom-collapse";
 // import { alertTest } from "./alert";
 import "./navigation-icon";
 
-import "./dayjsCustom";
-
+// import "./dayjsCustom";
+import "./fullcalendar-custom";
+import "./fullcalendar-custom.scss";
 
 
 function component() {
@@ -728,8 +729,16 @@ function component() {
       <div id="calendar-wrapper-custom">
       </div>`;
 
+      element.innerHTML = `
+        <div class="full-calendar-wrapper" style="padding: 0px; border: 1px solid #ccc;">
+          <div id="calendar">
+        </div>`;
+
     return element;
 }
+
+    
+
 
 document.body.appendChild(component());
 

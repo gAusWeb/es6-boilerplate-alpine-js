@@ -1,0 +1,241 @@
+
+.full-calendar-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#calendar {
+    --calendar-width: 546px;
+    width: 100%;
+    max-width: var(--calendar-width);
+    // max-width: 1440px;
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+
+
+  .fc .fc-daygrid-body-balanced .fc-daygrid-day-events {
+    top:0;
+    height: 100%;
+    
+  }
+
+.fc-theme-standard td, .fc-theme-standard th {
+    border: none;
+    padding: 9px;
+}
+    
+    
+// .fc-theme-standard td {
+//     &:first-child {
+//         padding-left: 0;
+//     }
+    
+//     &:last-child {
+//         padding-right: 0;
+//     }
+// }
+
+
+  .fc .fc-daygrid-day-frame {
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+  
+.fc-daygrid-event,
+.fc-direction-ltr .fc-daygrid-event.fc-event-end, .fc-direction-rtl .fc-daygrid-event.fc-event-start {
+    margin:0;
+    width:100%;
+    border-radius: 4px;
+    padding: 10px 3px;
+    border: 0;
+    font-size: 15px;
+    color: white; 
+    display: flex;
+    align-items: center;
+    text-align: center;
+    text-wrap: wrap;
+}
+  
+
+
+  
+  .fc-daygrid-event-harness,
+  .fc-h-event {
+    height: 100%;
+      visibility: visible !important;
+  }
+  
+  .fc-daygrid-more-link fc-more-link {
+    height: 100%;
+  }
+  
+  
+  
+.pink { 
+    background: var(--grad-5-k, linear-gradient(62deg, #BF6D8E 21.72%, #A37286 93.57%));
+}
+  
+.green { 
+    padding:2px;
+    background-color: green;  
+}
+  
+.vip {
+    background: var(--grad-purple, linear-gradient(62deg, #552873 21.72%, #8A3DBD 93.57%));
+}
+  
+  
+  #calendar {
+    
+    position: relative;
+    border: none;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  
+  .fc {
+      .fc-multimonth {
+          border: none;
+      }
+      
+    .fc-multimonth-title {
+        padding-top: 0.75rem;
+    }
+  }
+  
+  .fc-toolbar-title {
+    display: none;
+  }
+
+  .fc .fc-view-harness-active > .fc-view {
+    position: relative;
+  }
+  
+  .fc-header-toolbar.fc-toolbar {
+    width: 100%;
+    display: block;
+    position: absolute;
+    z-index: 3;
+    padding-left: 6px;
+    padding-right: 8px;
+    // top: 5px;
+    // padding-left: 5px;
+    // padding-right: 15px;
+  }
+  
+  .fc-toolbar-chunk {
+    width: 100%;
+    
+    > .fc-today-button {
+      display: none;
+    }
+    
+    > .fc-button-group {
+      // width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+    
+  }
+  
+  .fc-direction-ltr .fc-toolbar > * > :not(:first-child) {
+      margin-left: 0;
+  }
+    
+  
+  .fc .fc-button-group > .fc-button {
+    width: 40px;
+    display: inline-block;
+    flex: initial;
+  }
+  
+  
+//   .fc .fc-view-harness {
+//     height: 365px !important;  
+//   }
+
+  .fc .fc-multimonth-multicol .fc-multimonth-month {
+    padding: 0;
+  }
+
+
+
+  .fc .fc-multimonth {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 3rem;
+  }
+
+  .fc-multimonth-month {
+    width: auto !important;
+  }
+
+  .fc-theme-standard td {
+}
+
+.fc .fc-multimonth-compact .fc-multimonth-daygrid-table, .fc .fc-multimonth-compact .fc-multimonth-header-table {
+    font-size: 17px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+    
+  .fc .fc-cell-shaded, 
+  .fc .fc-day-disabled, 
+  .fc-day-other, 
+  .fc-day-other .fc-daygrid-day-events {
+    visibility: hidden;
+  }
+
+//   .fc-multimonth-daygrid-table {
+//     height: 279px;
+//   }
+
+  @media (min-width: 768px) {
+    #calendar {
+        max-width: calc(var(--calendar-width) * 2);
+    }
+    .fc .fc-multimonth {
+        grid-template-columns: 1fr 1fr;
+        gap:2rem
+      } 
+  }
+
+  @media (min-width: 1024px) {
+    #calendar {
+        max-width: calc(var(--calendar-width) * 3);
+    }
+    .fc .fc-multimonth {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 3rem;
+      } 
+  }
+
+  /*
+  .fc-multiMonth-view.fc-view.fc-multimonth.fc-multimonth-multicol {
+    display:grid !important;
+    gap: 3rem !important;
+    flex-direction: row !important;
+    grid-template-columns: 1fr 1fr 1fr !important;
+  }
+  
+  .fc .fc-multimonth-multicol .fc-multimonth-month {
+    border: none;
+    width: auto !important;
+  }
+  
+ 
+  
+  .fc .fc-cell-shaded, 
+  .fc .fc-day-disabled, 
+  .fc-day-other, 
+  .fc-day-other .fc-daygrid-day-events {
+    visibility: hidden;
+  }
+  */
