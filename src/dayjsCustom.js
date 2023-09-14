@@ -83,7 +83,7 @@ $(document).ready(function () {
     const WEEKDAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
     const TODAY = dayjs().subtract(1, "month").format("YYYY-MM-DD");
     const START_DATE = dayjs().subtract(1, "month").format("YYYY-MM");
-    const END_DATE = dayjs().add(12, "month").format("YYYY-MM");
+    const END_DATE = dayjs().add(11, "month").format("YYYY-MM");
 
     const RANGE_START_YEAR_INT = parseInt(dayjs().format("YY"));
     const RANGE_START_MONTH_INT = parseInt(dayjs().subtract(1, "month").format("MM"));
@@ -541,12 +541,13 @@ $(document).ready(function () {
     }
 
     function getNextToggledDate2() {
-        return dayjs(selectedMonth).add(currentRange + currentRange, "month");
+        return dayjs(selectedMonth).add(currentRange, "month");
     }
 
     function isNextToggleWithinRange() {
         // console.log('getNextToggledDate()', getNextToggledDate());
-        // console.log('validDatesRange.end', validDatesRange.end);
+        console.log('validDatesRange.end', getNextToggledDate2().format("YYYY-MM"));
+        console.log('validDatesRange.end', validDatesRange.end);
         if (getNextToggledDate2().format("YYYY-MM") == validDatesRange.end) return false;
         return dayjs(getNextToggledDate2().format("YYYY-MM")).isBetween(validDatesRange.start, validDatesRange.end, null, '[]');
     }
@@ -558,10 +559,20 @@ $(document).ready(function () {
     }
 
     function nextToggleAmountPassedLimit() {
-        console.log('nextNextToggle', parseInt(getNextToggledDate2().format("M")));
-        console.log('endMonth', validDatesRangeInt.endMonth);
-        const amountPassedLimit = parseInt(getNextToggledDate2().format("M")) - validDatesRangeInt.endMonth
-        console.log('next => amountPassedLimit', amountPassedLimit);
+        let amountPassedLimit = 0;
+        // console.log('nextNextToggle', parseInt(getNextToggledDate2().format("M")));
+        // console.log('endMonth', validDatesRangeInt.endMonth);
+        // let amountPassedLimit = parseInt(getNextToggledDate2().format("M")) - validDatesRangeInt.endMonth
+        // console.log('next => amountPassedLimit', amountPassedLimit);
+        // if (currentRange < amountPassedLimit) amountPassedLimit = currentRange - amountPassedLimit;
+        // if (currentRange < amountPassedLimit) amountPassedLimit = currentRange - amountPassedLimit;
+        // if (currentRange === 2 && validDatesRangeInt.endMonth === parseInt(selectedMonth.format("M")) + currentRange) amountPassedLimit = 1;
+        if (currentRange === 2 && validDatesRangeInt.endMonth === parseInt(selectedMonth.format("M")) + currentRange) amountPassedLimit = 1;
+
+        if (parseInt(getNextToggledDate2().format("M")) == validDatesRangeInt.endMonth) {
+            amountPassedLimit = 1;
+        }
+
         return amountPassedLimit;
     }
     
@@ -679,17 +690,19 @@ $(document).ready(function () {
 
 
         if (isNextToggleWithinRange()) {
-            console.log('within range', getNextToggledDate());
+            console.log('within range', getNextToggledDate(), parseInt(getNextToggledDate2().format("MM")), validDatesRangeInt.endMonth);
+            if (parseInt(getNextToggledDate2().format("MM")) + 1 == validDatesRangeInt.endMonth && currentRange != 1) nextMonthSelectorEl.style.display = 'none';
             selectedMonth = dayjs(selectedMonth).add(currentRange, "month");
         } else {
             console.log('not within range');
             // amountOfMonthsToRender();
-            $(nextMonthSelectorEl).css('display', 'none');
-            if (getNextToggledDate2().format("YYYY-MM") == validDatesRange.end) {
-                selectedMonth = dayjs(selectedMonth).add(currentRange, "month");
-            } else {
-                selectedMonth = dayjs(selectedMonth).add(nextToggleAmountPassedLimit(), "month");
-            }
+            $(nextMonthSelectorEl).css('display', 'none');  
+            // if (getNextToggledDate2().format("YYYY-MM") == validDatesRange.end) {
+            //     selectedMonth = dayjs(selectedMonth).add(currentRange, "month");
+            // } else {
+            //     selectedMonth = dayjs(selectedMonth).add(nextToggleAmountPassedLimit(), "month");
+            // }
+            selectedMonth = dayjs(selectedMonth).add(nextToggleAmountPassedLimit(), "month");
         }
 
         createCalendar(selectedMonth.format("YYYY"), selectedMonth.format("M"), currentRange);            
@@ -916,24 +929,44 @@ $(document).ready(function () {
                 currentRange = 3;
                 
                 // if (selectedMonth.format("YYYY-M") == dayjs(TODAY).add(10, "month").format("YYYY-M")) nextMonthSelectorEl.style.display = 'none';
-                if (selectedMonth.format("YYYY") == END_YEAR) {
-                    if (parseInt(selectedMonth.format("M")) === END_MONTH) {
-                        nextMonthSelectorEl.style.display = 'none';
-                        createCalendar(selectedMonth.format("YYYY"), selectedMonth.subtract(currentRange).format("M"), currentRange);
-                        return;
-                    }
-                    const nextSelectedDate = dayjs(selectedMonth).add(currentRange, "month");
-                    let amountPassedLimit = 0;
+//                 if (selectedMonth.format("YYYY") == END_YEAR) {
+//                     if (parseInt(selectedMonth.format("M")) === END_MONTH) {
+//                         nextMonthSelectorEl.style.display = 'none';
+//                         createCalendar(selectedMonth.format("YYYY"), selectedMonth.subtract(currentRange).format("M"), currentRange);
+//                         return;
+//                     }
+//                     const nextSelectedDate = dayjs(selectedMonth).add(currentRange, "month");
+//                     let amountPassedLimit = 0;
                     
-                    if (parseInt(nextSelectedDate.format("M")) > END_MONTH) {
-                        amountPassedLimit = parseInt(nextSelectedDate.format("M")) - END_MONTH;
-                        if (amountPassedLimit + parseInt(selectedMonth.format("M")) > END_MONTH) {
-                            amountPassedLimit = amountPassedLimit + parseInt(selectedMonth.format("M")) - END_MONTH;
-                            if (amountPassedLimit == 2) amountPassedLimit = 1;
+//                     if (parseInt(nextSelectedDate.format("M")) > END_MONTH) {
+//                         amountPassedLimit = parseInt(nextSelectedDate.format("M")) - END_MONTH;
+//                         if (amountPassedLimit + parseInt(selectedMonth.format("M")) > END_MONTH) {
+//                             amountPassedLimit = amountPassedLimit + parseInt(selectedMonth.format("M")) - END_MONTH;
+//                             if (amountPassedLimit == 2) amountPassedLimit = 1;
+//                         }
+//                         createCalendar(selectedMonth.format("YYYY"), selectedMonth.add(amountPassedLimit).format("M"), currentRange);
+//                         $(nextMonthSelectorEl).css('display', 'none');
+//                         return;
+//                     }
+//                 }
+//                 if (!isNextToggleWithinRange){
+// console.log('aint');
+//                 }
+                if (selectedMonth.format("YYYY") == END_YEAR) {
+                    if (parseInt(selectedMonth.format("M")) + currentRange > END_MONTH) {
+                        nextMonthSelectorEl.style.display = 'none';
+                        const amountPassed = currentRange - (parseInt(selectedMonth.format("M")) + currentRange - END_MONTH)
+                        console.log('yo resize 3', parseInt(selectedMonth.format("M")) + currentRange - END_MONTH);
+                        // console.log('modulas', END_MONTH + currentRange == END_MONTH% parseInt(selectedMonth.format("M")) + currentRange);
+                        if (parseInt(selectedMonth.format("M")) + currentRange - 1 == END_MONTH) {
+                            createCalendar(selectedMonth.format("YYYY"), selectedMonth.format("M"), currentRange);
+                            return
                         }
-                        createCalendar(selectedMonth.format("YYYY"), selectedMonth.add(amountPassedLimit).format("M"), currentRange);
-                        $(nextMonthSelectorEl).css('display', 'none');
-                        return;
+                        // if (amountPassed === 1) {
+                        //     selectedMonth = dayjs(selectedMonth).add(amountPassed, "month");
+                        // } else {
+                            selectedMonth = dayjs(selectedMonth).subtract(amountPassed, "month");
+                        // }
                     }
                 }
                 createCalendar(selectedMonth.format("YYYY"), selectedMonth.format("M"), currentRange);
