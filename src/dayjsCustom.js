@@ -9,7 +9,7 @@ dayjs.extend(weekOfYear);
 dayjs.extend(isBetween)
 
 $(document).ready(function () {
-    const WEEKDAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+    const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     const TODAY = dayjs().subtract(1, "month").format("YYYY-MM-DD");
     const START_DATE = dayjs().subtract(1, "month").format("YYYY-MM");
     const END_DATE = dayjs().add(11, "month").format("YYYY-MM");
@@ -302,7 +302,7 @@ $(document).ready(function () {
         const previousMonth = dayjs(`${year}-${month}-01`).subtract(1, "month");
         // Cover first day of the month being sunday (firstDayOfTheMonthWeekday === 0)
         const visibleNumberOfDaysFromPreviousMonth = firstDayOfTheMonthWeekday
-            ? firstDayOfTheMonthWeekday - 1
+            ? firstDayOfTheMonthWeekday
             : 6;
 
         const previousMonthLastMondayDayOfMonth = dayjs(currentMonthDays[0].date)
