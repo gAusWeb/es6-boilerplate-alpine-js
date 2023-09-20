@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { getRequest } from "axios";
+import axios from "axios";
 
 let currentRange;
 const weekday = require("dayjs/plugin/weekday");
@@ -164,6 +164,23 @@ $(document).ready(function () {
     // https://www.boredapi.com/api/activity
     // const url = 'https://www.boredapi.com/api/activity';
     // const getRequest = async (url) => {
+
+    const url = "https://www.boredapi.com/api/activity";
+    
+    async function getRequest(url) {
+        try {
+            const response = await axios.get(url);
+            console.log(response.data);
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+
+    getRequest(url);
+    
+    const response = axios.get(url);
+    console.log(response.data);
 
     const calendarWrapper = document.querySelector(".upcoming-draws-calendar");
     
