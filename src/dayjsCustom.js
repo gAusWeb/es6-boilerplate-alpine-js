@@ -101,11 +101,6 @@ $(document).ready(function () {
                     drawText: "WIN <strong>$5K</strong>",
                 }, 
                 {
-                    day: 12, 
-                    drawType: 4,
-                    drawText: "WIN <strong>$100K</strong>",
-                }, 
-                {
                     day: 13, 
                     drawType: 2,
                     drawText: "409",
@@ -181,10 +176,7 @@ $(document).ready(function () {
     nextMonthSelectorEl.innerText = '>';
     
     function createCalendar(year = INITIAL_YEAR, month = INITIAL_MONTH, calendarRange = 1) {
-        console.log('test');
         calendarMonthsWrapper.innerHTML = '';
-        // const calendarMonthHeaderEl = document.createElement('section');
-        // calendarMonthHeaderEl.classList.add('calendar-month-header');
         btnSelectorsWrapper.appendChild(prevMonthSelectorEl);
         btnSelectorsWrapper.appendChild(nextMonthSelectorEl);
         calendarWrapper.appendChild(btnSelectorsWrapper);    
@@ -199,27 +191,11 @@ $(document).ready(function () {
                 new Date(year, month - 1 + i)
             ).format("MMMM YYYY");
 
-            // calendarMonthHeader.appendChild(calendarMonthTitle);
-
-            
-            // const calendarMonthEl = document.createElement('div');
-            // const selectedMonthHeaderSelectorsEl = document.createElement('div');
             const daysOfWeekEl = document.createElement('ol');
             const calendarDaysEl = document.createElement('ol');
         
-            // calendarMonthEl.classList.add('calendar-month-title');
-            // calendarMonthHeader.setAttribute('id', 'selected-month');
-            // selectedMonthHeaderSelectorsEl.classList.add('calendar-month-header-selectors');
             daysOfWeekEl.classList.add('upcoming-draws-calendar__days-of-week');
-            // daysOfWeekEl.setAttribute('id', 'days-of-week');
             calendarDaysEl.classList.add('upcoming-draws-calendar__days-grid');
-            calendarDaysEl.setAttribute('id', 'calendar-days');
-            const calendarDaysElement = document.getElementById("calendar-days");
-            
-            
-            
-            // selectedMonthHeaderSelectorsEl.appendChild(calendarMonthHeader);
-            // calendarMonthEl.appendChild(selectedMonthHeaderSelectorsEl);
             calendarMonthWrapper.appendChild(calendarMonthHeader);
             
             WEEKDAYS.forEach((weekday) => {
@@ -274,7 +250,6 @@ $(document).ready(function () {
                 appendDay(day, isDrawDay, drawType, drawText, calendarMonthWrapper);
             });
         }
-     
     }
 
     function appendDay(day, isDrawDay = false, drawType = null, drawText = null, calendarMonthWrapper) {
@@ -307,15 +282,6 @@ $(document).ready(function () {
 
         calendarMonthWrapper.querySelector('.upcoming-draws-calendar__days-grid').appendChild(dayElement);
     }
-
-    // function removeAllDayElements(calendarDaysElement) {
-    //     let first = calendarDaysElement.firstElementChild;
-
-    //     while (first) {
-    //         first.remove();
-    //         first = calendarDaysElement.firstElementChild;
-    //     }
-    // }
 
     function getNumberOfDaysInMonth(year, month) {
         return dayjs(`${year}-${month}-01`).daysInMonth();
