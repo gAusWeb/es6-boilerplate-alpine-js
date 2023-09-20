@@ -699,33 +699,7 @@ function component() {
     // });
 
     element.innerHTML = `
-      <div id="calendar-wrapper">
-        <div class="calendar-month">
-          <section class="calendar-month-header">
-            <div
-              id="selected-month"
-              class="calendar-month-header-selected-month"
-            ></div>
-            <section class="calendar-month-header-selectors">
-              <span id="previous-month-selector"><</span>
-              <span id="present-month-selector">Today</span>
-              <span id="next-month-selector">></span>
-            </section>
-          </section>
-        
-          <ol
-            id="days-of-week"
-            class="day-of-week"
-          /></ol>
-        
-          <ol
-            id="calendar-days"
-            class="days-grid"
-          >
-          </ol>
-        </div>
-      </div>
-      <div id="calendar-wrapper-custom">
+      <div class="upcoming-draws-calendar">
       </div>`;
 
     return element;

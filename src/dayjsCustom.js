@@ -38,96 +38,189 @@ $(document).ready(function () {
 
     const localDrawData = [ 
         { 
-            month: 9,
+            month: 8,
             events: [
                 {
                     day: 2, 
-                    drawType: 1 
-                }, 
-                {
-                    day: 8, 
-                    drawType: 1 
-                }, 
-                {
-                    day: 9, 
-                    drawType: 1 
-                }, 
-                {
-                    day: 3, 
-                    drawType: 2
+                    drawType: 1,
+                    drawText: "409",
                 },
                 {
-                    day: 19, 
-                    drawType: 3
-                }
+                    day: 3, 
+                    drawType: 3,
+                    drawText: "WIN <strong>$5K</strong>",
+                }, 
+                {
+                    day: 10, 
+                    drawType: 3,
+                    drawText: "WIN <strong>$5K</strong>",
+                }, 
+                {
+                    day: 16, 
+                    drawType: 2,
+                    drawText: "410",
+                },
+                {
+                    day: 17, 
+                    drawType: 3,
+                    drawText: "WIN <strong>$5K</strong>",
+                }, 
+                {
+                    day: 15, 
+                    drawType: 4,
+                    drawText: "WIN <strong>$100K</strong>",
+                }, 
+                {
+                    day: 24, 
+                    drawType: 3,
+                    drawText: "WIN <strong>$5K</strong>",
+                }, 
+                {
+                    day: 30, 
+                    drawType: 1,
+                    drawText: "410",
+                }, 
+                {
+                    day: 31, 
+                    drawType: 3,
+                    drawText: "WIN <strong>$5K</strong>",
+                }, 
+            ]
+        },
+        { 
+            month: 9,
+            events: [
+                {
+                    day: 7, 
+                    drawType: 3,
+                    drawText: "WIN <strong>$5K</strong>",
+                }, 
+                {
+                    day: 14, 
+                    drawType: 3,
+                    drawText: "WIN <strong>$5K</strong>",
+                }, 
+                {
+                    day: 12, 
+                    drawType: 4,
+                    drawText: "WIN <strong>$100K</strong>",
+                }, 
+                {
+                    day: 13, 
+                    drawType: 2,
+                    drawText: "409",
+                },
+                {
+                    day: 21, 
+                    drawType: 3,
+                    drawText: "WIN <strong>$5K</strong>",
+                }, 
+                {
+                    day: 27, 
+                    drawType: 1,
+                    drawText: "410",
+                },
+                {
+                    day: 28, 
+                    drawType: 3,
+                    drawText: "WIN <strong>$5K</strong>",
+                }, 
             ]
         },
         { 
             month: 10,
             events: [
                 {
-                    day: 4,
-                    drawType: 1
+                    day: 5, 
+                    drawType: 3,
+                    drawText: "WIN <strong>$5K</strong>",
+                }, 
+                {
+                    day: 11, 
+                    drawType: 1,
+                    drawText: "407",
+                }, 
+                {
+                    day: 12, 
+                    drawType: 3,
+                    drawText: "WIN <strong>$5K</strong>",
+                }, 
+                {
+                    day: 25, 
+                    drawType: 2,
+                    drawText: "409",
                 },
                 {
-                    day: 11,
-                    drawType: 1
-                },
+                    day: 19, 
+                    drawType: 3,
+                    drawText: "WIN <strong>$5K</strong>",
+                }, 
                 {
-                    day: 17,
-                    drawType: 2
-                },
-                {
-                    day: 30,
-                    drawType: 3
-                }
+                    day: 26, 
+                    drawType: 3,
+                    drawText: "WIN <strong>$5K</strong>",
+                }, 
             ]
         }
     ];
 
-    const calendarWrapper = document.getElementById("calendar-wrapper-custom");
+    const calendarWrapper = document.querySelector(".upcoming-draws-calendar");
+    
+    const btnSelectorsWrapper = document.createElement('div');
+    btnSelectorsWrapper.classList.add('upcoming-draws-calendar__btn-selectors-wrapper');
+    
+    const calendarMonthsWrapper = document.createElement('div');
+    calendarMonthsWrapper.classList.add('upcoming-draws-calendar__months-wrapper');
+    
     const prevMonthSelectorEl = document.createElement('button');
-    const nextMonthSelectorEl = document.createElement('button');
-    prevMonthSelectorEl.setAttribute('id', 'previous-month-selector');
-    nextMonthSelectorEl.setAttribute('id', 'next-month-selector');
-    prevMonthSelectorEl.classList.add('calendar-selectors');
-    nextMonthSelectorEl.setAttribute('id', 'next-month-selector');
-    nextMonthSelectorEl.classList.add('calendar-selectors');
+    prevMonthSelectorEl.classList.add('upcoming-draws-calendar__date-toggle-selector', 'prev');
     prevMonthSelectorEl.innerText = '<';
-    nextMonthSelectorEl.innerText = '>';
 
+    const nextMonthSelectorEl = document.createElement('button');
+    nextMonthSelectorEl.classList.add('upcoming-draws-calendar__date-toggle-selector', 'next');
+    nextMonthSelectorEl.innerText = '>';
+    
     function createCalendar(year = INITIAL_YEAR, month = INITIAL_MONTH, calendarRange = 1) {
-        calendarWrapper.innerHTML = '';
-        const calendarMonthHeaderEl = document.createElement('section');
-        calendarMonthHeaderEl.classList.add('calendar-month-header');
+        console.log('test');
+        calendarMonthsWrapper.innerHTML = '';
+        // const calendarMonthHeaderEl = document.createElement('section');
+        // calendarMonthHeaderEl.classList.add('calendar-month-header');
+        btnSelectorsWrapper.appendChild(prevMonthSelectorEl);
+        btnSelectorsWrapper.appendChild(nextMonthSelectorEl);
+        calendarWrapper.appendChild(btnSelectorsWrapper);    
         
         for(let i = 0; i < calendarRange; i++) {
-            const calendarMonthsWrapper = document.createElement('div');
-            calendarMonthsWrapper.classList.add('calendar-months-wrapper');
+            const calendarMonthWrapper = document.createElement('div');
+            calendarMonthWrapper.classList.add('upcoming-draws-calendar__month-wrapper');
 
-            const calendarMonthEl = document.createElement('div');
-            const selectedMonthEl = document.createElement('div');
-            const selectedMonthHeaderSelectorsEl = document.createElement('div');
+            const calendarMonthHeader = document.createElement('div');
+            calendarMonthHeader.classList.add('upcoming-draws-calendar__month-header');
+            calendarMonthHeader.innerText = dayjs(
+                new Date(year, month - 1 + i)
+            ).format("MMMM YYYY");
+
+            // calendarMonthHeader.appendChild(calendarMonthTitle);
+
+            
+            // const calendarMonthEl = document.createElement('div');
+            // const selectedMonthHeaderSelectorsEl = document.createElement('div');
             const daysOfWeekEl = document.createElement('ol');
             const calendarDaysEl = document.createElement('ol');
         
-            calendarMonthEl.classList.add('calendar-month');
-            selectedMonthEl.classList.add('calendar-month-header-selected-month');
-            selectedMonthEl.setAttribute('id', 'selected-month');
-            selectedMonthHeaderSelectorsEl.classList.add('calendar-month-header-selectors');
-            daysOfWeekEl.classList.add('days-of-week');
-            daysOfWeekEl.setAttribute('id', 'days-of-week');
-            calendarDaysEl.classList.add('days-grid');
+            // calendarMonthEl.classList.add('calendar-month-title');
+            // calendarMonthHeader.setAttribute('id', 'selected-month');
+            // selectedMonthHeaderSelectorsEl.classList.add('calendar-month-header-selectors');
+            daysOfWeekEl.classList.add('upcoming-draws-calendar__days-of-week');
+            // daysOfWeekEl.setAttribute('id', 'days-of-week');
+            calendarDaysEl.classList.add('upcoming-draws-calendar__days-grid');
             calendarDaysEl.setAttribute('id', 'calendar-days');
             const calendarDaysElement = document.getElementById("calendar-days");
             
-            selectedMonthEl.innerText = dayjs(
-                new Date(year, month - 1 + i)
-            ).format("MMMM YYYY");
             
-            selectedMonthHeaderSelectorsEl.appendChild(selectedMonthEl);
-            calendarMonthEl.appendChild(selectedMonthHeaderSelectorsEl);
-            calendarMonthsWrapper.appendChild(selectedMonthEl);
+            
+            // selectedMonthHeaderSelectorsEl.appendChild(calendarMonthHeader);
+            // calendarMonthEl.appendChild(selectedMonthHeaderSelectorsEl);
+            calendarMonthWrapper.appendChild(calendarMonthHeader);
             
             WEEKDAYS.forEach((weekday) => {
                 const weekDayElement = document.createElement("li");
@@ -135,9 +228,10 @@ $(document).ready(function () {
                 weekDayElement.innerText = weekday;
             });
             
+            calendarMonthsWrapper.appendChild(calendarMonthWrapper);
             calendarWrapper.appendChild(calendarMonthsWrapper);
-            calendarMonthsWrapper.appendChild(daysOfWeekEl);
-            calendarMonthsWrapper.appendChild(calendarDaysEl);
+            calendarMonthWrapper.appendChild(daysOfWeekEl);
+            calendarMonthWrapper.appendChild(calendarDaysEl);
             
             currentMonthDays = createDaysForCurrentMonth(
                 year,
@@ -159,38 +253,51 @@ $(document).ready(function () {
 
             let isDrawDay = false;
             let drawType = null;
+            let drawText = null;
 
             days.forEach((day, i) => {
                 if (monthlyDraws && monthlyDraws.length > 0) {
-                    monthlyDraws.every((element, i) => {
-                        if (day.dayOfMonth == element.day) {
+                    monthlyDraws.every((draw, i) => {
+                        if (day.dayOfMonth == draw.day) {
                             isDrawDay = true;
-                            drawType = element.drawType;
+                            drawType = draw.drawType;
+                            drawText = draw.drawText;
                             return false
                         } else {
                             isDrawDay = false; 
                             drawType = null;
+                            drawText = null;
                             return true;
                         }
                     });
                 }
-                appendDay(day, calendarDaysElement, isDrawDay, drawType, calendarMonthsWrapper);
+                appendDay(day, isDrawDay, drawType, drawText, calendarMonthWrapper);
             });
         }
-        calendarWrapper.appendChild(prevMonthSelectorEl);
-        calendarWrapper.appendChild(nextMonthSelectorEl);
+     
     }
 
-    function appendDay(day, calendarDaysElement, isDrawDay = false, drawType = null, calendarMonthsWrapper) {
+    function appendDay(day, isDrawDay = false, drawType = null, drawText = null, calendarMonthWrapper) {
         const dayElement = document.createElement("li");
         const dayElementClassList = dayElement.classList;
         dayElementClassList.add("calendar-day");
 
         if (isDrawDay) {
             dayElementClassList.add('draw-day', `draw-type-${drawType}`);
+
+            const drawWrapper = document.createElement("div");
+            drawWrapper.classList.add('upcoming-draws-calendar__draw-wrapper');
+
+            const drawTextWrapper = document.createElement("span");
+            drawTextWrapper.classList.add('upcoming-draws-calendar__draw-text');
+            drawTextWrapper.innerHTML = drawText;
+            
+            drawWrapper.appendChild(drawTextWrapper);
+            dayElement.appendChild(drawWrapper);
         } 
         
         const dayOfMonthElement = document.createElement("span");
+        dayOfMonthElement.classList.add('date-of-month');
         dayOfMonthElement.innerText = day.dayOfMonth;
         dayElement.appendChild(dayOfMonthElement);
             
@@ -198,17 +305,17 @@ $(document).ready(function () {
             dayElementClassList.add("not-current-month-day");
         }
 
-        calendarMonthsWrapper.querySelector('.days-grid').appendChild(dayElement);
+        calendarMonthWrapper.querySelector('.upcoming-draws-calendar__days-grid').appendChild(dayElement);
     }
 
-    function removeAllDayElements(calendarDaysElement) {
-        let first = calendarDaysElement.firstElementChild;
+    // function removeAllDayElements(calendarDaysElement) {
+    //     let first = calendarDaysElement.firstElementChild;
 
-        while (first) {
-            first.remove();
-            first = calendarDaysElement.firstElementChild;
-        }
-    }
+    //     while (first) {
+    //         first.remove();
+    //         first = calendarDaysElement.firstElementChild;
+    //     }
+    // }
 
     function getNumberOfDaysInMonth(year, month) {
         return dayjs(`${year}-${month}-01`).daysInMonth();
