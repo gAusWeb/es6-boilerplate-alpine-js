@@ -26,6 +26,10 @@ import { CustomCollapse } from "./custom-collapse";
 import "./navigation-icon";
 
 import "./dayjsCustom";
+// import "./daysjs-custom.min";
+
+import axios from "axios";
+
 
 
 
@@ -43,6 +47,15 @@ function component() {
     // });
 
     // rsllott();
+
+    // https://httpstat.us/404
+    // https://www.boredapi.com/api/activity
+  
+    const url = "https://www.boredapi.com/api/activity";
+    const response = axios.get(url);
+    console.log(response.data);
+
+
 
     const element = document.createElement("div");
     const btn = document.createElement("button");
@@ -64,6 +77,32 @@ function component() {
 
     element.appendChild(myIcon);
 
+    // quick jquery defer/promise example
+    document.addEventListener("DOMContentLoaded", () => {
+      const animated = document.querySelector(".animate-test");
+
+      animated.addEventListener("click", (e) => {
+        e.target.classList.add('slide-up');
+      });
+
+      const funcOne = () => {
+        const deferredObj = $.Deferred();
+        animated.addEventListener("animationend", () => {
+          console.log("Animation ended");
+          animated.classList.remove('slide-up');  
+          deferredObj.resolve();
+        });
+
+        return deferredObj;
+      }
+
+      const funcTwo = () => {
+        console.log('funcTwo');
+      }
+
+      funcOne().done(funcTwo);
+    });
+    // END quick jquery defer/promise example
     
 
     // build and append to dom a CSS link tag with the href pointing at https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css
@@ -725,6 +764,7 @@ function component() {
           </ol>
         </div>
       </div>
+      <button class="animate-test">click me</button>
       <div id="calendar-wrapper-custom">
       </div>`;
 

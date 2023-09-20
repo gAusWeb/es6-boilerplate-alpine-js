@@ -12,3 +12,16 @@ body {
 @import "./sub-menus.scss";
 @import "./custom-collapse.scss";
 @import "./calendar-styles.scss";
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+    
+.slide-up {
+    animation: slideUp .5s ease-in-out;
+}
