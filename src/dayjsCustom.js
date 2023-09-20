@@ -41,7 +41,15 @@ $(document).ready(function () {
             month: 9,
             events: [
                 {
-                    day: 7, 
+                    day: 2, 
+                    drawType: 1 
+                }, 
+                {
+                    day: 8, 
+                    drawType: 1 
+                }, 
+                {
+                    day: 9, 
                     drawType: 1 
                 }, 
                 {
@@ -107,7 +115,7 @@ $(document).ready(function () {
             selectedMonthEl.classList.add('calendar-month-header-selected-month');
             selectedMonthEl.setAttribute('id', 'selected-month');
             selectedMonthHeaderSelectorsEl.classList.add('calendar-month-header-selectors');
-            daysOfWeekEl.classList.add('day-of-week');
+            daysOfWeekEl.classList.add('days-of-week');
             daysOfWeekEl.setAttribute('id', 'days-of-week');
             calendarDaysEl.classList.add('days-grid');
             calendarDaysEl.setAttribute('id', 'calendar-days');
@@ -148,16 +156,25 @@ $(document).ready(function () {
                 const currentMonthDrawsEvents = currentMonthDraws.map((element) => element.events);
                 monthlyDraws = currentMonthDrawsEvents.flat();
             }
+
+            let isDrawDay = false;
+            let drawType = null;
+
             days.forEach((day, i) => {
                 if (monthlyDraws && monthlyDraws.length > 0) {
-                    monthlyDraws.forEach((element, i) => {
+                    monthlyDraws.every((element, i) => {
                         if (day.dayOfMonth == element.day) {
-                            appendDay(day, calendarDaysElement, true, element.drawType, calendarMonthsWrapper);
-                            return;
+                            isDrawDay = true;
+                            drawType = element.drawType;
+                            return false
+                        } else {
+                            isDrawDay = false; 
+                            drawType = null;
+                            return true;
                         }
                     });
                 }
-                appendDay(day, calendarDaysElement, undefined, undefined, calendarMonthsWrapper);
+                appendDay(day, calendarDaysElement, isDrawDay, drawType, calendarMonthsWrapper);
             });
         }
         calendarWrapper.appendChild(prevMonthSelectorEl);
@@ -168,28 +185,19 @@ $(document).ready(function () {
         const dayElement = document.createElement("li");
         const dayElementClassList = dayElement.classList;
         dayElementClassList.add("calendar-day");
+
         if (isDrawDay) {
-            switch (drawType) {
-                case 3:
-                    dayElementClassList.add("draw-type-3")
-                    break;
-                case 2:
-                    dayElementClassList.add("draw-type-2")
-                    break;
+            dayElementClassList.add('draw-day', `draw-type-${drawType}`);
+        } 
+        
+        const dayOfMonthElement = document.createElement("span");
+        dayOfMonthElement.innerText = day.dayOfMonth;
+        dayElement.appendChild(dayOfMonthElement);
             
-                default:
-                    dayElementClassList.add("draw-type-1")
-                    break;
-            }
-            dayElementClassList.add("draw-day")
-        } else {
-            const dayOfMonthElement = document.createElement("span");
-            dayOfMonthElement.innerText = day.dayOfMonth;
-            dayElement.appendChild(dayOfMonthElement);
-        }
         if (!day.isCurrentMonth) {
-            dayElementClassList.add("calendar-day--not-current");
+            dayElementClassList.add("not-current-month-day");
         }
+
         calendarMonthsWrapper.querySelector('.days-grid').appendChild(dayElement);
     }
 
