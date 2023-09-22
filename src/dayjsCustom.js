@@ -11,7 +11,6 @@ dayjs.extend(isBetween)
 
 $(document).ready(function () {
     const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-    const TODAY = dayjs().subtract(1, "month").format("YYYY-MM-DD");
     const START_DATE = dayjs().subtract(1, "month").format("YYYY-MM");
     const END_DATE = dayjs().add(11, "month").format("YYYY-MM");
     const RANGE_START_YEAR_INT = parseInt(dayjs().format("YY"));
@@ -37,151 +36,133 @@ $(document).ready(function () {
     let previousMonthDays;
     let nextMonthDays;
 
-    const localDrawData = [ 
-        { 
-            month: 8,
-            events: [
-                {
-                    day: 2, 
-                    drawType: 1,
-                    drawText: "409",
-                },
-                {
-                    day: 3, 
-                    drawType: 3,
-                    drawText: "WIN <strong>$5K</strong>",
-                }, 
-                {
-                    day: 10, 
-                    drawType: 3,
-                    drawText: "WIN <strong>$5K</strong>",
-                }, 
-                {
-                    day: 16, 
-                    drawType: 2,
-                    drawText: "410",
-                },
-                {
-                    day: 17, 
-                    drawType: 3,
-                    drawText: "WIN <strong>$5K</strong>",
-                }, 
-                {
-                    day: 15, 
-                    drawType: 4,
-                    drawText: "WIN <strong>$100K</strong>",
-                }, 
-                {
-                    day: 24, 
-                    drawType: 3,
-                    drawText: "WIN <strong>$5K</strong>",
-                }, 
-                {
-                    day: 30, 
-                    drawType: 1,
-                    drawText: "410",
-                }, 
-                {
-                    day: 31, 
-                    drawType: 3,
-                    drawText: "WIN <strong>$5K</strong>",
-                }, 
-            ]
-        },
-        { 
-            month: 9,
-            events: [
-                {
-                    day: 7, 
-                    drawType: 3,
-                    drawText: "WIN <strong>$5K</strong>",
-                }, 
-                {
-                    day: 14, 
-                    drawType: 3,
-                    drawText: "WIN <strong>$5K</strong>",
-                }, 
-                {
-                    day: 13, 
-                    drawType: 2,
-                    drawText: "409",
-                },
-                {
-                    day: 21, 
-                    drawType: 3,
-                    drawText: "WIN <strong>$5K</strong>",
-                }, 
-                {
-                    day: 27, 
-                    drawType: 1,
-                    drawText: "410",
-                },
-                {
-                    day: 28, 
-                    drawType: 3,
-                    drawText: "WIN <strong>$5K</strong>",
-                }, 
-            ]
-        },
-        { 
-            month: 10,
-            events: [
-                {
-                    day: 5, 
-                    drawType: 3,
-                    drawText: "WIN <strong>$5K</strong>",
-                }, 
-                {
-                    day: 11, 
-                    drawType: 1,
-                    drawText: "407",
-                }, 
-                {
-                    day: 12, 
-                    drawType: 3,
-                    drawText: "WIN <strong>$5K</strong>",
-                }, 
-                {
-                    day: 25, 
-                    drawType: 2,
-                    drawText: "409",
-                },
-                {
-                    day: 19, 
-                    drawType: 3,
-                    drawText: "WIN <strong>$5K</strong>",
-                }, 
-                {
-                    day: 26, 
-                    drawType: 3,
-                    drawText: "WIN <strong>$5K</strong>",
-                }, 
-            ]
-        }
-    ];
+    // const localDrawData = [ 
+    //     { 
+    //         month: 8,
+    //         events: [
+    //             {
+    //                 day: 2, 
+    //                 drawType: 1,
+    //                 drawText: "409",
+    //             },
+    //             {
+    //                 day: 3, 
+    //                 drawType: 3,
+    //                 drawText: "WIN <strong>$5K</strong>",
+    //             }, 
+    //             {
+    //                 day: 10, 
+    //                 drawType: 3,
+    //                 drawText: "WIN <strong>$5K</strong>",
+    //             }, 
+    //             {
+    //                 day: 16, 
+    //                 drawType: 2,
+    //                 drawText: "410",
+    //             },
+    //             {
+    //                 day: 17, 
+    //                 drawType: 3,
+    //                 drawText: "WIN <strong>$5K</strong>",
+    //             }, 
+    //             {
+    //                 day: 15, 
+    //                 drawType: 4,
+    //                 drawText: "WIN <strong>$100K</strong>",
+    //             }, 
+    //             {
+    //                 day: 24, 
+    //                 drawType: 3,
+    //                 drawText: "WIN <strong>$5K</strong>",
+    //             }, 
+    //             {
+    //                 day: 30, 
+    //                 drawType: 1,
+    //                 drawText: "410",
+    //             }, 
+    //             {
+    //                 day: 31, 
+    //                 drawType: 3,
+    //                 drawText: "WIN <strong>$5K</strong>",
+    //             }, 
+    //         ]
+    //     },
+    //     { 
+    //         month: 9,
+    //         events: [
+    //             {
+    //                 day: 7, 
+    //                 drawType: 3,
+    //                 drawText: "WIN <strong>$5K</strong>",
+    //             }, 
+    //             {
+    //                 day: 14, 
+    //                 drawType: 3,
+    //                 drawText: "WIN <strong>$5K</strong>",
+    //             }, 
+    //             {
+    //                 day: 13, 
+    //                 drawType: 2,
+    //                 drawText: "409",
+    //             },
+    //             {
+    //                 day: 21, 
+    //                 drawType: 3,
+    //                 drawText: "WIN <strong>$5K</strong>",
+    //             }, 
+    //             {
+    //                 day: 27, 
+    //                 drawType: 1,
+    //                 drawText: "410",
+    //             },
+    //             {
+    //                 day: 28, 
+    //                 drawType: 3,
+    //                 drawText: "WIN <strong>$5K</strong>",
+    //             }, 
+    //         ]
+    //     },
+    //     { 
+    //         month: 10,
+    //         events: [
+    //             {
+    //                 day: 5, 
+    //                 drawType: 3,
+    //                 drawText: "WIN <strong>$5K</strong>",
+    //             }, 
+    //             {
+    //                 day: 11, 
+    //                 drawType: 1,
+    //                 drawText: "407",
+    //             }, 
+    //             {
+    //                 day: 12, 
+    //                 drawType: 3,
+    //                 drawText: "WIN <strong>$5K</strong>",
+    //             }, 
+    //             {
+    //                 day: 25, 
+    //                 drawType: 2,
+    //                 drawText: "409",
+    //             },
+    //             {
+    //                 day: 19, 
+    //                 drawType: 3,
+    //                 drawText: "WIN <strong>$5K</strong>",
+    //             }, 
+    //             {
+    //                 day: 26, 
+    //                 drawType: 3,
+    //                 drawText: "WIN <strong>$5K</strong>",
+    //             }, 
+    //         ]
+    //     }
+    // ];
 
     // https://httpstat.us/404
-    // https://www.boredapi.com/api/activity
-    // const url = 'https://www.boredapi.com/api/activity';
-    // const getRequest = async (url) => {
-
-    const url = "https://www.boredapi.com/api/activity";
+    const url = "http://localhost:3000/calendarData";
+    const loadingSpinner = document.querySelector('.loading-spinner-wrapper');
     
-    async function getRequest(url) {
-        try {
-            const response = await axios.get(url);
-            console.log(response.data);
-        }
-        catch (error) {
-            console.log(error);
-        }
-    }
-
-    getRequest(url);
-    
-    const response = axios.get(url);
-    console.log(response.data);
-
     const calendarWrapper = document.querySelector(".upcoming-draws-calendar");
     
     const btnSelectorsWrapper = document.createElement('div');
@@ -197,9 +178,28 @@ $(document).ready(function () {
     const nextMonthSelectorEl = document.createElement('button');
     nextMonthSelectorEl.classList.add('upcoming-draws-calendar__date-toggle-selector', 'next');
     nextMonthSelectorEl.innerText = '>';
-    
-    function createCalendar(year = INITIAL_YEAR, month = INITIAL_MONTH, calendarRange = 1) {
+
+    async function getRequest() {
         calendarMonthsWrapper.innerHTML = '';
+        prevMonthSelectorEl.style.visibility = 'hidden';
+        nextMonthSelectorEl.style.visibility = 'hidden';
+        loadingSpinner.style.display = 'block';
+
+        try {
+            const response = await axios.get(url);
+            const localDrawData = response.data;
+            createCalendar(selectedMonth.format("YYYY"), selectedMonth.format("M"), currentRange, localDrawData);
+            loadingSpinner.style.display = 'none';
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+    
+    function createCalendar(year = INITIAL_YEAR, month = INITIAL_MONTH, calendarRange = 1, localDrawData = null) {
+        prevMonthSelectorEl.style.visibility = 'visible';
+        nextMonthSelectorEl.style.visibility = 'visible';
+        
         btnSelectorsWrapper.appendChild(prevMonthSelectorEl);
         btnSelectorsWrapper.appendChild(nextMonthSelectorEl);
         calendarWrapper.appendChild(btnSelectorsWrapper);    
@@ -244,34 +244,43 @@ $(document).ready(function () {
             const days = [...previousMonthDays, ...currentMonthDays, ...nextMonthDays];
             let monthlyDraws;
 
-            const currentMonthDraws = localDrawData.filter((element) => element.month == dayjs(selectedMonth).add(i, "month").format("M") && element.events);
-            if (currentMonthDraws.length > 0) {
-                const currentMonthDrawsEvents = currentMonthDraws.map((element) => element.events);
-                monthlyDraws = currentMonthDrawsEvents.flat();
-            }
+            if (localDrawData) {
+                const currentMonthDraws = localDrawData.filter((element) => (
+                    element.year == dayjs(selectedMonth).add(i, "month").format("YYYY") && 
+                    element.month == dayjs(selectedMonth).add(i, "month").format("M")) && 
+                    element.events
+                );
 
-            let isDrawDay = false;
-            let drawType = null;
-            let drawText = null;
-
-            days.forEach((day, i) => {
-                if (monthlyDraws && monthlyDraws.length > 0) {
-                    monthlyDraws.every((draw, i) => {
-                        if (day.dayOfMonth == draw.day) {
-                            isDrawDay = true;
-                            drawType = draw.drawType;
-                            drawText = draw.drawText;
-                            return false
-                        } else {
-                            isDrawDay = false; 
-                            drawType = null;
-                            drawText = null;
-                            return true;
-                        }
-                    });
+                if (currentMonthDraws.length > 0) {
+                    const currentMonthDrawsEvents = currentMonthDraws.map((element) => element.events);
+                    monthlyDraws = currentMonthDrawsEvents.flat();
                 }
-                appendDay(day, isDrawDay, drawType, drawText, calendarMonthWrapper);
-            });
+
+                let isDrawDay = false;
+                let drawType = null;
+                let drawText = null;
+
+                console.log(year);
+
+                days.forEach((day, i) => {
+                    if (monthlyDraws && monthlyDraws.length > 0) {
+                        monthlyDraws.every((draw, i) => {
+                            if (day.dayOfMonth == draw.day) {
+                                isDrawDay = true;
+                                drawType = draw.drawType;
+                                drawText = draw.drawText;
+                                return false
+                            } else {
+                                isDrawDay = false; 
+                                drawType = null;
+                                drawText = null;
+                                return true;
+                            }
+                        });
+                    }
+                    appendDay(day, isDrawDay, drawType, drawText, calendarMonthWrapper);
+                });
+            }
         }
     }
 
@@ -420,7 +429,8 @@ $(document).ready(function () {
             $(prevMonthSelectorEl).css('display', 'none');
             selectedMonth = dayjs(selectedMonth).subtract(amountOfMonthsToRender(), "month");
         };
-        createCalendar(selectedMonth.format("YYYY"), selectedMonth.format("M"), currentRange);
+        // createCalendar(selectedMonth.format("YYYY"), selectedMonth.format("M"), currentRange);
+        getRequest(url);
     }
 
     const nextMonthSelectorClickHandler = (e) => {
@@ -431,12 +441,13 @@ $(document).ready(function () {
             selectedMonth = dayjs(selectedMonth).add(nextToggleAmountPassedLimit(), "month");
             $(nextMonthSelectorEl).css('display', 'none');  
         }
-        createCalendar(selectedMonth.format("YYYY"), selectedMonth.format("M"), currentRange);            
+        // createCalendar(selectedMonth.format("YYYY"), selectedMonth.format("M"), currentRange);            
+        getRequest(url);
     }
 
     const resizeHandler = () => {
         switch (true) {
-            case window.innerWidth < 768:
+            case $(window).width() < 768:
                 if (currentRange === 1) return;
                 if (selectedMonth.format("YYYY") == END_YEAR) {
                     if (parseInt(selectedMonth.format("M")) < END_MONTH) {
@@ -444,12 +455,18 @@ $(document).ready(function () {
                     } 
                 }
                 currentRange = 1;
-                createCalendar(selectedMonth.format("YYYY"), selectedMonth.format("M"), currentRange);
+
+                // createCalendar(selectedMonth.format("YYYY"), selectedMonth.format("M"), currentRange);
+                getRequest(url);
+
                 break;
-            case window.innerWidth >= 768 && window.innerWidth < 1024:
+            case $(window).width() >= 768 && $(window).width() < 1024:
                 if (currentRange === 2) return;
                 currentRange = 2;
-                createCalendar(selectedMonth.format("YYYY"), selectedMonth.format("M"), currentRange);
+
+                // createCalendar(selectedMonth.format("YYYY"), selectedMonth.format("M"), currentRange);
+                getRequest(url);
+
                 if (selectedMonth.format("YYYY") == END_YEAR) {
                     const nextSelectedDate = dayjs(selectedMonth).add(currentRange, "month");
                     if (nextSelectedDate.format("M") > END_MONTH) {
@@ -460,7 +477,9 @@ $(document).ready(function () {
 
                     if (selectedMonth.format("M") == END_MONTH) {
                         selectedMonth = dayjs(selectedMonth).subtract(1, "month");
-                        createCalendar(selectedMonth.format("YYYY"), selectedMonth.format("M"), currentRange);
+
+                        // createCalendar(selectedMonth.format("YYYY"), selectedMonth.format("M"), currentRange);
+                        getRequest(url);
                     }
                 }
                 break;
@@ -485,7 +504,10 @@ $(document).ready(function () {
                         selectedMonth = dayjs(selectedMonth).subtract(amountPassed, "month");
                     }
                 }
-                createCalendar(selectedMonth.format("YYYY"), selectedMonth.format("M"), currentRange);
+
+                // createCalendar(selectedMonth.format("YYYY"), selectedMonth.format("M"), currentRange);
+                getRequest(url);
+
                 break;
         }
     }
@@ -510,4 +532,8 @@ $(document).ready(function () {
 
     const debouncedResizeHandler = debounce(resizeHandler, 100);
     $(window).resize(debouncedResizeHandler);
+
+
+    // const init = () => {
+
 });

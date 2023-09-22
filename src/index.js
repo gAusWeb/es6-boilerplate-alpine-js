@@ -24,7 +24,7 @@ import { CustomCollapse } from "./custom-collapse";
 // import rsllott from "./navigation-mobile";
 // import { alertTest } from "./alert";
 import "./navigation-icon";
-
+import "./loading-spinner.scss";
 import "./dayjsCustom";
 
 
@@ -700,6 +700,18 @@ function component() {
 
     element.innerHTML = `
       <div class="upcoming-draws-calendar">
+        <div class="loading-spinner-wrapper">
+          <div class="lds-roller">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
       </div>`;
 
     return element;

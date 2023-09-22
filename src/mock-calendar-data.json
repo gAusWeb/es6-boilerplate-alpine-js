@@ -1,0 +1,163 @@
+{
+    "calendarData": [ 
+        {
+            "year": 2023,
+            "month": 8,
+            "events": [
+                {
+                    "day": 2, 
+                    "drawType": 1,
+                    "drawText": "409"
+                },
+                {
+                    "day": 3, 
+                    "drawType": 3,
+                    "drawText": "WIN <strong>$5K</strong>"
+                }, 
+                {
+                    "day": 10, 
+                    "drawType": 3,
+                    "drawText": "WIN <strong>$5K</strong>"
+                }, 
+                {
+                    "day": 16, 
+                    "drawType": 2,
+                    "drawText": "410"
+                },
+                {
+                    "day": 17, 
+                    "drawType": 3,
+                    "drawText": "WIN <strong>$5K</strong>"
+                }, 
+                {
+                    "day": 15, 
+                    "drawType": 4,
+                    "drawText": "WIN <strong>$100K</strong>"
+                }, 
+                {
+                    "day": 24, 
+                    "drawType": 3,
+                    "drawText": "WIN <strong>$5K</strong>"
+                }, 
+                {
+                    "day": 30, 
+                    "drawType": 1,
+                    "drawText": "410"
+                }, 
+                {
+                    "day": 31, 
+                    "drawType": 3,
+                    "drawText": "WIN <strong>$5K</strong>"
+                }
+            ]
+        },
+        {
+            "year": 2023,
+            "month": 9,
+            "events": [
+                {
+                    "day": 7, 
+                    "drawType": 3,
+                    "drawText": "WIN <strong>$5K</strong>"
+                }, 
+                {
+                    "day": 14, 
+                    "drawType": 3,
+                    "drawText": "WIN <strong>$5K</strong>"
+                }, 
+                {
+                    "day": 13, 
+                    "drawType": 2,
+                    "drawText": "409"
+                },
+                {
+                    "day": 21, 
+                    "drawType": 3,
+                    "drawText": "WIN <strong>$5K</strong>"
+                }, 
+                {
+                    "day": 27, 
+                    "drawType": 1,
+                    "drawText": "410"
+                },
+                {
+                    "day": 28, 
+                    "drawType": 3,
+                    "drawText": "WIN <strong>$5K</strong>"
+                } 
+            ]
+        },
+        {
+            "year": 2023,
+            "month": 10,
+            "events": [
+                {
+                    "day": 5, 
+                    "drawType": 3,
+                    "drawText": "WIN <strong>$5K</strong>"
+                }, 
+                {
+                    "day": 11, 
+                    "drawType": 1,
+                    "drawText": "407"
+                }, 
+                {
+                    "day": 12, 
+                    "drawType": 3,
+                    "drawText": "WIN <strong>$5K</strong>"
+                }, 
+                {
+                    "day": 25, 
+                    "drawType": 2,
+                    "drawText": "409"
+                },
+                {
+                    "day": 19, 
+                    "drawType": 3,
+                    "drawText": "WIN <strong>$5K</strong>"
+                }, 
+                {
+                    "day": 26, 
+                    "drawType": 3,
+                    "drawText": "WIN <strong>$5K</strong>"
+                } 
+            ]
+        },
+        {
+            "year": 2024,
+            "month": 7,
+            "events": [
+                {
+                    "day": 5, 
+                    "drawType": 3,
+                    "drawText": "WIN <strong>$5K</strong>"
+                }, 
+                {
+                    "day": 11, 
+                    "drawType": 1,
+                    "drawText": "407"
+                }, 
+                {
+                    "day": 12, 
+                    "drawType": 3,
+                    "drawText": "WIN <strong>$5K</strong>"
+                }, 
+                {
+                    "day": 25, 
+                    "drawType": 2,
+                    "drawText": "409"
+                },
+                {
+                    "day": 19, 
+                    "drawType": 3,
+                    "drawText": "WIN <strong>$5K</strong>"
+                }, 
+                {
+                    "day": 26, 
+                    "drawType": 3,
+                    "drawText": "WIN <strong>$5K</strong>"
+                } 
+            ]
+        }
+    ]
+}
