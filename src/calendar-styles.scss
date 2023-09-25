@@ -100,7 +100,8 @@
       &-1,
       &-2,
       &-3,
-      &-4 {
+      &-4, 
+      &-w {
         color: white;
         text-align: center;
           span.date-of-month {
@@ -110,16 +111,6 @@
 
       &-1,
       &-2 {
-        font-size: 13px;
-
-        span {
-          transform: rotate(-45deg);
-          display: inline-block;
-        }
-      }
-
-      &-3,
-      &-4 {
         font-size: 12px;
         letter-spacing: 1px;
         line-height: .9;
@@ -129,22 +120,35 @@
           letter-spacing: -1px;
         }
       }
+
+      &-3,
+      &-4 {
+        font-size: 13px;
+
+        span {
+          transform: rotate(-45deg);
+          display: inline-block;
+        }
+      }
     }
 
     &.draw-day:not(.not-current-month-day) {
         &.draw-type {
             &-1 {
-                border: 1px solid purple;
-                color: purple;
-            }
-            &-2 {
-              background-color: purple;
-            }
-            &-3 {
               background: linear-gradient(62deg, #BF6D8E 21.72%, #A37286 93.57%);
             }
-            &-4 {
+
+            &-2 {
               background: linear-gradient(62deg, #008666 21.72%, #0EA781 93.57%);
+            }
+
+            &-3 {
+              background-color: purple;
+            }
+
+            &-4 {
+              border: 1px solid purple;
+              color: purple;
             }
         }
       }

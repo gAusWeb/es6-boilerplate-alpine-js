@@ -36,6 +36,8 @@ $(document).ready(function () {
     let previousMonthDays;
     let nextMonthDays;
 
+    
+
     // const localDrawData = [ 
     //     { 
     //         month: 8,
@@ -160,9 +162,11 @@ $(document).ready(function () {
     // ];
 
     // https://httpstat.us/404
-    
     // const url = "https://httpstat.us/404";
-    const url = "http://localhost:3000/calendarData";
+  
+    // const url = "http://localhost:3000/calendarData";
+    
+    const url = "http://localhost:3000/drawDates";
     const loadingSpinner = document.querySelector('.loading-spinner-wrapper');
     
     const calendarWrapper = document.querySelector(".upcoming-draws-calendar");
@@ -254,10 +258,16 @@ $(document).ready(function () {
             let monthlyDraws;
 
             if (localDrawData) {
+                const newCurrentMonthsDraws = localDrawData.filter((element) => (
+                    element.drawDate.split('-')[0] == dayjs(selectedMonth).add(i, "month").format("YYYY") &&
+                    element.drawDate.split('-')[1] == dayjs(selectedMonth).add(i, "month").format("MM") &&
+                    element
+                ));
+
                 const currentMonthDraws = localDrawData.filter((element) => (
                     element.year == dayjs(selectedMonth).add(i, "month").format("YYYY") && 
                     element.month == dayjs(selectedMonth).add(i, "month").format("M")) && 
-                    element.events
+                    element
                 );
 
                 if (currentMonthDraws.length > 0) {
@@ -265,48 +275,64 @@ $(document).ready(function () {
                     monthlyDraws = currentMonthDrawsEvents.flat();
                 }
 
-                let isDrawDay = false;
-                let drawType = null;
-                let drawText = null;
+                let drawData = null;
 
-                console.log(year);
-
-                days.forEach((day, i) => {
-                    if (monthlyDraws && monthlyDraws.length > 0) {
-                        monthlyDraws.every((draw, i) => {
-                            if (day.dayOfMonth == draw.day) {
-                                isDrawDay = true;
-                                drawType = draw.drawType;
-                                drawText = draw.drawText;
+                days.forEach((day) => {
+                    if (newCurrentMonthsDraws && newCurrentMonthsDraws.length > 0) {
+                        newCurrentMonthsDraws.every((draw) => {
+                            if (day.dayOfMonth == draw.drawDate.split('-')[2].split('T')[0]) {
+                                drawData = {
+                                    drawType: draw.drawType.trim(),
+                                    drawText: draw.drawDescription,
+                                    isVIP: draw.isVIPOnly,
+                                    drawName: draw.drawName
+                                }
                                 return false
                             } else {
-                                isDrawDay = false; 
-                                drawType = null;
-                                drawText = null;
+                                drawData = null;
                                 return true;
                             }
                         });
                     }
-                    appendDay(day, isDrawDay, drawType, drawText, calendarMonthWrapper);
+                    appendDay(day, drawData, calendarMonthWrapper);
                 });
             }
         }
     }
 
-    function appendDay(day, isDrawDay = false, drawType = null, drawText = null, calendarMonthWrapper) {
+    function appendDay(day, drawData = null, calendarMonthWrapper) {
         const dayElement = document.createElement("li");
         const dayElementClassList = dayElement.classList;
         dayElementClassList.add("calendar-day");
 
-        if (isDrawDay) {
-            dayElementClassList.add('draw-day', `draw-type-${drawType}`);
-
-            const drawWrapper = document.createElement("div");
-            drawWrapper.classList.add('upcoming-draws-calendar__draw-wrapper');
+        if (drawData) {
+            const drawText1 = "WIN <strong>$5K</strong>";
+            const drawText2 = "WIN <strong>$100K</strong>";
+            const drawText3 = `<strong>${drawData.drawName}</strong>`;
 
             const drawTextWrapper = document.createElement("span");
             drawTextWrapper.classList.add('upcoming-draws-calendar__draw-text');
-            drawTextWrapper.innerHTML = drawText;
+
+            switch (drawData.drawType) {
+                case "W": // WIN 5k
+                    dayElementClassList.add('draw-day', `draw-type-1`);
+                    drawTextWrapper.innerHTML = drawText1
+                    break
+                    
+                case "Q": // WIN 100k
+                    dayElementClassList.add('draw-day', `draw-type-2`);
+                    drawTextWrapper.innerHTML = drawText2
+                    break
+                    
+                default: // Standard draws VIP/Non VIP
+                    drawData.isVIP ? dayElementClassList.add('draw-day', `draw-type-3`) : 
+                    dayElementClassList.add('draw-day', `draw-type-4`);
+                    drawTextWrapper.innerHTML = drawText3.replace('AU', '').replace('L', '');
+                    break;
+            }
+
+            const drawWrapper = document.createElement("div");
+            drawWrapper.classList.add('upcoming-draws-calendar__draw-wrapper');
             
             drawWrapper.appendChild(drawTextWrapper);
             dayElement.appendChild(drawWrapper);
