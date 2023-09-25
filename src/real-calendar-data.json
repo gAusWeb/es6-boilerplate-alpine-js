@@ -1,0 +1,28 @@
+[
+    {
+        "id": 1,
+        "openDate": "2023-05-22T00:00:00",
+        "closeDate": "2023-05-28T00:00:00",
+        "drawDate": "2023-06-01T00:00:00",
+        "drawType": "W ",
+        "drawName": "PD202322LTR",
+        "drawDescription": "$5K Pay Day Draw 187",
+        "isVIPOnly": false,
+        "createdDateTime": "2023-09-13T02:13:06.04",
+        "updatedDateTime": "2023-09-13T02:13:06.04",
+        "isDeleted": false
+    },
+    {
+        "id": 2,
+        "openDate": "2023-05-29T00:00:00",
+        "closeDate": "2023-06-04T00:00:00",
+        "drawDate": "2023-06-08T00:00:00",
+        "drawType": "W ",
+        "drawName": "PD202323LTR",
+        "drawDescription": "$5K Pay Day Draw 188",
+        "isVIPOnly": false,
+        "createdDateTime": "2023-09-13T02:13:06.04",
+        "updatedDateTime": "2023-09-13T02:13:06.04",
+        "isDeleted": false
+    }
+]
