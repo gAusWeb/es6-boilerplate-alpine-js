@@ -160,6 +160,8 @@ $(document).ready(function () {
     // ];
 
     // https://httpstat.us/404
+    
+    // const url = "https://httpstat.us/404";
     const url = "http://localhost:3000/calendarData";
     const loadingSpinner = document.querySelector('.loading-spinner-wrapper');
     
@@ -179,7 +181,7 @@ $(document).ready(function () {
     nextMonthSelectorEl.classList.add('upcoming-draws-calendar__date-toggle-selector', 'next');
     nextMonthSelectorEl.innerText = '>';
 
-    async function getRequest() {
+    async function getCalendarEventsRequest() {
         calendarMonthsWrapper.innerHTML = '';
         prevMonthSelectorEl.style.visibility = 'hidden';
         nextMonthSelectorEl.style.visibility = 'hidden';
@@ -193,6 +195,13 @@ $(document).ready(function () {
         }
         catch (error) {
             console.log(error);
+            calendarWrapper.innerHTML = `
+            <div class="upcoming-draws-calendar__error-message">
+                <p>There was an error loading the calendar. Please try to <a href="javascript:window.location.href=window.location.href">refresh this page</a>, or again later.</p>
+                <p>Should problems persist, please contact <a href="mailto:website@rslunion.com.au?subject=Mail from Our Site">website@rslunion.com.au</a></p>
+            </div>
+            `;
+            loadingSpinner.style.display = 'none';
         }
     }
     
@@ -430,7 +439,7 @@ $(document).ready(function () {
             selectedMonth = dayjs(selectedMonth).subtract(amountOfMonthsToRender(), "month");
         };
         // createCalendar(selectedMonth.format("YYYY"), selectedMonth.format("M"), currentRange);
-        getRequest(url);
+        getCalendarEventsRequest(url);
     }
 
     const nextMonthSelectorClickHandler = (e) => {
@@ -442,7 +451,7 @@ $(document).ready(function () {
             $(nextMonthSelectorEl).css('display', 'none');  
         }
         // createCalendar(selectedMonth.format("YYYY"), selectedMonth.format("M"), currentRange);            
-        getRequest(url);
+        getCalendarEventsRequest(url);
     }
 
     const resizeHandler = () => {
@@ -457,7 +466,7 @@ $(document).ready(function () {
                 currentRange = 1;
 
                 // createCalendar(selectedMonth.format("YYYY"), selectedMonth.format("M"), currentRange);
-                getRequest(url);
+                getCalendarEventsRequest(url);
 
                 break;
             case $(window).width() >= 768 && $(window).width() < 1024:
@@ -465,7 +474,7 @@ $(document).ready(function () {
                 currentRange = 2;
 
                 // createCalendar(selectedMonth.format("YYYY"), selectedMonth.format("M"), currentRange);
-                getRequest(url);
+                getCalendarEventsRequest(url);
 
                 if (selectedMonth.format("YYYY") == END_YEAR) {
                     const nextSelectedDate = dayjs(selectedMonth).add(currentRange, "month");
@@ -479,7 +488,7 @@ $(document).ready(function () {
                         selectedMonth = dayjs(selectedMonth).subtract(1, "month");
 
                         // createCalendar(selectedMonth.format("YYYY"), selectedMonth.format("M"), currentRange);
-                        getRequest(url);
+                        getCalendarEventsRequest(url);
                     }
                 }
                 break;
@@ -506,7 +515,7 @@ $(document).ready(function () {
                 }
 
                 // createCalendar(selectedMonth.format("YYYY"), selectedMonth.format("M"), currentRange);
-                getRequest(url);
+                getCalendarEventsRequest(url);
 
                 break;
         }
@@ -532,8 +541,4 @@ $(document).ready(function () {
 
     const debouncedResizeHandler = debounce(resizeHandler, 100);
     $(window).resize(debouncedResizeHandler);
-
-
-    // const init = () => {
-
 });
