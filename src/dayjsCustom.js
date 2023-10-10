@@ -197,25 +197,25 @@ $(document).ready(function () {
     );
     nextMonthSelectorEl.innerText = ">";
 
-    async function getVIPCart() {
-        $.ajax({
-            url: url,
-            method: "GET",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function success(result) {
-                console.log(result);
-                // $(document.body).append(result.Html);
-                // VIPCarousel();
-            },
-            fail: function (error) {
-                // Need to handle fail scenario
-                console.log(error);
-            },
-        });
-    }
+    // async function getVIPCart() {
+    //     $.ajax({
+    //         url: url,
+    //         method: "GET",
+    //         contentType: "application/json; charset=utf-8",
+    //         dataType: "json",
+    //         success: function success(result) {
+    //             console.log(result);
+    //             // $(document.body).append(result.Html);
+    //             // VIPCarousel();
+    //         },
+    //         fail: function (error) {
+    //             // Need to handle fail scenario
+    //             console.log(error);
+    //         },
+    //     });
+    // }
 
-    getVIPCart();
+    // getVIPCart();
 
     // async function getCalendarEventsRequest() {
     //     calendarMonthsWrapper.innerHTML = '';
@@ -252,7 +252,7 @@ $(document).ready(function () {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function success(response) {
-                console.log(response);
+                // console.log(response);
                 const localDrawData = response;
                 createCalendar(
                     selectedMonth.format("YYYY"),
@@ -379,7 +379,7 @@ $(document).ready(function () {
                         element
                 );
 
-                console.log("opendrawDate", openDrawDate);
+                // console.log("opendrawDate", openDrawDate);
 
                 const drawDate = localDrawData.filter(
                     (element) =>
@@ -393,7 +393,7 @@ $(document).ready(function () {
                 );
 
                 // console.log('openDrawDate', openDrawDate);
-                console.log("newCurrentMonthsDraws", newCurrentMonthsDraws);
+                // console.log("newCurrentMonthsDraws", newCurrentMonthsDraws);
 
                 // const currentMonthDraws = localDrawData.filter((element) => (
                 //     element.year == dayjs(selectedMonth).add(i, "month").format("YYYY") &&
@@ -489,7 +489,7 @@ $(document).ready(function () {
                 // console.log('drawData.test', drawData.test);
                 drawText3 = `<strong>${drawData.drawDate.drawName}</strong>`;
 
-                console.log("drawType", drawData.drawDate.drawType);
+                // console.log("drawType", drawData.drawDate.drawType);
                 switch (drawData.drawDate.drawType) {
                     case "W": // WIN 5k
                         dayElementClassList.add("draw-day", `draw-type-1`);
@@ -501,25 +501,25 @@ $(document).ready(function () {
                         drawTextWrapper.innerHTML = drawText2;
                         break;
 
-                    case "H": // WIN Home vip/non-vip
+                    case "H": // WIN a Home vip/non-vip
                         dayElementClassList.add("draw-day", `draw-type-5`);
+                        let updatedEventTitle = drawText3
+                            .replace("AU", "")
+                            .replace("L", "");
+
                         if (drawData.drawDate.isVIP) {
                             dayElementClassList.add("vip");
                             const vipIcon = document.createElement("div");
-                            // vipIcon.setAttribute('src', '/assets/images/vip-icon.svg');
 
                             vipIcon.classList.add("vip-icon");
                             vipIcon.innerHTML =
                                 '<img src="./assets/images/crown.svg" alt="vip-icon" />';
                             // drawTextWrapper.innerHTML = "draw type 5";
                             drawTextWrapper.appendChild(vipIcon);
+                        } else {
+                            updatedEventTitle = `<span>VIP</span> ${updatedEventTitle}`;
                         }
-                        // else {
-                        //     drawTextWrapper.innerHTML = "draw type 5";
-                        // }
-                        drawTextWrapper.innerHTML += drawText3
-                            .replace("AU", "")
-                            .replace("L", "");
+                        drawTextWrapper.innerHTML += updatedEventTitle;
                         break;
 
                     default: // Standard draws VIP/Non VIP
