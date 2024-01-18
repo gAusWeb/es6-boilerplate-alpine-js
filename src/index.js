@@ -22,8 +22,10 @@ function component() {
        
     </div>
   </div>
-  test
-  <img src="./RSLLOTT/assets/Frontend RSLLOTT/images/icons/crown-solid.svg" alt="crown" />`;
+  <!--
+    <img src="./RSLLOTT/assets/Frontend RSLLOTT/images/icons/crown-solid.svg" alt="crown" />
+  -->
+  `;
   return element;
 }
 document.body.appendChild(component());
