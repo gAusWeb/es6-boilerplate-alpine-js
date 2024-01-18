@@ -215,6 +215,11 @@
     }
   }
 
+  &__event-content-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
   &__calendar-day > span {
     display: flex;
     justify-content: center;
