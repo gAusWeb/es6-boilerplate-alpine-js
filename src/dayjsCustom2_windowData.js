@@ -16,10 +16,16 @@ $(document).ready(function () {
 
   let currentRange;
   const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  const START_DATE = dayjs(INITIAL_YEAR_2).subtract(1, "month").format("YYYY-MM");
+  const START_DATE = dayjs(INITIAL_YEAR_2)
+    .subtract(1, "month")
+    .format("YYYY-MM");
   const END_DATE = dayjs(INITIAL_YEAR_2).add(11, "month").format("YYYY-MM");
-  const END_YEAR = parseInt(dayjs(INITIAL_YEAR_2).add(11, "month").format("YYYY"));
-  const END_MONTH = parseInt(dayjs(INITIAL_YEAR_2).add(11, "month").format("M"));
+  const END_YEAR = parseInt(
+    dayjs(INITIAL_YEAR_2).add(11, "month").format("YYYY")
+  );
+  const END_MONTH = parseInt(
+    dayjs(INITIAL_YEAR_2).add(11, "month").format("M")
+  );
   const INITIAL_YEAR = dayjs(INITIAL_YEAR_2).format("YYYY");
   const INITIAL_MONTH = dayjs(INITIAL_YEAR_2).format("M");
   // // make a copy of INITIAL_YEAR but update it to be 2 months ahead
@@ -28,8 +34,6 @@ $(document).ready(function () {
   // // make a copy of INITIAL_MONTH but update it to be 2 months ahead
   // let INITIAL_MONTH_2 = dayjs().format("M");
   // INITIAL_MONTH_2 = dayjs(INITIAL_MONTH_2).add(2, "month").format("M");
-  
-  
 
   const validDatesRange = {
     start: START_DATE,
@@ -37,7 +41,9 @@ $(document).ready(function () {
   };
   const validDatesRangeInt = {
     startYear: parseInt(dayjs(INITIAL_YEAR_2).format("YY")),
-    startMonth: parseInt(dayjs(INITIAL_YEAR_2).subtract(1, "month").format("MM")),
+    startMonth: parseInt(
+      dayjs(INITIAL_YEAR_2).subtract(1, "month").format("MM")
+    ),
     endYear: parseInt(dayjs(INITIAL_YEAR_2).add(11, "month").format("YY")),
     endMonth: parseInt(dayjs(INITIAL_YEAR_2).add(11, "month").format("MM")),
   };
@@ -82,36 +88,36 @@ $(document).ready(function () {
     localDrawData = window.upcomingDrawsData.DrawDates;
 
     if (localDrawData.length < 1) {
-        console.log('window data not found');
-        return;
+      console.log("window data not found");
+      return;
     }
   }
 
   function updateEventsCalendarView() {
-      calendarMonthsWrapper.innerHTML = "";
-      prevMonthSelectorEl.style.visibility = "hidden";
-      nextMonthSelectorEl.style.visibility = "hidden";
-      loadingSpinner.style.display = "block";
+    calendarMonthsWrapper.innerHTML = "";
+    prevMonthSelectorEl.style.visibility = "hidden";
+    nextMonthSelectorEl.style.visibility = "hidden";
+    loadingSpinner.style.display = "block";
 
-      // console.log(localDrawData);
-      
-      if (localDrawData.length > 0) {
-          createCalendar(
-              selectedMonth.format("YYYY"),
-              selectedMonth.format("M"),
-              currentRange,
-              localDrawData
-          );
-          loadingSpinner.style.display = "none";
-      } else {
-          calendarWrapper.innerHTML = `
+    // console.log(localDrawData);
+
+    if (localDrawData.length > 0) {
+      createCalendar(
+        selectedMonth.format("YYYY"),
+        selectedMonth.format("M"),
+        currentRange,
+        localDrawData
+      );
+      loadingSpinner.style.display = "none";
+    } else {
+      calendarWrapper.innerHTML = `
           <div class="upcoming-draws-calendar__error-message">
               <p>There was an error loading the calendar. Please try to <a href="javascript:window.location.href=window.location.href">refresh this page</a>, or again later.</p>
               <p>Should problems persist, please contact <a href="mailto:website@rslunion.com.au?subject=Mail from Our Site">website@rslunion.com.au</a></p>
           </div>
           `;
-            loadingSpinner.style.display = "none";
-      }
+      loadingSpinner.style.display = "none";
+    }
   }
 
   function createCalendar(
@@ -271,8 +277,8 @@ $(document).ready(function () {
         vipIcon.classList.add("vip-icon");
         vipIcon.innerHTML =
           '<img src="./assets/images/calendar-vip-crown.svg" alt="vip-icon" />';
-          // '<img src="/RSLLOTT/assets/Frontend RSLLOTT/images/icons/calendar-vip-crown.svg" alt="vip-icon" />';
-          // '<img src="./assets/Frontend RSLLOTT/images/icons/calendar-vip-crown.svg" alt="vip-icon" />';
+        // '<img src="/RSLLOTT/assets/Frontend RSLLOTT/images/icons/calendar-vip-crown.svg" alt="vip-icon" />';
+        // '<img src="./assets/Frontend RSLLOTT/images/icons/calendar-vip-crown.svg" alt="vip-icon" />';
         drawTextWrapper.appendChild(vipIcon);
       }
 
@@ -435,26 +441,28 @@ $(document).ready(function () {
   }
 
   function isToggleAmountWithinRange(toggleDirection = null) {
-
     // 12
     // 11
-    // 11 + 3 = 2 
+    // 11 + 3 = 2
 
     let index = 0;
-    var futureRange = dayjs(validDatesRange.start).add(currentRange - 1, 'M'); // 2 feb
-    console.log('passedRange', futureRange.format('YYYY-MM'));
+    var futureRange = dayjs(validDatesRange.start).add(currentRange - 1, "M"); // 2 feb
+    console.log("passedRange", futureRange.format("YYYY-MM"));
     // let myFutureMonth = dayjs(selectedMonth).add(currentRange + 2, "M").format('YYYY-MM');
-    while(index < currentRange) {
-        // selectedMonth = dayjs(selectedMonth).subtract(1, "month");
-        selectedMonth = dayjs(selectedMonth).subtract(1, "month");
-        $(nextMonthSelectorEl).removeAttr("style");
+    while (index < currentRange) {
+      // selectedMonth = dayjs(selectedMonth).subtract(1, "month");
+      selectedMonth = dayjs(selectedMonth).subtract(1, "month");
+      $(nextMonthSelectorEl).removeAttr("style");
 
-      if (dayjs(validDatesRange.start).format("YYYY-MM") == dayjs(selectedMonth).format('YYYY-MM')) {
-        console.log('futureRange', futureRange.format('YYYY-MM'));
-        console.log('selectedMonth', dayjs(selectedMonth).format('YYYY-MM'));
+      if (
+        dayjs(validDatesRange.start).format("YYYY-MM") ==
+        dayjs(selectedMonth).format("YYYY-MM")
+      ) {
+        console.log("futureRange", futureRange.format("YYYY-MM"));
+        console.log("selectedMonth", dayjs(selectedMonth).format("YYYY-MM"));
 
-        $(prevMonthSelectorEl).css('display', 'none');
-        console.log('selectedMonth', nextMonthSelectorEl);
+        $(prevMonthSelectorEl).css("display", "none");
+        console.log("selectedMonth", nextMonthSelectorEl);
         return false;
       }
 
@@ -462,9 +470,6 @@ $(document).ready(function () {
     }
 
     return;
-
-
-
 
     if (getNextToggledDate(toggleDirection) == validDatesRange.start)
       return false;
@@ -477,56 +482,56 @@ $(document).ready(function () {
   }
 
   function isNextToggleWithinRange() {
-
     let index = 0;
-    var passedRange = dayjs(validDatesRange.end).subtract(currentRange - 1, 'M'); // 5 + 3 = 8
-    console.log('passedRange', passedRange.format('YYYY-MM'));
+    var passedRange = dayjs(validDatesRange.end).subtract(
+      currentRange - 1,
+      "M"
+    ); // 5 + 3 = 8
+    console.log("passedRange", passedRange.format("YYYY-MM"));
     // let myFutureMonth = dayjs(selectedMonth).add(currentRange + 2, "M").format('YYYY-MM');
-    while(index < currentRange) {
-        // selectedMonth = dayjs(selectedMonth).subtract(1, "month");
-        selectedMonth = dayjs(selectedMonth).add(1, "month");
-        $(prevMonthSelectorEl).removeAttr("style");
+    while (index < currentRange) {
+      // selectedMonth = dayjs(selectedMonth).subtract(1, "month");
+      selectedMonth = dayjs(selectedMonth).add(1, "month");
+      $(prevMonthSelectorEl).removeAttr("style");
 
-      if (passedRange.format('YYYY-MM') == dayjs(selectedMonth).format('YYYY-MM')) {
-        console.log('passedRange', passedRange.format('YYYY-MM'));
-        console.log('selectedMonth', dayjs(selectedMonth).format('YYYY-MM'));
+      if (
+        passedRange.format("YYYY-MM") == dayjs(selectedMonth).format("YYYY-MM")
+      ) {
+        console.log("passedRange", passedRange.format("YYYY-MM"));
+        console.log("selectedMonth", dayjs(selectedMonth).format("YYYY-MM"));
 
-        $(nextMonthSelectorEl).css('display', 'none');
-        console.log('selectedMonth', nextMonthSelectorEl);
+        $(nextMonthSelectorEl).css("display", "none");
+        console.log("selectedMonth", nextMonthSelectorEl);
         return false;
-
       }
-      
+
       // let myFutureMonth = dayjs(selectedMonth).add(currentRange + 1, "M").format('YYYY-MM');
 
       // if (myFutureMonth == validDatesRange.end) {
       //   console.log(myFutureMonth == validDatesRange.end)
       //   console.log('fut', myFutureMonth, 'end', validDatesRange.end)
-      // } 
+      // }
       index++;
-      
+
       // myFutureMonth = dayjs(myFutureMonth).add(1, "M").format('YYYY-MM');
-      
+
       // if (myFutureMonth == validDatesRange.end) {
       //   console.log(myFutureMonth == validDatesRange.end)
       //   console.log('fut', myFutureMonth, 'end', validDatesRange.end)
-      // } 
-      
+      // }
 
       // if (myFutureMonth == validDatesRange.end) {
       //   return false;
       // }
-      
+
       // console.log(myFutureMonth == validDatesRange.end)
       // console.log('fut', myFutureMonth, 'end', validDatesRange.end)
-      
-      
+
       // console.log(selectedMonth.format('YYYY-MM'));
-      
     }
     return;
 
-    console.log('hi')
+    console.log("hi");
 
     // if (index == currentRange - 1) {
     //   return false;
@@ -534,8 +539,7 @@ $(document).ready(function () {
     //   return true;
     // }
 
-
-        // var currentDate = moment('2015-10-31');
+    // var currentDate = moment('2015-10-31');
     // var futureMonth = moment(currentDate).add(12, 'M');
     // var futureMonthEnd = moment(futureMonth).endOf('month');
 
@@ -544,10 +548,10 @@ $(document).ready(function () {
     if (currentRange == 3) shownMonths = 2;
 
     var currentDate = dayjs(selectedMonth); // 5
-    var passedRange = dayjs(currentDate).subtract(currentRange, 'M'); // 5 + 3 = 8
-    
-    var futureMonth = dayjs(currentDate).add(currentRange + shownMonths, 'M'); // 5 + 3 + 2 = 10
-    var futureMonthEnd = dayjs(futureMonth).endOf('month');
+    var passedRange = dayjs(currentDate).subtract(currentRange, "M"); // 5 + 3 = 8
+
+    var futureMonth = dayjs(currentDate).add(currentRange + shownMonths, "M"); // 5 + 3 + 2 = 10
+    var futureMonthEnd = dayjs(futureMonth).endOf("month");
     // console.log('passedRange', passedRange.format('YYYY-MM-DD'));
 
     // console.log('yo', passedRange.isSame(currentDate.format('YYYY-MM-DD')))
@@ -556,22 +560,24 @@ $(document).ready(function () {
 
     // dayjs()
 
+    // console.log('orig', currentDate.format('YYYY-MM-DD'));
+    // console.log('orig', futureMonth.format('YYYY-MM-DD'));
+    // console.log('orig', futureMonthEnd.format('YYYY-MM-DD'));
 
-
-
-// console.log('orig', currentDate.format('YYYY-MM-DD'));
-// console.log('orig', futureMonth.format('YYYY-MM-DD'));
-// console.log('orig', futureMonthEnd.format('YYYY-MM-DD'));
-
-
-if(currentDate.date() != futureMonth.date() && futureMonth.isSame(futureMonthEnd.format('YYYY-MM-DD'))) {
-    console.log('true');
-} else {
-  console.log('false');
-}
-    console.log(dayjs(validDatesRange.end).subtract(currentRange + 1, "month").format("YYYY-MM"))
-    if (getNextToggledDate() == validDatesRange.start)
-    return false;
+    if (
+      currentDate.date() != futureMonth.date() &&
+      futureMonth.isSame(futureMonthEnd.format("YYYY-MM-DD"))
+    ) {
+      console.log("true");
+    } else {
+      console.log("false");
+    }
+    console.log(
+      dayjs(validDatesRange.end)
+        .subtract(currentRange + 1, "month")
+        .format("YYYY-MM")
+    );
+    if (getNextToggledDate() == validDatesRange.start) return false;
     return dayjs(getNextToggledDate()).isBetween(
       validDatesRange.start,
       dayjs(validDatesRange.end).subtract(currentRange + 1, "month"),
@@ -580,41 +586,45 @@ if(currentDate.date() != futureMonth.date() && futureMonth.isSame(futureMonthEnd
     );
 
     if (getNextToggledDate() == validDatesRange.end) {
-
-      console.log('false');
-    return false;
+      console.log("false");
+      return false;
     }
 
+    console.log(
+      dayjs(validDatesRange.end)
+        .subtract(currentRange, "month")
+        .format("YYYY-MM")
+    );
 
-    console.log(dayjs(validDatesRange.end).subtract(currentRange, "month").format("YYYY-MM"));
-
-  console.log('isBetween ??', dayjs(getNextToggledDate()).isBetween(
-    validDatesRange.start,
-    dayjs(validDatesRange.end).subtract(currentRange, "month"),
-    null,
-    "[]"
-  ));
-  return dayjs(getNextToggledDate()).isBetween(
-    validDatesRange.start,
-    validDatesRange.end,
-    null,
-    "[]"
-  );
-
+    console.log(
+      "isBetween ??",
+      dayjs(getNextToggledDate()).isBetween(
+        validDatesRange.start,
+        dayjs(validDatesRange.end).subtract(currentRange, "month"),
+        null,
+        "[]"
+      )
+    );
+    return dayjs(getNextToggledDate()).isBetween(
+      validDatesRange.start,
+      validDatesRange.end,
+      null,
+      "[]"
+    );
 
     let currentMonth = parseInt(dayjs(selectedMonth).format("MM"));
     let currentYear = parseInt(dayjs(selectedMonth).format("YY"));
 
-    
-   
-    
     if (currentRange == 1) {
       if (currentMonth == 12) {
         currentMonth = 0;
         currentYear += 1;
       }
 
-      if (currentYear >= (validDatesRangeInt.endYear) && currentMonth + currentRange  == validDatesRangeInt.endMonth) {
+      if (
+        currentYear >= validDatesRangeInt.endYear &&
+        currentMonth + currentRange == validDatesRangeInt.endMonth
+      ) {
         return false;
       } else {
         return true;
@@ -626,14 +636,23 @@ if(currentDate.date() != futureMonth.date() && futureMonth.isSame(futureMonthEnd
         currentMonth = currentMonth - 1;
       }
 
-      if (parseInt(dayjs(selectedMonth).format("YY")) >= (validDatesRangeInt.endYear) && currentMonth + currentRange + currentRange  >= validDatesRangeInt.endMonth) {
+      if (
+        parseInt(dayjs(selectedMonth).format("YY")) >=
+          validDatesRangeInt.endYear &&
+        currentMonth + currentRange + currentRange >=
+          validDatesRangeInt.endMonth
+      ) {
         return false;
       } else {
         return true;
       }
     }
 
-    if (parseInt(dayjs(selectedMonth).format("YY")) >= (validDatesRangeInt.endYear) && currentMonth + shownMonths  + currentRange >= validDatesRangeInt.endMonth) {
+    if (
+      parseInt(dayjs(selectedMonth).format("YY")) >=
+        validDatesRangeInt.endYear &&
+      currentMonth + shownMonths + currentRange >= validDatesRangeInt.endMonth
+    ) {
       return false;
     } else {
       return true;
@@ -641,9 +660,9 @@ if(currentDate.date() != futureMonth.date() && futureMonth.isSame(futureMonthEnd
   }
 
   function amountOfMonthsToRender() {
-    let nextClickStartMonth = parseInt(dayjs(selectedMonth)
-      .subtract(currentRange, "month")
-      .format("M")); // 10 | 11 | 12
+    let nextClickStartMonth = parseInt(
+      dayjs(selectedMonth).subtract(currentRange, "month").format("M")
+    ); // 10 | 11 | 12
 
     if (
       currentRange == 1 ||
@@ -654,54 +673,55 @@ if(currentDate.date() != futureMonth.date() && futureMonth.isSame(futureMonthEnd
 
     // const currentMonth = dayjs(selectedMonth).format("MM");
     let currentMonth = parseInt(dayjs(selectedMonth).format("MM"));
-    const prevMonth = dayjs(selectedMonth).subtract(currentRange, "month").format("MM");
+    const prevMonth = dayjs(selectedMonth)
+      .subtract(currentRange, "month")
+      .format("MM");
 
     // console.log(currentMonth, pew);
 
-    console.log( dayjs(prevMonth).isBetween(
-      validDatesRange.start,
-      validDatesRange.end,
-      null,
-      "[]"
-    ));
+    console.log(
+      dayjs(prevMonth).isBetween(
+        validDatesRange.start,
+        validDatesRange.end,
+        null,
+        "[]"
+      )
+    );
 
     // isBetween(currentMonth, prevMonth, currentMonth, null, "[]");
-    // 2 - 3 > 1 || 
+    // 2 - 3 > 1 ||
 
-      // let currentMonth = parseInt(dayjs(selectedMonth).format("MM"));
-      // let currentYear = parseInt(dayjs(selectedMonth).format("YY"));
-      if (nextClickStartMonth == 12) {
-        nextClickStartMonth = 0;
-        // currentYear += 1;
-      }
+    // let currentMonth = parseInt(dayjs(selectedMonth).format("MM"));
+    // let currentYear = parseInt(dayjs(selectedMonth).format("YY"));
+    if (nextClickStartMonth == 12) {
+      nextClickStartMonth = 0;
+      // currentYear += 1;
+    }
 
-      // if (currentMonth + currentRange > 12) {
-      //   return currentMonth + currentRange - 12;
+    // if (currentMonth + currentRange > 12) {
+    //   return currentMonth + currentRange - 12;
 
-      // }
+    // }
 
-      // if (currentRange === 2) {
-      //   if(currentMonth % currentRange == 1) {
-      //     return currentRange - 1;
-      //   }
-      //   return currentRange ;
-      // }
+    // if (currentRange === 2) {
+    //   if(currentMonth % currentRange == 1) {
+    //     return currentRange - 1;
+    //   }
+    //   return currentRange ;
+    // }
 
+    // const date1 = dayjs(selectedMonth);
+    // const newDate = dayjs(selectedMonth).subtract(currentRange, "month").format("YYYY-MM");
 
-      // const date1 = dayjs(selectedMonth);
-      // const newDate = dayjs(selectedMonth).subtract(currentRange, "month").format("YYYY-MM");
+    // console.log(date1.diff(newDate, 'month')) // 7
 
-      // console.log(date1.diff(newDate, 'month')) // 7
+    // if (nextClickStartMonth > 1) {
 
-
-      // if (nextClickStartMonth > 1) {
-
-      // if (currentMonth - currentRange == -1) {
-      //   return currentRange - 1;
-      // } else if (currentMonth - currentRange == -2) {
-      //   return currentRange - 2;
-      // }
-
+    // if (currentMonth - currentRange == -1) {
+    //   return currentRange - 1;
+    // } else if (currentMonth - currentRange == -2) {
+    //   return currentRange - 2;
+    // }
 
     if (nextClickStartMonth - validDatesRangeInt.startMonth == -1) {
       if (currentRange == 2) {
@@ -713,7 +733,7 @@ if(currentDate.date() != futureMonth.date() && futureMonth.isSame(futureMonthEnd
     // if (nextClickStartMonth - validDatesRangeInt.startMonth == -2) {
     //   if (currentRange == 2) return currentRange - 1;
     //   return currentRange - 2;
-    // } 
+    // }
 
     return currentMonth - validDatesRangeInt.startMonth;
 
@@ -732,17 +752,13 @@ if(currentDate.date() != futureMonth.date() && futureMonth.isSame(futureMonthEnd
     // 3 - 3 > 1 = 0
     // 3 - 2 = 1
     // 3 - 1 = 2
-    
-    
+
     // 4 - 3 == 1
     // 3 - 3 == 0
     // 2 - 3 == -1
 
     // 3 - 2 == 1
     // 2 - 2 == 0
-
-
-
 
     // if (currentMonth % currentRange == 1) {
     //   return currentRange - 1;
@@ -770,47 +786,45 @@ if(currentDate.date() != futureMonth.date() && futureMonth.isSame(futureMonthEnd
     if (currentMonth + currentRange + shownMonths > 12) {
       // return currentMonth + currentRange + 2 - 12;
       const newTime = validDatesRangeInt.endMonth + 12;
-		 if (newTime - (currentMonth + currentRange + shownMonths) == 0) {
-      return currentRange;
-     };
-     
-     if (newTime - (currentMonth + currentRange + shownMonths) == 1) {
-      return currentRange - 1;
-     }
+      if (newTime - (currentMonth + currentRange + shownMonths) == 0) {
+        return currentRange;
+      }
 
+      if (newTime - (currentMonth + currentRange + shownMonths) == 1) {
+        return currentRange - 1;
+      }
     }
 
-    if ((currentMonth + currentRange - 1 + currentRange) > 12) {
+    if (currentMonth + currentRange - 1 + currentRange > 12) {
       // if (currentMonth + currentRange - 1 + currentRange == 12) return currentRange;
-      return currentRange - ((currentMonth + currentRange + 2) - 12)
+      return currentRange - (currentMonth + currentRange + 2 - 12);
     }
-    
 
     // 7 + 2 + 3
 
     // validDatesRangeInt.endMonth - (currentMonth + currentRange - 1 + currentRange)
     // validDatesRangeInt.endMonth - (currentMonth + currentRange - 1 + currentRange)
-    return validDatesRangeInt.endMonth - (currentMonth + currentRange)
+    return validDatesRangeInt.endMonth - (currentMonth + currentRange);
     // let shownMonths;
     if (currentRange == 2) shownMonths = 2;
     if (currentRange == 3) shownMonths = 2;
-    
+
     if (currentRange === 1) {
       return currentRange;
     }
 
-   
-    
     if (currentRange === 2) {
-      if(currentMonth % currentRange == 1) {
+      if (currentMonth % currentRange == 1) {
         return currentRange - 1;
       }
-      return currentRange ;
+      return currentRange;
     }
 
-    const amountOfMonthsToRender = currentRange - ((currentMonth + shownMonths + currentRange) - validDatesRangeInt.endMonth);
+    const amountOfMonthsToRender =
+      currentRange -
+      (currentMonth + shownMonths + currentRange - validDatesRangeInt.endMonth);
 
-    return amountOfMonthsToRender
+    return amountOfMonthsToRender;
   }
 
   const prevMonthSelectorClickHandler = (e) => {
@@ -846,100 +860,103 @@ if(currentDate.date() != futureMonth.date() && futureMonth.isSame(futureMonthEnd
   };
 
   const resizeHandler = () => {
-		let monthAdjustAmnt;
-				
-		switch (true) {
-			case $(window).width() < 768:
-				if (currentRange === 1) return;
-				if (selectedMonth.format("YYYY") == END_YEAR) {
-					if (parseInt(selectedMonth.format("M")) < END_MONTH) {
-						$(nextMonthSelectorEl).removeAttr("style");
-					}
-				}
-				currentRange = 1;
-				updateEventsCalendarView();
-			break;
+    let monthAdjustAmnt;
 
-			case $(window).width() >= 768 && $(window).width() < 1140:
-				if (currentRange === 2) return;
-				
-				let currMonth = parseInt(dayjs(selectedMonth).format("M"));
-
-				if (currentRange === 1) {
-					if (selectedMonth.format("YYYY") == END_YEAR) {
-						if (currMonth == END_MONTH) {
-							$(nextMonthSelectorEl).css("display", "none");
-							selectedMonth = dayjs(selectedMonth).subtract(1, "month");
-						}
-					}
-					$(nextMonthSelectorEl).removeAttr("style");
-					currentRange = 2;
-					updateEventsCalendarView();
-					return
-				}
-
-				if (currentRange === 3) {
-					if (selectedMonth.format("YYYY") == END_YEAR) {
-						if (currMonth == (END_MONTH - currentRange)) {
-							$(nextMonthSelectorEl).css("display", "none");
-							selectedMonth = dayjs(selectedMonth).subtract(2, "month");
-						} else if (currMonth == (END_MONTH - currentRange + 1)) {
-							$(nextMonthSelectorEl).css("display", "none");
-							selectedMonth = dayjs(selectedMonth).subtract(1, "month");
-						}
-					}
-					$(nextMonthSelectorEl).removeAttr("style");
-					currentRange = 2;
-					updateEventsCalendarView();
-					return
-				}
-				
-				// initial load
-				currentRange = 2;
-				updateEventsCalendarView();
-			break;
-
-			default:
-				currentRange === 1 ? monthAdjustAmnt = 2 : monthAdjustAmnt = 1;
-				if (currentRange === 3) return;
-				if (selectedMonth.format("YYYY") == END_YEAR) {
-					if (parseInt(selectedMonth.format("M")) + currentRange >= END_MONTH) {
-            selectedMonth = dayjs(selectedMonth).subtract(monthAdjustAmnt, "month");
+    switch (true) {
+      case $(window).width() < 768:
+        if (currentRange === 1) return;
+        if (selectedMonth.format("YYYY") == END_YEAR) {
+          if (parseInt(selectedMonth.format("M")) < END_MONTH) {
+            $(nextMonthSelectorEl).removeAttr("style");
           }
-					currentRange = 3;
-					updateEventsCalendarView();
-					break;
-				}
+        }
+        currentRange = 1;
+        updateEventsCalendarView();
+        break;
 
-				currentRange = 3;
-				if (selectedMonth.format("YYYY") == END_YEAR) {
-					if (parseInt(selectedMonth.format("M")) + currentRange > END_MONTH) {
-						nextMonthSelectorEl.style.display = "none";
-						const amountPassed =
-							currentRange -
-							(parseInt(selectedMonth.format("M")) + currentRange - END_MONTH);
+      case $(window).width() >= 768 && $(window).width() < 1140:
+        if (currentRange === 2) return;
 
-						if (
-							parseInt(selectedMonth.format("M")) + currentRange - 1 ==
-							END_MONTH
-						) {
-							createCalendar(
-								selectedMonth.format("YYYY"),
-								selectedMonth.format("M"),
-								currentRange
-							);
-							return;
-						}
-						selectedMonth = dayjs(selectedMonth).subtract(
-							amountPassed,
-							"month"
-						);
-					}
-				}
-				updateEventsCalendarView();
-			break;
-		}
-	};
+        let currMonth = parseInt(dayjs(selectedMonth).format("M"));
+
+        if (currentRange === 1) {
+          if (selectedMonth.format("YYYY") == END_YEAR) {
+            if (currMonth == END_MONTH) {
+              $(nextMonthSelectorEl).css("display", "none");
+              selectedMonth = dayjs(selectedMonth).subtract(1, "month");
+            }
+          }
+          $(nextMonthSelectorEl).removeAttr("style");
+          currentRange = 2;
+          updateEventsCalendarView();
+          return;
+        }
+
+        if (currentRange === 3) {
+          if (selectedMonth.format("YYYY") == END_YEAR) {
+            if (currMonth == END_MONTH - currentRange) {
+              $(nextMonthSelectorEl).css("display", "none");
+              selectedMonth = dayjs(selectedMonth).subtract(2, "month");
+            } else if (currMonth == END_MONTH - currentRange + 1) {
+              $(nextMonthSelectorEl).css("display", "none");
+              selectedMonth = dayjs(selectedMonth).subtract(1, "month");
+            }
+          }
+          $(nextMonthSelectorEl).removeAttr("style");
+          currentRange = 2;
+          updateEventsCalendarView();
+          return;
+        }
+
+        // initial load
+        currentRange = 2;
+        updateEventsCalendarView();
+        break;
+
+      default:
+        currentRange === 1 ? (monthAdjustAmnt = 2) : (monthAdjustAmnt = 1);
+        if (currentRange === 3) return;
+        if (selectedMonth.format("YYYY") == END_YEAR) {
+          if (parseInt(selectedMonth.format("M")) + currentRange >= END_MONTH) {
+            selectedMonth = dayjs(selectedMonth).subtract(
+              monthAdjustAmnt,
+              "month"
+            );
+          }
+          currentRange = 3;
+          updateEventsCalendarView();
+          break;
+        }
+
+        currentRange = 3;
+        if (selectedMonth.format("YYYY") == END_YEAR) {
+          if (parseInt(selectedMonth.format("M")) + currentRange > END_MONTH) {
+            nextMonthSelectorEl.style.display = "none";
+            const amountPassed =
+              currentRange -
+              (parseInt(selectedMonth.format("M")) + currentRange - END_MONTH);
+
+            if (
+              parseInt(selectedMonth.format("M")) + currentRange - 1 ==
+              END_MONTH
+            ) {
+              createCalendar(
+                selectedMonth.format("YYYY"),
+                selectedMonth.format("M"),
+                currentRange
+              );
+              return;
+            }
+            selectedMonth = dayjs(selectedMonth).subtract(
+              amountPassed,
+              "month"
+            );
+          }
+        }
+        updateEventsCalendarView();
+        break;
+    }
+  };
 
   const resizeHandlerOrig = () => {
     switch (true) {
@@ -952,7 +969,7 @@ if(currentDate.date() != futureMonth.date() && futureMonth.isSame(futureMonthEnd
         }
         currentRange = 1;
         updateEventsCalendarView(url);
-      break;
+        break;
 
       case $(window).width() >= 768 && $(window).width() < 1140:
         if (currentRange === 2) return;
@@ -974,7 +991,7 @@ if(currentDate.date() != futureMonth.date() && futureMonth.isSame(futureMonthEnd
             updateEventsCalendarView(url);
           }
         }
-      break;
+        break;
 
       default:
         if (currentRange === 3) return;
@@ -982,12 +999,12 @@ if(currentDate.date() != futureMonth.date() && futureMonth.isSame(futureMonthEnd
           if (parseInt(selectedMonth.format("M")) + currentRange >= END_MONTH) {
             selectedMonth = dayjs(selectedMonth).subtract(1, "month");
             // $(nextMonthSelectorEl).removeAttr("style");
-          }      
+          }
           currentRange = 3;
           updateEventsCalendarView(url);
           break;
         }
-        
+
         currentRange = 3;
         if (selectedMonth.format("YYYY") == END_YEAR) {
           if (parseInt(selectedMonth.format("M")) + currentRange > END_MONTH) {
@@ -1014,7 +1031,7 @@ if(currentDate.date() != futureMonth.date() && futureMonth.isSame(futureMonthEnd
           }
         }
         updateEventsCalendarView(url);
-      break;
+        break;
     }
   };
 
