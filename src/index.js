@@ -25,64 +25,63 @@ import { CustomCollapse } from "./custom-collapse";
 // import { alertTest } from "./alert";
 import "./navigation-icon";
 import "./loading-spinner.scss";
-import "./dayjsCustom";
-
-
+// import "./dayjsCustom";
+import './localWindowData';
+import "./dayjsCustom2_windowData";
+// import "./dayjsCustom2_windowData";
 
 function component() {
-    // window.Alpine = Alpine;
-    // Alpine.start();
-    // Alpine.plugin(collapse);
-    // Alpine.store("nav", {
-    //     open: false,
-    //     toggle() {
-    //         this.open = !this.open;
-    //     },
-    //     subMenuActive: null,
-    //     isMobile: false,
-    // });
+  // window.Alpine = Alpine;
+  // Alpine.start();
+  // Alpine.plugin(collapse);
+  // Alpine.store("nav", {
+  //     open: false,
+  //     toggle() {
+  //         this.open = !this.open;
+  //     },
+  //     subMenuActive: null,
+  //     isMobile: false,
+  // });
 
-    // rsllott();
+  // rsllott();
 
-    const element = document.createElement("div");
-    const btn = document.createElement("button");
+  const element = document.createElement("div");
+  const btn = document.createElement("button");
 
-    // Lodash, now imported by this script
-    element.innerHTML = _.join(["<h1>", "Hello", "webpack", "</h1>"], " ");
+  // Lodash, now imported by this script
+  element.innerHTML = _.join(["<h1>", "Hello", "webpack", "</h1>"], " ");
 
-    btn.innerHTML = "Click me and check the console!";
-    btn.onclick = printMe;
-    element.appendChild(btn);
+  btn.innerHTML = "Click me and check the console!";
+  btn.onclick = printMe;
+  element.appendChild(btn);
 
-    // css
-    element.classList.add("hello");
+  // css
+  element.classList.add("hello");
 
-    // image
-    const myIcon = new Image();
-    myIcon.src = Icon;
-    myIcon.classList.add("image");
+  // image
+  const myIcon = new Image();
+  myIcon.src = Icon;
+  myIcon.classList.add("image");
 
-    element.appendChild(myIcon);
+  element.appendChild(myIcon);
 
-    
+  // build and append to dom a CSS link tag with the href pointing at https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css
+  // const link = document.createElement("link");
+  // link.rel = "stylesheet";
+  // link.href =
+  //     "https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css";
+  // document.head.appendChild(link);
 
-    // build and append to dom a CSS link tag with the href pointing at https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css
-    // const link = document.createElement("link");
-    // link.rel = "stylesheet";
-    // link.href =
-    //     "https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css";
-    // document.head.appendChild(link);
+  // const scriptAlpineMin = document.createElement("script");
+  // scriptAlpineMin.src = "https://cdn.tailwindcss.com";
+  // const scriptAlpineMin = document.createElement("script");
+  // scriptAlpineMin.src =
+  //     "https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js";
+  // const scriptAlpineCore = document.createElement("script");
+  // scriptAlpineCore.src =
+  //     "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js";
 
-    // const scriptAlpineMin = document.createElement("script");
-    // scriptAlpineMin.src = "https://cdn.tailwindcss.com";
-    // const scriptAlpineMin = document.createElement("script");
-    // scriptAlpineMin.src =
-    //     "https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js";
-    // const scriptAlpineCore = document.createElement("script");
-    // scriptAlpineCore.src =
-    //     "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js";
-
-    element.innerHTML = `
+  element.innerHTML = `
     <div class="navigation">
 
     <div class="navigation__wrapper">
@@ -679,46 +678,45 @@ function component() {
 -->
     `;
 
-    // SubscribeNowPanel();
-    // test();
-    test2();
-    // navMobile();
+  // SubscribeNowPanel();
+  // test();
+  test2();
+  // navMobile();
 
-    // $(document).ready(function() {
-    //   $(".navigation__desktop-collapse .collapse-custom").each(function() {
-    //     new CustomCollapse(this);
-    //   })
-      
-    //   $(".navigation__mobile-custom .collapse-custom").each(function() {
-    //     new CustomCollapse(this);
-    //   })
-      
-    //   // $(".my-collapse-custom-2 .collapse-custom").each(function() {
-    //   //   new CustomCollapse(this);
-    //   // })
-    // });
+  // $(document).ready(function() {
+  //   $(".navigation__desktop-collapse .collapse-custom").each(function() {
+  //     new CustomCollapse(this);
+  //   })
 
-    element.innerHTML = `
-      <div class="upcoming-draws-calendar">
-        <div class="loading-spinner-wrapper">
-          <div class="lds-roller">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
+  //   $(".navigation__mobile-custom .collapse-custom").each(function() {
+  //     new CustomCollapse(this);
+  //   })
+
+  //   // $(".my-collapse-custom-2 .collapse-custom").each(function() {
+  //   //   new CustomCollapse(this);
+  //   // })
+  // });
+
+  element.innerHTML = `
+    <div class="upcoming-draws-calendar">
+      <div class="loading-spinner-wrapper">
+        <div class="lds-roller">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
         </div>
-      </div>`;
+      </div>
+    </div>`;
 
-    return element;
+  return element;
 }
 
 document.body.appendChild(component());
-
 
 /*
 

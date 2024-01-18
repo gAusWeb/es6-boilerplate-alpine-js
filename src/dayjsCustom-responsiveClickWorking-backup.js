@@ -542,7 +542,7 @@ $(document).ready(function () {
 
     if (currentRange == 1) {
 
-      if (currentMonth + currentRange  == validDatesRangeInt.endMonth) {
+      if (currentMonth + currentRange + currentRange == validDatesRangeInt.endMonth) {
       // if (parseInt(dayjs(selectedMonth).format("YY")) >= (validDatesRangeInt.endYear) && currentMonth + shownMonths + currentRange >= validDatesRangeInt.endMonth) {
         return false;
       } else {
@@ -551,7 +551,7 @@ $(document).ready(function () {
 
     }
 
-    if (currentRange == 2) {
+    if (currentRange == 2 || currentRange == 1) {
       // console.log(currentMonth ))
       // if (parseInt(dayjs(selectedMonth).format("YY") >= (validDatesRangeInt.endYear)) && currentMonth + shownMonths + currentRange + currentRange >= validDatesRangeInt.endMonth) {
       //   return false;
@@ -568,10 +568,8 @@ $(document).ready(function () {
       // if (currentMonth % currentRange == 0) {
       //   currentMonth
       // }
-      if (parseInt(dayjs(selectedMonth).format("YY")) >= (validDatesRangeInt.endYear) && currentMonth + currentRange + currentRange  >= validDatesRangeInt.endMonth) {
+      if (parseInt(dayjs(selectedMonth).format("YY")) >= (validDatesRangeInt.endYear) && currentMonth + shownMonths + currentRange + currentRange  >= validDatesRangeInt.endMonth) {
         return false;
-      } else {
-        return true;
       }
 
       if (currentMonth % currentRange == 0) {
@@ -598,10 +596,9 @@ $(document).ready(function () {
       // console.log(validDatesRangeInt.endMonth -  (currentMonth + shownMonths + currentRange + currentRange));
       // return (validDatesRangeInt.endMonth -  (currentMonth + shownMonths + currentRange + currentRange))
     }
-    // MAY: 5 + 3 = (8 + 3)>= 11
-    // (currMnth + range) + Range >= endMonth
 
-    if (parseInt(dayjs(selectedMonth).format("YY")) >= (validDatesRangeInt.endYear) && currentMonth + shownMonths  + currentRange >= validDatesRangeInt.endMonth) {
+
+    if (parseInt(dayjs(selectedMonth).format("YY")) >= (validDatesRangeInt.endYear) && currentMonth + shownMonths + currentRange + currentRange  >= validDatesRangeInt.endMonth) {
       return false;
     } else {
       return true;
@@ -832,9 +829,9 @@ $(document).ready(function () {
     
     if (currentRange === 2) {
       if(currentMonth % currentRange == 1) {
-        return currentRange - 1;
+        return currentRange ;
       }
-      return currentRange ;
+      return currentRange + 1;
     }
 
 
@@ -842,7 +839,7 @@ $(document).ready(function () {
     const test = currentRange - (INITIAL_MONTH % currentRange)
     // const currentMonth = parseInt(dayjs(selectedMonth).format("MM"));
     console.log('currentMonth % currentRange', currentMonth % currentRange);
-    const amountOfMonthsToRender = currentRange - ((currentMonth + shownMonths + currentRange) - validDatesRangeInt.endMonth);
+    const amountOfMonthsToRender = currentRange - ((currentMonth + shownMonths + currentRange + 1) - validDatesRangeInt.endMonth);
     // if (currentRange == 2) return currentRange - 1;
     console.log(amountOfMonthsToRender);
     console.log(amountOfMonthsToRender);
@@ -925,23 +922,19 @@ $(document).ready(function () {
             $(nextMonthSelectorEl).removeAttr("style");
           }
 
-          if (selectedMonth.format("M") == END_MONTH - currentRange - 1) {
+          if (selectedMonth.format("M") == END_MONTH) {
             selectedMonth = dayjs(selectedMonth).subtract(1, "month");
 
             // createCalendar(selectedMonth.format("YYYY"), selectedMonth.format("M"), currentRange);
             getCalendarEventsRequest(url);
           }
         }
-        // else {
-        //   getCalendarEventsRequest(url);
-
-        // }
         break;
       default:
         if (currentRange === 3) return;
         if (selectedMonth.format("YYYY") == END_YEAR) {
           if (parseInt(selectedMonth.format("M")) + currentRange > END_MONTH) {
-            selectedMonth = dayjs(selectedMonth).subtract(2, "month");
+            selectedMonth = dayjs(selectedMonth).subtract(1, "month");
             $(nextMonthSelectorEl).removeAttr("style");
           }
             
