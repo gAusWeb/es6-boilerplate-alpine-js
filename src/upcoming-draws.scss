@@ -72,17 +72,34 @@
     position: relative;
     width: 35px;
     height: 35px;
-    font-size: 16px;
     background-color: $col_white;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 4px;
+    font-family: $font-family-title;
+    font-size: 10px;
+    line-height: 100%;
+    font-weight: 400;
+
+    &.draw-day {
+      font-family: $font-family-base;
+      font-weight: 325;
+
+      strong {
+        font-family: $font-family-title;
+        font-weight: 400;
+      }
+    }
 
     &.draw-type {
+      // WIN 5k
       &-1,
+      // WIN 100k
       &-2,
+      // VIP: open/close draw-dates
       &-3,
+      // Standard: open/close draw-dates
       &-4 {
         color: $col_white;
         text-align: center;
@@ -94,21 +111,13 @@
 
       &-1,
       &-2 {
-        font-size: 10px;
-        line-height: 100%;
-        font-weight: 325;
-
         strong {
-          font-size: 10px;
           letter-spacing: -1px;
-          font-family: $font-family-base;
         }
       }
 
       &-3,
       &-4 {
-        font-size: 13px;
-
         span {
           transform: rotate(-45deg);
           display: inline-block;
@@ -117,17 +126,61 @@
     }
 
     &.draw-day:not(.not-current-month-day) {
+      .vip-crown__wrapper {
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        background: linear-gradient(
+          62deg,
+          $col_base_purple 21.72%,
+          $fuchsia_blue 93.57%
+        );
+        box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.16);
+        left: -4px;
+        top: 5px;
+        transform: translateY(-50%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &.white {
+          background: $col_white;
+
+          img {
+            margin-bottom: 0.0625rem;
+            filter: none;
+          }
+        }
+
+        img {
+          width: 10px;
+          height: 10px;
+          margin-bottom: 0.175rem;
+          filter: brightness(0) saturate(100%) invert(100%) sepia(100%)
+            saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+        }
+      }
+
       &.draw-type {
         &-1 {
           background: linear-gradient(62deg, #bf6d8e 21.72%, #a37286 93.57%);
         }
 
         &-2 {
-          background: linear-gradient(62deg, $col_deep_sea 21.72%, $niagara 93.57%);
+          background: linear-gradient(
+            62deg,
+            $col_deep_sea 21.72%,
+            $niagara 93.57%
+          );
         }
 
         &-3 {
-          background: linear-gradient(62deg, $col_base_purple 21.72%, $fuchsia_blue 93.57%);
+          background: linear-gradient(
+            62deg,
+            $col_base_purple 21.72%,
+            $fuchsia_blue 93.57%
+          );
         }
 
         &-4 {
@@ -138,38 +191,18 @@
     }
 
     .vip-crown__wrapper {
-      position: absolute;
-      width: 18px;
-      height: 18px;
-      background: linear-gradient(62deg, $col_base_purple 21.72%, $fuchsia_blue 93.57%);
-      box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.16);
-      left: -4px;
-      top: 5px;
-      transform: translateY(-50%);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      &.white {
-        background: $col_white;
-
-        img {
-          margin-bottom: 0.0625rem;
-        }
-      }
-
-      img {
-        width: 10px;
-        height: 10px;
-        margin-bottom: 0.175rem;
-      }
+      display: none;
     }
   }
 
   @include breakpoint(md) {
     &__intro-text {
       text-align: left;
+
+      .badge-container.draw-badge {
+        display: inline-block;
+        margin-right: 0;
+      }
     }
 
     &__50-50-line-separator {

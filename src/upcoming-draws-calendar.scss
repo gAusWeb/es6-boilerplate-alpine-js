@@ -2,11 +2,11 @@
   --grid-gap: 2px;
   --calendar-month-width: 256px;
   --month-gap: 0;
-  font-family: "Metropolis", sans-serif;
 
   max-width: var(--calendar-month-width);
   position: relative;
   margin: 1rem auto;
+  overflow: hidden;
 
   &__btn-selectors-wrapper {
     position: absolute;
@@ -29,6 +29,10 @@
 
     &.next {
       right: 0;
+
+      span {
+        transform: rotate(180deg);
+      }
     }
   }
 
@@ -43,6 +47,9 @@
   &__month-header {
     text-align: center;
     margin-bottom: 1rem;
+    font-size: 16px;
+    font-family: $font-family-title;
+    line-height: 150%;
   }
 
   ol,
@@ -56,9 +63,9 @@
     background-color: #fff;
     padding-bottom: 5px;
     padding-top: 10px;
-    color: var(--system-lynch, #64708e);
+    color: #64708e;
     text-align: center;
-    // font-family: Gotham;
+    font-family: $font-family-title;
     font-size: 13px;
     font-weight: 400;
     line-height: 150%;
@@ -83,23 +90,38 @@
 
   .calendar-day {
     position: relative;
+    width: 35px;
     height: 35px;
-    font-size: 16px;
-    background-color: #fff;
+    background-color: $col_white;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 4px;
+    font-family: $font-family-title;
+    font-size: 10px;
+    line-height: 100%;
+    font-weight: 400;
+
+    &.draw-day {
+      font-family: $font-family-base;
+      font-weight: 325;
+
+      strong {
+        font-family: $font-family-title;
+        font-weight: 400;
+      }
+    }
 
     &.draw-type {
+      // WIN 5k
       &-1,
+      // WIN 100k
       &-2,
+      // VIP: open/close draw-dates
       &-3,
-      &-4,
-      &-4.vip,
-      &-5,
-      &-w {
-        color: white;
+      // Standard: open/close draw-dates
+      &-4 {
+        color: $col_white;
         text-align: center;
 
         span.date-of-month {
@@ -109,56 +131,87 @@
 
       &-1,
       &-2 {
-        font-size: 12px;
-        letter-spacing: 1px;
-        line-height: 0.9;
-
         strong {
-          font-size: 11px;
           letter-spacing: -1px;
         }
       }
 
       &-3,
       &-4 {
-        font-size: 13px;
+        span {
+          transform: rotate(-45deg);
+          display: inline-block;
+        }
       }
     }
 
     &.draw-day:not(.not-current-month-day) {
+      .vip-crown__wrapper {
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        background: linear-gradient(
+          62deg,
+          $col_base_purple 21.72%,
+          $fuchsia_blue 93.57%
+        );
+        box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.16);
+        left: -4px;
+        top: 5px;
+        transform: translateY(-50%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &.white {
+          background: $col_white;
+
+          img {
+            margin-bottom: 0.0625rem;
+            filter: none;
+          }
+        }
+
+        img {
+          width: 10px;
+          height: 10px;
+          margin-bottom: 0.175rem;
+          filter: brightness(0) saturate(100%) invert(100%) sepia(100%)
+            saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+        }
+      }
+
       &.draw-type {
         &-1 {
           background: linear-gradient(62deg, #bf6d8e 21.72%, #a37286 93.57%);
         }
 
         &-2 {
-          background: linear-gradient(62deg, #008666 21.72%, #0ea781 93.57%);
+          background: linear-gradient(
+            62deg,
+            $col_deep_sea 21.72%,
+            $niagara 93.57%
+          );
         }
 
         &-3 {
-          background-color: purple;
-
-          &.vip {
-            font-size: 10px;
-
-            img {
-              width: 16px;
-              filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(2%) hue-rotate(206deg) brightness(107%) contrast(101%);
-            }
-          }
+          background: linear-gradient(
+            62deg,
+            $col_base_purple 21.72%,
+            $fuchsia_blue 93.57%
+          );
         }
 
         &-4 {
-          border: 1px solid #ffb31c;
-          color: #ffb31c;
-
-          &.vip {
-            img {
-              filter: brightness(0) saturate(100%) invert(68%) sepia(46%) saturate(753%) hue-rotate(354deg) brightness(101%) contrast(102%);
-            }
-          }
+          border: 1px solid $col_base_purple;
+          color: $col_base_purple;
         }
       }
+    }
+
+    .vip-crown__wrapper {
+      display: none;
     }
   }
 
