@@ -532,33 +532,39 @@ $(document).ready(function () {
               vipIcon.innerHTML = `<img src="./RSLLOTT/assets/Frontend RSLLOTT/images/icons/crown-solid.svg" alt="RSL Art Union VIP Logo Icon">`;
             }
             if (el.data.DrawDate) {
+              const drawWrapper = document.createElement("div");
+              drawWrapper.classList.add(
+                "upcoming-draws-calendar__draw-wrapper"
+              );
               vip_home_tile_html = `<strong>${el.data.DrawName}</strong>`;
               // determine DRAW-DATE rendering
               switch (el.data.DrawType) {
                 case "W ": // WIN 5k
+                drawWrapper.classList.add(`draw-type-1`);
                   dayElementClassList.add("draw-day", `draw-type-1`);
                   drawTextWrapper.innerHTML = win_5k_tile_html;
                   break;
                 case "Q ": // WIN 100k
+                drawWrapper.classList.add(`draw-type-2`);
                   dayElementClassList.add("draw-day", `draw-type-2`);
                   drawTextWrapper.innerHTML = win_100k_tile_html;
                   break;
                 default: // Standard / VIP draws
+                drawWrapper.classList.add(`draw-type-4`);
                   dayElementClassList.add("draw-day", `draw-type-4`);
                   let updatedEventTitle = vip_home_tile_html
                     .replace("AU", "")
                     .replace("L", "");
                   if (el.data.drawIsVIP) {
+                    drawWrapper.classList.add(`vip`);
                     dayElement.appendChild(vipIcon);
                     dayElementClassList.add("vip");
+                    
                   }
                   drawTextWrapper.innerHTML += updatedEventTitle;
                   break;
               }
-              const drawWrapper = document.createElement("div");
-              drawWrapper.classList.add(
-                "upcoming-draws-calendar__draw-wrapper"
-              );
+             
               drawWrapper.appendChild(drawTextWrapper);
               dayElement.appendChild(drawWrapper);
             }

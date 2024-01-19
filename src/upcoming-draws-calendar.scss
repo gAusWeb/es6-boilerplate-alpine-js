@@ -93,11 +93,11 @@
     width: 35px;
     height: 35px;
     background-color: $col_white;
-    // display: flex;
-    display: grid;
+    display: flex;
+    
     align-items: center;
     justify-content: center;
-    
+    flex-direction: column;
     border-radius: 4px;
     font-family: $font-family-title;
     font-size: 10px;
@@ -119,6 +119,8 @@
         transform: rotate(0);
       }
     }
+
+    
 
     &.draw-type {
       // WIN 5k
@@ -162,6 +164,9 @@
         }
       }
     }
+
+    
+   
 
     &.draw-day:not(.not-current-month-day) {
       .vip-crown__wrapper {
@@ -230,6 +235,20 @@
 
     .vip-crown__wrapper {
       display: none;
+    }
+  }
+
+ 
+  
+  &__draw-wrapper {
+      &.event-count-2 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: red;
+      border-radius: 3px;
+      width: 100%;
+      height: 100%;
     }
   }
 
