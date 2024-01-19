@@ -93,9 +93,11 @@
     width: 35px;
     height: 35px;
     background-color: $col_white;
-    display: flex;
+    // display: flex;
+    display: grid;
     align-items: center;
     justify-content: center;
+    
     border-radius: 4px;
     font-family: $font-family-title;
     font-size: 10px;
@@ -109,6 +111,12 @@
       strong {
         font-family: $font-family-title;
         font-weight: 400;
+      }
+    }
+
+    &.event-count-2 {
+      span {
+        transform: rotate(0);
       }
     }
 
@@ -126,6 +134,16 @@
 
         span.date-of-month {
           display: none;
+        }
+
+        &.event-count {
+          &-2,
+          &-3,
+          &-4 {
+            span {
+              transform: rotate(0);
+            }
+          }
         }
       }
 
