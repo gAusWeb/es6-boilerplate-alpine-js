@@ -293,15 +293,15 @@ $(document).ready(function () {
           const drawWrapper = document.createElement("div");
           drawWrapper.classList.add("upcoming-draws-calendar__draw-wrapper");
           let vipIcon = document.createElement("div");
-          let vip_home_tile_html;
-          let updatedEventTitle = drawDayData.DrawName;
+          let vipText;
+          let formattedDrawName = drawDayData.DrawName;
 
-          if (updatedEventTitle.includes("AU")) {
-            updatedEventTitle = updatedEventTitle.replace("AU", "");
+          if (formattedDrawName.includes("AU")) {
+            formattedDrawName = formattedDrawName.replace("AU", "");
           }
 
-          if (updatedEventTitle.includes("L")) {
-            updatedEventTitle = updatedEventTitle.replace("L", "");
+          if (formattedDrawName.includes("L")) {
+            formattedDrawName = formattedDrawName.replace("L", "");
           }
 
           if (drawDayData.IsVIPOnly) {
@@ -310,7 +310,7 @@ $(document).ready(function () {
             vipIcon.innerHTML = `<img src="./RSLLOTT/assets/Frontend RSLLOTT/images/icons/crown-solid.svg" alt="RSL Art Union VIP Logo Icon">`;
           }
 
-          vip_home_tile_html = `<strong>${updatedEventTitle}</strong>`;
+          vipText = `<strong>${formattedDrawName}</strong>`;
 
           const drawTextWrapper = document.createElement("span");
           drawTextWrapper.classList.add("upcoming-draws-calendar__draw-text");
@@ -322,7 +322,7 @@ $(document).ready(function () {
               vipIcon.classList.add("white");
               drawWrapper.appendChild(vipIcon);
             }
-            drawTextWrapper.innerHTML += vip_home_tile_html;
+            drawTextWrapper.innerHTML += vipText;
           }
 
           // draw dates
@@ -348,7 +348,7 @@ $(document).ready(function () {
                   if (drawDayData.IsVIPOnly) {
                     drawWrapper.appendChild(vipIcon);
                   }
-                  drawTextWrapper.innerHTML += updatedEventTitle;
+                  drawTextWrapper.innerHTML += vipText;
                   break;
               }
             }
