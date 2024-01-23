@@ -133,166 +133,48 @@
     }
 
     &.event-count {
-      &-2,
-      &-3,
-      &-4 {
-        span {
-          transform: rotate(0);
-        }
-
-        .vip-crown__wrapper {
-          display: none;
-        }
-
-        .upcoming-draws-calendar__draw-wrapper.vip:before {
-          content: " ";
-          position: absolute;
-          width: 6px;
-          height: 6px;
-          background: $col_base_purple;
-          border-radius: 50%;
-          top: 1px;
-          left: 1px;
-          transform: translate(-50%, -50%);
+      // ensure all tiles are even heights
+      @for $i from 1 through 4 {
+        &-#{$i} {
+          .upcoming-draws-calendar__draw-wrapper {
+            min-height: calc(35px / #{$i});
+            max-height: calc(35px / #{$i});
+          }
         }
       }
 
-      &-2 {
-        .draw-type-1 {
-          // strong {
-          //   letter-spacing: initial;
-          // }
+      // counter single-event-day tile-styles
+      @for $i from 2 through 4 {
+        &-#{$i} {
+          span {
+            transform: rotate(0);
+          }
+
+          .vip-crown__wrapper {
+            display: none;
+          }
+
+          .upcoming-draws-calendar__draw-wrapper.vip:before {
+            content: " ";
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: $col_base_purple;
+            border-radius: 50%;
+            top: 1px;
+            left: 1px;
+            transform: translate(-50%, -50%);
+          }
+
+          .draw-type {
+            &-1,
+            &-1 {
+              strong {
+                letter-spacing: initial;
+              }
+            }
+          }
         }
-      }
-    }
-
-    // &.draw-type {
-    //   // WIN 5k
-    //   &-1,
-    //   // WIN 100k
-    //   &-2,
-    //   // VIP: open/close draw-dates
-    //   &-3,
-    //   // Standard: open/close draw-dates
-    //   &-4 {
-    //     color: $col_white;
-    //     text-align: center;
-
-    //     span.date-of-month {
-    //       display: none;
-    //     }
-
-    //     &.event-count {
-    //       &-2,
-    //       &-3,
-    //       &-4 {
-    //         span {
-    //           transform: rotate(0);
-    //         }
-    //       }
-    //     }
-    //   }
-
-    //   &-1,
-    //   &-2 {
-    //     strong {
-    //       letter-spacing: -1px;
-    //     }
-    //   }
-
-    //   &-3,
-    //   &-4 {
-    //     span {
-    //       transform: rotate(-45deg);
-    //       display: inline-block;
-    //     }
-    //   }
-    // }
-
-    // &.draw-day:not(.not-current-month-day) {
-    //   .vip-crown__wrapper {
-    //     position: absolute;
-    //     width: 18px;
-    //     height: 18px;
-    //     background: linear-gradient(
-    //       62deg,
-    //       $col_base_purple 21.72%,
-    //       $fuchsia_blue 93.57%
-    //     );
-    //     box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.16);
-    //     left: -4px;
-    //     top: 5px;
-    //     transform: translateY(-50%);
-    //     border-radius: 50%;
-    //     display: flex;
-    //     align-items: center;
-    //     justify-content: center;
-
-    //     &.white {
-    //       background: $col_white;
-
-    //       img {
-    //         margin-bottom: 0.0625rem;
-    //         filter: none;
-    //       }
-    //     }
-
-    //     img {
-    //       width: 10px;
-    //       height: 10px;
-    //       margin-bottom: 0.175rem;
-    //       filter: brightness(0) saturate(100%) invert(100%) sepia(100%)
-    //         saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
-    //     }
-    //   }
-
-    //   &.draw-type {
-    //     &-1 {
-    //       background: linear-gradient(62deg, #bf6d8e 21.72%, #a37286 93.57%);
-    //     }
-
-    //     &-2 {
-    //       background: linear-gradient(
-    //         62deg,
-    //         $col_deep_sea 21.72%,
-    //         $niagara 93.57%
-    //       );
-    //     }
-
-    //     &-3 {
-    //       background: linear-gradient(
-    //         62deg,
-    //         $col_base_purple 21.72%,
-    //         $fuchsia_blue 93.57%
-    //       );
-    //     }
-
-    //     &-4 {
-    //       border: 1px solid $col_base_purple;
-    //       color: $col_base_purple;
-    //     }
-    //   }
-    // }
-
-    // .vip-crown__wrapper {
-    //   display: none;
-    // }
-  }
-
-  --event-border-color: #e5e5e5;
-  // div[class^='myclass']
-  .event-count {
-    &-2,
-    &-3,
-    &-4 {
-      > div {
-        height: 100%;
-        display: flex;
-        width: 100%;
-        justify-content: center;
-        align-items: center;
-        border-radius: 3px;
-        // border: 1px solid var(--event-border-color);
       }
     }
   }
@@ -305,15 +187,16 @@
     justify-content: center;
     border-radius: 4px;
     position: relative;
+    box-sizing: border-box;
 
     &.event-count-2 {
       display: flex;
       justify-content: center;
       align-items: center;
-      background: red;
       border-radius: 3px;
       width: 100%;
       height: 100%;
+      min-height: 17px;
     }
 
     .vip-crown__wrapper {
@@ -353,12 +236,12 @@
     &.draw-type {
       // WIN 5k
       &-1,
-        // WIN 100k
-        &-2,
-        // VIP: open/close draw-dates
-        &-3,
-        // Standard: open/close draw-dates
-        &-4 {
+      // WIN 100k
+      &-2,
+      // VIP: open/close draw-dates
+      &-3,
+      // Standard: open/close draw-dates
+      &-4 {
         color: $col_white;
         text-align: center;
 

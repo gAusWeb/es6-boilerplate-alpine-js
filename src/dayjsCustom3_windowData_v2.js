@@ -25,10 +25,14 @@ $(document).ready(function () {
     start: START_DATE,
     end: END_DATE,
   };
-  let selectedMonth = dayjs(new Date(INITIAL_YEAR, INITIAL_MONTH - 1)); // Select you start month, relevant from today's date // TODO: uncomment this line, and comment out the line below
-  // let selectedMonth = dayjs(
-  //   new Date(INITIAL_YEAR, dayjs().subtract(10, "month").format("M"))
-  // );
+
+  /*
+    Select your start month, relevant from today's date.
+    Update INITIAL_MONTH: EG: `INITIAL_MONTH - 10`
+    Currently set to start 1 month in the past, from today's date.
+  */
+  let selectedMonth = dayjs(new Date(INITIAL_YEAR, INITIAL_MONTH - 1));
+
   let currentMonthDays;
   let previousMonthDays;
   let nextMonthDays;
@@ -208,40 +212,9 @@ $(document).ready(function () {
             (openDate) => (openDate.drawStatus = "open-date")
           );
 
-        // localDrawData.filter((element) => {
-        //   // console.log(
-        //   //   element.OpenDate.split("-")[0] ==
-        //   //     dayjs(selectedMonth).add(i, "month").format("YYYY")
-        //   // );
-        //   // console.log(
-        //   //   element.OpenDate.split("-")[0] ==
-        //   //     dayjs(selectedMonth).add(i, "month").format("YYYY") &&
-        //   //     element.OpenDate.split("-")[1] ==
-        //   //       dayjs(selectedMonth).add(i, "month").format("MM")
-        //   // );
-        //   // if (
-        //   //   element.OpenDate.split("-")[0] ==
-        //   //     dayjs(selectedMonth).add(i, "month").format("YYYY") &&
-        //   //   element.OpenDate.split("-")[1] ==
-        //   //     dayjs(selectedMonth).add(i, "month").format("MM") &&
-        //   //   element.DrawType !== "Q " &&
-        //   //   element.DrawType !== "W "
-        //   // ) {
-        //   //   element.drawStatus = "open-draw-date";
-        //   // }
-        // });
-
-        // const finalEventData = DrawDatesData.concat(OpenDatesData);
-        // console.log("finalEventData", finalEventData);
-
-        // console.log("TEST", DrawDatesData);
-
-        // console.log();
-
         let drawData;
         days.forEach((day) => {
           let DrawDatesFiltered = [];
-          let OpenDatesFiltered = [];
 
           // filter draw-dates down to current day
           if (DrawDatesData && DrawDatesData.length > 0) {
@@ -262,38 +235,11 @@ $(document).ready(function () {
                 }
               }
             });
-
-            // DrawDatesFiltered = DrawDatesFiltered.map((item) => {
-            //   if (Array.isArray(item)) {
-            //     return { data: item[0], count: item.length };
-            //   } else {
-            //     return { data: item, count: 1 };
-            //   }
-            // });
-
-            // drawData = {
-            //   ...drawData,
-            //   DrawDatesFiltered: DrawDatesFiltered,
-            // };
           }
 
-          // filter draw-dates down to current day
+          // filter open-draw-dates down to current day
           if (OpenDatesData && OpenDatesData.length > 0) {
             OpenDatesData.forEach((el, i) => {
-              // function findIndexInArray(array, DrawDate) {
-              //   for (let i = 0; i < array.length; i++) {
-              //     if (Array.isArray(array[i])) {
-              //       if (array[i][0].DrawDate.DrawDate === DrawDate) {
-              //         return { index: i, isArray: true };
-              //       }
-              //     } else {
-              //       if (array[i].DrawDate === DrawDate) {
-              //         return { index: i, isArray: false };
-              //       }
-              //     }
-              //   }
-              //   return { index: -1, isArray: false };
-              // }
               if (day.dayOfMonth == el.OpenDate.split("-")[2].split("T")[0]) {
                 let { index, isArray } = findIndexInArray(
                   DrawDatesFiltered,
@@ -312,45 +258,10 @@ $(document).ready(function () {
             });
           }
 
-          // DrawDatesFiltered = DrawDatesFiltered.map((item) => {
-          //   if (Array.isArray(item)) {
-          //     return { data: item[0], count: item.length };
-          //   } else {
-          //     return { data: item, count: 1 };
-          //   }
-          // });
-
-          // console.log(DrawDatesFiltered);
-
           drawData = {
             ...drawData,
             DrawDatesFiltered: DrawDatesFiltered,
           };
-
-          // console.log(drawData);
-
-          // filter open-draw-dates down to current day
-          // if (OpenDatesData && OpenDatesData.length > 0) {
-          //   OpenDatesData.every((draw) => {
-          //     if (day.dayOfMonth == draw.OpenDate.split("-")[2].split("T")[0]) {
-          //       drawData = {
-          //         ...drawData,
-          //         drawOpenDate: {
-          //           DrawType: draw.DrawType.trim(),
-          //           drawText: draw.DrawDescription,
-          //           drawIsVIP: draw.IsVIPOnly,
-          //           DrawName: draw.DrawName,
-          //           drawOpenDate: true,
-          //           DrawDateStamp: draw.OpenDate,
-          //         },
-          //       };
-          //       return false;
-          //     } else {
-          //       drawData = { ...drawData, drawOpenDate: null };
-          //       return true;
-          //     }
-          //   });
-          // }
 
           appendDay(day, drawData, calendarMonthWrapper);
         });
@@ -363,22 +274,12 @@ $(document).ready(function () {
     const dayElementClassList = dayElement.classList;
     dayElementClassList.add("calendar-day");
 
-    // const divContentWrapper = document.createElement("div");
-    // divContentWrapper.classList.add(
-    //   "upcoming-draws-calendar__event-content-wrapper"
-    // );
-
-    // li .draw-day .draw-count
-    // drawWrapper .draw-type .is-vip .draw-status
-    // if IsVIPOnly
-    // if DrawDate
-    // if OpenDate
-
     if (drawData) {
       // [`W `] => draw-type-1 => WIN 5k
       // [`Q `] => draw-type-2 => WIN 100k
       // [`AU`, `IsVipOnly`] => draw-type-3 => VIP draw: open/close draw-dates
       // [`AU`] => draw-type-4 => Standard draw: open/close draw-dates
+      // Open Dates - related to `5k` & `100k` are not rendered to calendar
 
       if (drawData.DrawDatesFiltered && drawData.DrawDatesFiltered.length > 0) {
         drawData.DrawDatesFiltered.forEach((el, i) => {
@@ -404,12 +305,6 @@ $(document).ready(function () {
           drawTextWrapper.classList.add("upcoming-draws-calendar__draw-text");
           let vip_home_tile_html = `<strong>${el.DrawName}</strong>`;
 
-          console.log(
-            "does this exist in the data",
-            el.DrawDate == "2024-02-14T00:00:00",
-            el.DrawDate
-          );
-
           // open dates
           if (el.drawStatus === "open-date") {
             console.log("open-date", el.DrawName);
@@ -424,10 +319,6 @@ $(document).ready(function () {
                 .replace("AU", "")
                 .replace("L", "");
             }
-            // const drawWrapper = document.createElement("div");
-            // drawWrapper.classList.add(
-            //   "upcoming-draws-calendar__draw-wrapper"
-            // );
           }
 
           // draw dates
@@ -466,245 +357,6 @@ $(document).ready(function () {
 
           drawWrapper.append(drawTextWrapper);
           dayElement.appendChild(drawWrapper);
-          //   // dayElementClassList.add("vip");
-          // }
-          // drawTextWrapper.innerHTML += updatedEventTitle;
-
-          // if (drawData.DrawDatesFiltered.length < 2) {
-          // }
-
-          /*
-
-          // if (el.data.drawStatus === "draw-date") {
-          //   console.log("yo draw-date", day.dayOfMonth);
-          // } else {
-          //   console.log("yo draw-open-date", day.dayOfMonth);
-          // }
-          // if (el.data.drawStatus === "open-date") {
-          // console.log("el b4 filter", el);
-          // if (day.dayOfMonth == el.data.DrawDate.split("-")[2].split("T")[0]) {
-          // console.log("el after filter", el);
-          dayElementClassList.add("draw-day");
-          dayElementClassList.add(
-            `event-count-${drawData.DrawDatesFiltered.length}`
-          );
-          const drawTextWrapper = document.createElement("span");
-          drawTextWrapper.classList.add("upcoming-draws-calendar__draw-text");
-
-          const win_5k_tile_html =
-            drawData.DrawDatesFiltered.length < 2
-              ? `WIN <strong>$5K</strong`
-              : `<strong>$5K</strong>`;
-          const win_100k_tile_html =
-            drawData.DrawDatesFiltered.length < 2
-              ? `WIN <strong>$100K</strong>`
-              : `<strong>$100K</strong>`;
-          let vip_home_tile_html;
-          let vipIcon;
-
-          if (
-            (el.data.DrawDate && el.data.IsVIPOnly) ||
-            (el.data.drawOpenDate && drawData.drawOpenDate.drawIsVIP)
-          ) {
-            vipIcon = document.createElement("div");
-            vipIcon.classList.add("vip-crown__wrapper");
-            vipIcon.innerHTML = `<img src="./RSLLOTT/assets/Frontend RSLLOTT/images/icons/crown-solid.svg" alt="RSL Art Union VIP Logo Icon">`;
-          }
-
-          // console.log(el.data.IsVIPOnly);
-
-          if (el.data.DrawDate) {
-            const drawWrapper = document.createElement("div");
-            drawWrapper.classList.add("upcoming-draws-calendar__draw-wrapper");
-            vip_home_tile_html = `<strong>${el.data.DrawName}</strong>`;
-
-            if (el.data.drawStatus === "draw-date") {
-              // determine DRAW-DATE rendering
-              switch (el.data.DrawType) {
-                case "W ": // WIN 5k
-                  drawWrapper.classList.add(`draw-type-1`);
-                  dayElementClassList.add("draw-day");
-                  // dayElementClassList.add("draw-day", `draw-type-1`);
-                  drawTextWrapper.innerHTML = win_5k_tile_html;
-                  break;
-                case "Q ": // WIN 100k
-                  drawWrapper.classList.add(`draw-type-2`);
-                  dayElementClassList.add("draw-day");
-                  // dayElementClassList.add("draw-day", `draw-type-2`);
-                  drawTextWrapper.innerHTML = win_100k_tile_html;
-                  break;
-                default: // Standard / VIP draws
-                  drawWrapper.classList.add(`draw-type-4`);
-                  dayElementClassList.add("draw-day");
-                  // dayElementClassList.add("draw-day", `draw-type-4`);
-                  let updatedEventTitle = vip_home_tile_html
-                    .replace("AU", "")
-                    .replace("L", "");
-                  if (el.data.IsVIPOnly) {
-                    drawWrapper.classList.add(`vip`);
-                    drawWrapper.appendChild(vipIcon);
-                    dayElement.appendChild(drawWrapper);
-                    // dayElementClassList.add("vip");
-                  }
-                  drawTextWrapper.innerHTML += updatedEventTitle;
-                  break;
-              }
-            } else {
-              console.log("yo draw-open-date", el.data.DrawName);
-
-              const drawText = el.data.DrawName.replace("AU", "").split(" ")[0];
-
-              const drawTextWrapper = document.createElement("span");
-              drawTextWrapper.classList.add(
-                "upcoming-draws-calendar__draw-text"
-              );
-
-              let vip_home_tile_html;
-              let vipIcon;
-
-              vip_home_tile_html = `<strong>${drawText}</strong>`;
-
-              if (el.data.DrawIsVIP) {
-                vipIcon.classList.add("white");
-                dayElement.appendChild(vipIcon);
-                dayElementClassList.add("draw-day", `draw-type-3`, "vip");
-                drawTextWrapper.innerHTML += vip_home_tile_html;
-              } else {
-                dayElementClassList.add("draw-day", `draw-type-3`);
-                drawTextWrapper.innerHTML += vip_home_tile_html
-                  .replace("AU", "")
-                  .replace("L", "");
-              }
-
-              const drawWrapper = document.createElement("div");
-              drawWrapper.classList.add(
-                "upcoming-draws-calendar__draw-wrapper"
-              );
-
-              drawWrapper.classList.add(`draw-type-4`);
-              dayElementClassList.add("draw-day");
-              // dayElementClassList.add("draw-day", `draw-type-4`);
-              let updatedEventTitle = vip_home_tile_html
-                .replace("AU", "")
-                .replace("L", "");
-              if (el.data.IsVIPOnly) {
-                drawWrapper.classList.add(`vip`);
-                drawWrapper.appendChild(vipIcon);
-                dayElement.appendChild(drawWrapper);
-                // dayElementClassList.add("vip");
-              }
-              drawTextWrapper.innerHTML += updatedEventTitle;
-            }
-
-            drawWrapper.appendChild(drawTextWrapper);
-            dayElement.appendChild(drawWrapper);
-          }
-          // }
-
-          */
-
-          // const drawTextWrapper = document.createElement("span");
-          // drawTextWrapper.classList.add("upcoming-draws-calendar__draw-text");
-
-          // const win_5k_tile_html = "WIN <strong>$5K</strong>";
-          // const win_100k_tile_html = "WIN <strong>$100K</strong>";
-          // let vip_home_tile_html;
-          // let vipIcon;
-
-          // if (
-          //   (drawData.DrawDate && drawData.DrawDate.drawIsVIP) ||
-          //   (drawData.drawOpenDate && drawData.drawOpenDate.drawIsVIP)
-          // ) {
-          //   vipIcon = document.createElement("div");
-          //   vipIcon.classList.add("vip-crown__wrapper");
-          //   vipIcon.innerHTML = `<img src="./RSLLOTT/assets/Frontend RSLLOTT/images/icons/crown-solid.svg" alt="RSL Art Union VIP Logo Icon">`;
-          // }
-
-          // if (drawData.DrawDate) {
-          //   vip_home_tile_html = `<strong>${drawData.DrawDate.DrawName}</strong>`;
-
-          //   // determine DRAW-DATE rendering
-          //   switch (drawData.DrawDate.DrawType) {
-          //     case "W": // WIN 5k
-          //       dayElementClassList.add("draw-day", `draw-type-1`);
-          //       drawTextWrapper.innerHTML = win_5k_tile_html;
-          //       break;
-
-          //     case "Q": // WIN 100k
-          //       dayElementClassList.add("draw-day", `draw-type-2`);
-          //       drawTextWrapper.innerHTML = win_100k_tile_html;
-          //       break;
-
-          //     default: // Standard / VIP draws
-          //       dayElementClassList.add("draw-day", `draw-type-4`);
-          //       let updatedEventTitle = vip_home_tile_html
-          //         .replace("AU", "")
-          //         .replace("L", "");
-
-          //       if (drawData.DrawDate.drawIsVIP) {
-          //         dayElement.appendChild(vipIcon);
-          //         dayElementClassList.add("vip");
-          //       }
-
-          //       drawTextWrapper.innerHTML += updatedEventTitle;
-          //       break;
-          //   }
-
-          //   const drawWrapper = document.createElement("div");
-          //   drawWrapper.classList.add("upcoming-draws-calendar__draw-wrapper");
-
-          //   drawWrapper.appendChild(drawTextWrapper);
-          //   dayElement.appendChild(drawWrapper);
-          // }
-
-          // if (
-          //   drawData.OpenDatesFiltered &&
-          //   drawData.OpenDatesFiltered.length > 0
-          // ) {
-          //   drawData.OpenDatesFiltered.forEach((el, i) => {
-          //     if (
-          //       day.dayOfMonth == el.data.DrawDate.split("-")[2].split("T")[0]
-          //     ) {
-          //       // determine OPEN-DRAW-date rendering // Standard / VIP draws ONLY
-          //       // if (drawData.OpenDatesFiltered) {
-          //       console.log(drawData.OpenDatesFiltered);
-          //       const drawText = el.data.DrawName.replace("AU", "").split(
-          //         " "
-          //       )[0];
-
-          //       const drawTextWrapper = document.createElement("span");
-          //       drawTextWrapper.classList.add(
-          //         "upcoming-draws-calendar__draw-text"
-          //       );
-
-          //       let vip_home_tile_html;
-          //       let vipIcon;
-
-          //       vip_home_tile_html = `<strong>${drawText}</strong>`;
-
-          //       if (drawData.OpenDatesFiltered.DrawIsVIP) {
-          //         vipIcon.classList.add("white");
-          //         dayElement.appendChild(vipIcon);
-          //         dayElementClassList.add("draw-day", `draw-type-3`, "vip");
-          //         drawTextWrapper.innerHTML += vip_home_tile_html;
-          //       } else {
-          //         dayElementClassList.add("draw-day", `draw-type-3`);
-          //         drawTextWrapper.innerHTML += vip_home_tile_html
-          //           .replace("AU", "")
-          //           .replace("L", "");
-          //       }
-
-          //       const drawWrapper = document.createElement("div");
-          //       drawWrapper.classList.add(
-          //         "upcoming-draws-calendar__draw-wrapper"
-          //       );
-
-          //       drawWrapper.appendChild(drawTextWrapper);
-          //       dayElement.appendChild(drawWrapper);
-          //     }
-          //     // }
-          //   });
-          // }
         });
       }
     }
