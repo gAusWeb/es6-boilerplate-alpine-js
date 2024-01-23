@@ -7,6 +7,8 @@
   position: relative;
   margin: 1rem auto;
   overflow: hidden;
+  padding-left: 4px;
+  padding-right: 4px;
 
   &__btn-selectors-wrapper {
     position: absolute;
@@ -42,8 +44,6 @@
 
   &__month-wrapper {
     height: 100%;
-    padding-left: 3px;
-    padding-right: 3px;
   }
 
   &__month-header {
@@ -338,7 +338,6 @@
         background: $col_white;
 
         img {
-          margin-bottom: 0.0625rem;
           filter: none;
         }
       }
@@ -346,7 +345,6 @@
       img {
         width: 10px;
         height: 10px;
-        margin-bottom: 0.175rem;
         filter: brightness(0) saturate(100%) invert(100%) sepia(100%)
           saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
       }
