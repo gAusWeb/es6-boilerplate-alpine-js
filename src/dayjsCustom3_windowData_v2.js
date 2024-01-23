@@ -7,7 +7,7 @@ $(document).ready(function () {
   if ($(".upcoming-draws-calendar").length < 1) return;
 
   // Amount of months to render into future ~ value represents months
-  const calendarForecastAmnt = 11; // min amount: 3, due to desktop-shownMonths shown = 3
+  const calendarForecastAmnt = 11; // min amount: 3, due to desktop-shownMonths = 3
 
   let currentRange;
   const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -317,20 +317,12 @@ $(document).ready(function () {
 
           // open dates
           if (drawDayData.drawStatus === "open-date") {
-            // console.log("open-date", drawDayData.DrawName);
             drawWrapper.classList.add(`draw-type-3`);
-
             if (drawDayData.IsVIPOnly) {
-              console.log("testseadsfasdfasdf", drawDayData);
               vipIcon.classList.add("white");
-              // drawWrapper.classList.add("vip");
-              drawTextWrapper.innerHTML += vip_home_tile_html;
               drawWrapper.appendChild(vipIcon);
-            } else {
-              drawTextWrapper.innerHTML += vip_home_tile_html;
-              //     .replace("AU", "")
-              //     .replace("L", "");
             }
+            drawTextWrapper.innerHTML += vip_home_tile_html;
           }
 
           // draw dates
@@ -353,11 +345,7 @@ $(document).ready(function () {
                   break;
                 default: // Standard / VIP draws
                   drawWrapper.classList.add(`draw-type-4`);
-                  // let updatedEventTitle = vip_home_tile_html
-                  //   .replace("AU", "")
-                  //   .replace("L", "");
                   if (drawDayData.IsVIPOnly) {
-                    // drawWrapper.classList.add(`vip`);
                     drawWrapper.appendChild(vipIcon);
                   }
                   drawTextWrapper.innerHTML += updatedEventTitle;
