@@ -277,12 +277,12 @@ $(document).ready(function () {
     if (drawData) {
       // [`W `] => draw-type-1 => WIN 5k
       // [`Q `] => draw-type-2 => WIN 100k
-      // [`AU`, `IsVipOnly`] => draw-type-3 => VIP draw: open/close draw-dates
+      // [`AU`, `IsVIPOnly`] => draw-type-3 => VIP draw: open/close draw-dates
       // [`AU`] => draw-type-4 => Standard draw: open/close draw-dates
       // Open Dates - related to `5k` & `100k` are not rendered to calendar
 
       if (drawData.DrawDatesFiltered && drawData.DrawDatesFiltered.length > 0) {
-        drawData.DrawDatesFiltered.forEach((el, i) => {
+        drawData.DrawDatesFiltered.forEach((drawDayData, i) => {
           dayElementClassList.add(
             "draw-day",
             drawData.DrawDatesFiltered.length > 1
@@ -293,39 +293,50 @@ $(document).ready(function () {
           const drawWrapper = document.createElement("div");
           drawWrapper.classList.add("upcoming-draws-calendar__draw-wrapper");
           let vipIcon = document.createElement("div");
+          let vip_home_tile_html;
+          let updatedEventTitle = drawDayData.DrawName;
 
-          if (el.IsVipOnly) {
+          if (updatedEventTitle.includes("AU")) {
+            updatedEventTitle = updatedEventTitle.replace("AU", "");
+          }
+
+          if (updatedEventTitle.includes("L")) {
+            updatedEventTitle = updatedEventTitle.replace("L", "");
+          }
+
+          if (drawDayData.IsVIPOnly) {
             drawWrapper.classList.add(`vip`);
-
             vipIcon.classList.add("vip-crown__wrapper");
             vipIcon.innerHTML = `<img src="./RSLLOTT/assets/Frontend RSLLOTT/images/icons/crown-solid.svg" alt="RSL Art Union VIP Logo Icon">`;
           }
 
+          vip_home_tile_html = `<strong>${updatedEventTitle}</strong>`;
+
           const drawTextWrapper = document.createElement("span");
           drawTextWrapper.classList.add("upcoming-draws-calendar__draw-text");
-          let vip_home_tile_html = `<strong>${el.DrawName}</strong>`;
 
           // open dates
-          if (el.drawStatus === "open-date") {
-            console.log("open-date", el.DrawName);
+          if (drawDayData.drawStatus === "open-date") {
+            // console.log("open-date", drawDayData.DrawName);
             drawWrapper.classList.add(`draw-type-3`);
 
-            if (el.DrawIsVIP) {
+            if (drawDayData.IsVIPOnly) {
+              console.log("testseadsfasdfasdf", drawDayData);
               vipIcon.classList.add("white");
-              drawWrapper.classList.add("vip");
+              // drawWrapper.classList.add("vip");
               drawTextWrapper.innerHTML += vip_home_tile_html;
+              drawWrapper.appendChild(vipIcon);
             } else {
-              drawTextWrapper.innerHTML += vip_home_tile_html
-                .replace("AU", "")
-                .replace("L", "");
+              drawTextWrapper.innerHTML += vip_home_tile_html;
+              //     .replace("AU", "")
+              //     .replace("L", "");
             }
           }
 
           // draw dates
-          if (el.drawStatus === "draw-date") {
-            console.log("draw-date", el.DrawName);
-            if (el.DrawType) {
-              switch (el.DrawType) {
+          if (drawDayData.drawStatus === "draw-date") {
+            if (drawDayData.DrawType) {
+              switch (drawDayData.DrawType) {
                 case "W ": // WIN 5k
                   drawWrapper.classList.add(`draw-type-1`);
                   drawTextWrapper.innerHTML =
@@ -342,11 +353,11 @@ $(document).ready(function () {
                   break;
                 default: // Standard / VIP draws
                   drawWrapper.classList.add(`draw-type-4`);
-                  let updatedEventTitle = vip_home_tile_html
-                    .replace("AU", "")
-                    .replace("L", "");
-                  if (el.IsVIPOnly) {
-                    drawWrapper.classList.add(`vip`);
+                  // let updatedEventTitle = vip_home_tile_html
+                  //   .replace("AU", "")
+                  //   .replace("L", "");
+                  if (drawDayData.IsVIPOnly) {
+                    // drawWrapper.classList.add(`vip`);
                     drawWrapper.appendChild(vipIcon);
                   }
                   drawTextWrapper.innerHTML += updatedEventTitle;
